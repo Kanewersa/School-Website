@@ -1,0 +1,141 @@
+<style>
+  .main-box.no-header {
+    padding-top: 0px;
+  }
+
+  .main-box {
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    margin-bottom: 16px;
+    -webikt-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  .table a.table-link.danger {
+    color: #e74c3c;
+  }
+
+  .label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  .user-list tbody td .user-subhead {
+    font-size: 0.875em;
+    font-style: italic;
+  }
+
+  .user-list tbody td .user-link {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+  }
+
+  a {
+    color: #3498db;
+    outline: none !important;
+  }
+
+  .user-list tbody td > img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .table thead tr th {
+    text-transform: uppercase;
+    font-size: 0.875em;
+  }
+
+  .table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+  }
+
+  .table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+  }
+
+  .table tbody tr td {
+    font-size: 0.875em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
+  }
+</style>
+
+
+<main class="page-content pt-2">
+  <div class="container-fluid p-5">
+    <h2>Tutaj są wszystkie "wewnętrzne" zakładki~</h2>
+    <hr>
+    <div class="card-columns">
+      <% @main_tabs.each do |tab| %>
+        <div class="card bg-light">
+          <div class="card-body text-center">
+            <h3 class="card-text"><b><%= tab.title %></b></h3>
+            <hr>
+            <% if tab.sub_tabs.count == 0 %>
+              <div class="alert alert-warning">
+                <p></p>
+                <strong>Obecnie zakładka <%= tab.title %> nie posiada zakładek wewnętrznych</strong>
+                <p></p>
+              </div>
+            <% else %>
+              <table class="table">
+                <thead class="thead-light">
+                <tr>
+                  <th>Nazwa</th>
+                  <th>Pełny Adres</th>
+                  <th>Edytuj</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% tab.sub_tabs.each do |sub_tab| %>
+                  <tr>
+                    <td><%= sub_tab.title %></td>
+                    <td><%= tab.slug + "/" + sub_tab.slug %></td>
+                    <td>
+                      <a href="#" class="table-link">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                    </span>
+                      </a>
+                      <a href="#" class="table-link">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
+                    </span>
+                      </a>
+                      <%= link_to sub_tabs_path(id: sub_tab.id), :class => 'table-link danger', :method => :delete, data: {:confirm => "You sure?"} do %>
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                    </span>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#createTabModal">Dodaj
+      zakładkę
+    </button>
+    <%= render :template => 'sub_tabs/new' %>
+  </div>
+</main>

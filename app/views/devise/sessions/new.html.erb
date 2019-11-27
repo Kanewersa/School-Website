@@ -1,0 +1,30 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <%= image_tag("adminpanel/giraffe.png", :alt => "User icon") %>
+    </div>
+
+    <!-- Login Form -->
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="input fadeIn second">
+        <%= f.text_field :username, placeholder: "Login" %>
+      </div>
+      <div class="input fadeIn third">
+        <%= f.text_field :password, placeholder: "Password" %>
+      </div>
+      <div class="actions fadeIn fourth">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>

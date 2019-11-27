@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails schoolwebsite: development" uuid="474d1d25-d303-4d8f-8575-79aed9cea243">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/schoolwebsite_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails schoolwebsite: production" uuid="afd5614d-42fd-4940-b91c-ec053ba0c55f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/schoolwebsite_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails schoolwebsite: test" uuid="28fa279a-cc80-4d76-b9db-25b195599aea">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/schoolwebsite_test</jdbc-url>
+    </data-source>
+  </component>
+</project>

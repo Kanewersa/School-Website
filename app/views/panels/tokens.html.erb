@@ -1,0 +1,131 @@
+<style>
+  .main-box.no-header {
+    padding-top: 0px;
+  }
+
+  .main-box {
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    margin-bottom: 16px;
+    -webikt-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  .table a.table-link.danger {
+    color: #e74c3c;
+  }
+
+  .label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+
+  .user-list tbody td .user-subhead {
+    font-size: 0.875em;
+    font-style: italic;
+  }
+
+  .user-list tbody td .user-link {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+  }
+
+  a {
+    color: #3498db;
+    outline: none !important;
+  }
+
+  .user-list tbody td > img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .table thead tr th {
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+
+  .table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+  }
+
+  .table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+  }
+
+  .table tbody tr td {
+    font-size: 1em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
+  }
+</style>
+<main class="page-content pt-2">
+  <div class="container-fluid p-5">
+    <h1>Tokeny</h1>
+    <hr>
+    <% tokens = Token.all %>
+    <div class="container bootstrap snippet">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="main-box no-header clearfix">
+            <div class="main-box-body clearfix">
+              <% if tokens.count != 0 %>
+                <div class="table-responsive">
+                  <table class="table user-list">
+                    <thead>
+                    <tr>
+                      <th><i class="fas fa-qrcode">&ensp;</i><span>Token</span></th>
+                      <th><i class="fas fa-user">&ensp;</i><span>Użytkownik</span></th>
+                      <th><i class="fas fa-user-tag">&ensp;</i><span>Rola</span></th>
+                      <th><i class="far fa-calendar-plus">&ensp;</i><span>Utworzony</span></th>
+                      <th><i class="fas fa-address-card">&ensp;</i><span>Twórca</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% tokens.each do |token| %>
+                      <tr>
+                        <td><%= token.value %></td>
+                        <td>
+                          <% if token.used_by %>
+                            <%= token.used_by %>
+                          <% else %>
+                            Brak
+                          <% end %>
+                        </td>
+                        <td><%= token_role(token) %></td>
+                        <td><%= token.created_at.strftime("%Y/%m/%d") %></td>
+                        <td><%= token.created_by %></td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              <% else %>
+                <div class="alert alert-warning">
+                  <strong>W tej chwili nie istnieją żadne tokeny.</strong>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center d-flex flex-column justify-content-center" style="margin:0 35%">
+    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#createUserModal">Stwórz token</button>
+  </div>
+  <%= render :template => 'panels/new_token' %>
+</main>

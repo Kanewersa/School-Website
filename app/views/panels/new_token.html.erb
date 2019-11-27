@@ -1,0 +1,33 @@
+<style>
+  .alert-hidden {
+    display: none;
+  }
+</style>
+<div class="modal fade" id="createUserModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title">Tworzenie użytkownika</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>Aby stworzyć nowego użytkownika wybierz odpowiednie opcje i wygeneruj token,
+          a następnie przekaż go osobie, która ma posiadać konto do zarządzania stroną.</p>
+        <div class="alert alert-danger">
+          Uwaga! Token jest ważny przez 48 godzin!
+        </div>
+        <br>
+        <p class="alert-hidden" id="token-info">Oto twój token:</p>
+        <div id="show-token" class="alert alert-warning font-weight-bold alert-hidden">
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" id="getToken" class="btn btn-warning">Generuj token</button>
+        <button class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+      </div>
+    </div>
+  </div>
+</div>

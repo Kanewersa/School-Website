@@ -1,0 +1,12 @@
+<main class="page-content pt-2">
+  <div class="container-fluid p-5">
+    <h2>Tutaj są wszystkie główne zakładki</h2>
+    <hr>
+    <% @tabs = MainTab.all %>
+    <ul class="list-group">
+      <% @tabs.each do |tab| %>
+      <li class="list-group-item"><%= tab.title %></li>
+      <% end %>
+    </ul>
+  </div>
+</main>

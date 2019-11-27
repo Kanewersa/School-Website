@@ -1,0 +1,63 @@
+<div class="modal fade" id="createTabModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <%= form_for :sub_tab, url: sub_tabs_path do |f| %>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Tworzenie zakładki</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>
+            <%= f.label "Nazwa" %><br>
+            <%= f.text_field :title, id: 'source' , :class => "form-control" %>
+          </p>
+          <p>
+            <%= f.label "Adres" %>
+            <br>
+            <%= f.text_field :slug, id: 'result', disabled: true, :class => "form-control" %>
+          </p>
+          <p>
+            <%= f.label "Wybierz główną zakładkę:" %><br>
+            <%= f.select :main_tab_id, MainTab.all.map{|t| [t.title, t.id]}, {}, {class: "form-control"} %>
+          </p>
+          <br>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <%= f.submit "Dodaj", :class => "btn btn-warning" %>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<script>
+    //Sub-tabs address input
+    const $source = document.querySelector('#source');
+    const $result = document.querySelector('#result');
+
+    String.prototype.escapeDiacritics = function()
+    {
+        return this.replace(/ą/g, 'a').replace(/Ą/g, 'A')
+            .replace(/ć/g, 'c').replace(/Ć/g, 'C')
+            .replace(/ę/g, 'e').replace(/Ę/g, 'E')
+            .replace(/ł/g, 'l').replace(/Ł/g, 'L')
+            .replace(/ń/g, 'n').replace(/Ń/g, 'N')
+            .replace(/ó/g, 'o').replace(/Ó/g, 'O')
+            .replace(/ś/g, 's').replace(/Ś/g, 'S')
+            .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
+            .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
+    };
+
+    const typeHandler = function(e) {
+        var text = e.target.value;
+        $result.value = text.replace(/\s+/g, '-').toLowerCase().escapeDiacritics();
+        console.log(text);
+    };
+    $source.addEventListener('input', typeHandler);
+</script>

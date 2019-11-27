@@ -1,0 +1,6 @@
+jQuery(function ($) {
+console.log("Got it?");
+$.get("/admin/users/token",function(data){
+    $("#show-token").html(data.value);
+});
+});

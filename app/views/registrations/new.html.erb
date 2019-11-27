@@ -1,0 +1,39 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Zarejestruj się</h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <%= image_tag("adminpanel/giraffe.png", :alt => "User icon") %>
+    </div>
+
+    <!-- Register Form -->
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="input fadeIn second">
+        <%= f.text_field :username, placeholder: "Nazwa użytkownika" %>
+      </div>
+      <div class="input fadeIn second">
+        <%= f.text_field :email, placeholder: "E-mail" %>
+      </div>
+      <div class="input fadeIn third">
+        <%= f.text_field :password, placeholder: "Hasło" %>
+      </div>
+      <div class="input fadeIn third">
+        <%= f.text_field :password_confirmation, placeholder: "Potwierdź hasło" %>
+      </div>
+      <div class="input fadeIn third">
+        <%= f.text_field :token, placeholder: "Token" %>
+      </div>
+      <div class="actions fadeIn fourth">
+        <%= f.submit "Zarejestruj się" %>
+      </div>
+    <% end %>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Masz już konto? Zaloguj się!</a>
+    </div>
+
+  </div>
+</div>

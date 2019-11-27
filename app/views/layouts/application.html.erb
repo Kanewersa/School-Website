@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>Szkoła Podstawowa nr 60</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="banner banner-bg" style="background-color: rgb(250,250,250); padding-bottom: 40px; padding-top: 20px; font-family: 'Open Sans Semibold'">
+  <h1 align="center" class="text-outline" style="color: white">Szkoła Podstawowa nr 60</h1>
+  <h1 align="center" class="text-outline" style="color: white; margin-bottom: 15px;">im. Wojciecha Bogusławskiego w
+    Poznaniu</h1>
+</div>
+<nav class="navbar navbar-expand-md bg-semitransparent sticky-top draw-shadow" style="margin-top: -53px; z-index: 99; width: 100%; overflow-x: unset">
+  <div class="container">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <ul class="navbar-nav mx-auto">
+
+        <% @main_tabs.each do |main_tab| %>
+          <li class="dropdown">
+            <% if main_tab.sub_tabs.count == 0 %>
+              <%= link_to main_tab_path(id: main_tab.slug) do %>
+                <button class="btn text-outline" type="button">
+                  <%= main_tab.title %>
+                </button>
+              <% end %>
+            <% else %>
+              <button class="btn text-outline" type="button">
+                <%= main_tab.title %>
+                <i class="fa fa-angle-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <% main_tab.sub_tabs.each do |sub_tab| %>
+                  <%= link_to show_sub_tab_path(main_tab_id: main_tab.slug, id: sub_tab.slug) do %>
+                    <button class="dropdown-item" type="button"><span><%= sub_tab.title %></span></button>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<%= yield %>
+<!-- Footer -->
+<section id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+        <p><b>Szkoła podstawowa nr 60 im. Wojciecha Bogusławskiego w Poznaniu</b></p>
+        <p>ul. Boranta 2, 61-608 Poznań</p>
+        <p>tel: 606 141 555</p>
+        <p>fax: 61 820 21 72</p>
+        <p>sp60@poznan.interklasa.pl</p>
+        <p class="h6"><a class="text-green ml-2" href="https://github.com/Kanewersa" target="_blank">Created by</a></p>
+      </div>
+      </hr>
+    </div>
+  </div>
+  <div class="row" style="width: 100%">
+    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-3">
+      <ul class="list-unstyled list-inline social text-center">
+        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+        <li class="list-inline-item"><a href="#"><i class="fab fa-google-plus"></i></a></li>
+        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ./Footer -->
+
+<%= javascript_pack_tag "navbaranimation", 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag "carouselanimation", 'data-turbolinks-track': 'reload' %>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description">
+  <title>Dashboard</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_pack_tag 'application' %>
+  <%= stylesheet_link_tag 'adminpanel/css/sidebar-themes.css' %>
+  <%= stylesheet_link_tag 'adminpanel/css/main' %>
+  <%= javascript_pack_tag 'adminpanel' %>
+  <!-- using online links -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
+
+  <!-- using local links -->
+  <link rel="shortcut icon" type="image/png" href="assets/adminpanel/favicon.png"/>
+</head>
+<body>
+<div class="page-wrapper sidebar-bg <%= current_user.background_image %> <%= current_user.background_color %> toggled">
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <!-- sidebar-brand  -->
+      <div class="sidebar-item sidebar-brand">
+        <%= link_to root_path, data: {turbolinks: false} do %>
+          <i>SP60 Admin Panel</i>
+        <% end %>
+      </div>
+      <!-- sidebar-header  -->
+      <div class="sidebar-item sidebar-header d-flex flex-nowrap">
+        <div class="user-pic">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag(url_for(current_user.avatar), :alt => "user_picture") %>
+          <% else %>
+            <%= image_tag("adminpanel/user.jpg", :alt => "user_picture") %>
+          <% end %>
+
+        </div>
+        <div class="user-info">
+              <span class="user-name">
+                <strong><%= current_user.username %></strong>
+              </span>
+          <span class="user-role"> <%= role_name(current_user) %></span>
+          <span class="user-status">
+                <i class="fa fa-circle"></i>
+                <span>Online</span>
+              </span>
+        </div>
+      </div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-item sidebar-search">
+        <div>
+          <div class="input-group">
+            <input type="text" class="form-control search-menu" placeholder="Szukaj...">
+            <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </span>
+            </div>
+            <span class="badge badge-pill badge-danger">Niedostępne</span>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar-menu  -->
+      <div class="sidebar-item sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>Ogólne</span>
+          </li>
+          <li>
+            <%= link_to dashboard_path do %>
+              <i class="fa fa-solar-panel"></i>
+              <span class="menu-text">Pulpit nawigacyjny</span>
+              <span class="badge badge-pill badge-warning">In-Progress</span>
+            <% end %>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-pager"></i>
+              <span class="menu-text">Zakładki</span>
+              <span class="badge badge-pill badge-warning">In-Progress</span>
+            </a>
+            <div class="sidebar-submenu" style="display: none">
+              <ul>
+                <li>
+                  <%= link_to main_tabs_path do %>
+                    Zakładki główne
+                    <span class="badge badge-pill badge-warning">In-Progress</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to sub_tabs_path do %>
+                    Zakładki wewnętrzne
+                    <span class="badge badge-pill badge-warning">In-Progress</span>
+                  <% end %>
+                </li>
+                <li>
+                  <a href="#">Media
+                    <span class="badge badge-pill badge-danger">Niedostępne</span></a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-chart-line"></i>
+              <span class="menu-text">Statystyki</span>
+              <span class="badge badge-pill badge-danger">Niedostępne</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Pie chart</a>
+                </li>
+                <li>
+                  <a href="#">Line chart</a>
+                </li>
+                <li>
+                  <a href="#">Bar chart</a>
+                </li>
+                <li>
+                  <a href="#">Histogram</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="header-menu">
+            <span>Dodatkowe</span>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span class="menu-text">Plan lekcji</span>
+              <span class="badge badge-pill badge-danger">Niedostępne</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-calendar"></i>
+              <span class="menu-text">Kalendarz</span>
+              <span class="badge badge-pill badge-danger">Niedostępne</span>
+            </a>
+          </li>
+          <% if current_user.has_role?('admin') %>
+            <li class="header-menu">
+              <span>Administrator</span>
+            </li>
+            <li>
+              <%= link_to users_path do %>
+                <i class="fa fa-users"></i>
+                <span class="menu-text">Użytkownicy</span>
+                <span class="badge badge-pill badge-warning">In-Progress</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to tokens_path do %>
+                <i class="fas fa-qrcode"></i>
+                <span class="menu-text">Tokeny</span>
+                <span class="badge badge-pill badge-warning">In-Progress</span>
+              <% end %>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-tasks"></i>
+                <span class="menu-text">Zgłoszenia</span>
+                <span class="badge badge-pill badge-danger">Niedostępne</span>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-footer  -->
+    <div class="sidebar-footer">
+      <div class="dropdown">
+
+        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bell"></i>
+          <span class="badge badge-pill badge-warning notification">3</span>
+        </a>
+        <div class="dropdown-menu notifications" aria-labelledby="dropdownMenuMessage">
+          <div class="notifications-header">
+            <i class="fa fa-bell"></i>
+            Notifications
+          </div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">
+            <div class="notification-content">
+              <div class="icon">
+                <i class="fas fa-check text-success border border-success"></i>
+              </div>
+              <div class="content">
+                <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. In totam explicabo
+                </div>
+                <div class="notification-time">
+                  6 minutes ago
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="dropdown-item" href="#">
+            <div class="notification-content">
+              <div class="icon">
+                <i class="fas fa-exclamation text-info border border-info"></i>
+              </div>
+              <div class="content">
+                <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. In totam explicabo
+                </div>
+                <div class="notification-time">
+                  Today
+                </div>
+              </div>
+            </div>
+          </a>
+          <a class="dropdown-item" href="#">
+            <div class="notification-content">
+              <div class="icon">
+                <i class="fas fa-exclamation-triangle text-warning border border-warning"></i>
+              </div>
+              <div class="content">
+                <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. In totam explicabo
+                </div>
+                <div class="notification-time">
+                  Yesterday
+                </div>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-center" href="#">View all notifications</a>
+        </div>
+      </div>
+      <div>
+        <%= link_to adminsettings_path do %>
+          <div class="fa fa-cog">
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to help_path do %>
+          <div class="fas fa-question">
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <div class="fa fa-power-off"></div>
+        <% end %>
+      </div>
+      <div class="pinned-footer">
+        <a href="#">
+          <i class="fas fa-ellipsis-h"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <%= yield %>
+</div>
+</body>
+</html>
