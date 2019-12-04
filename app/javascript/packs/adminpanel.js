@@ -24,6 +24,10 @@ jQuery(function ($) {
         return false;
     });
 
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
     //toggle sidebar
     $("#toggle-sidebar").click(function () {
         $(".page-wrapper").toggleClass("toggled");
@@ -88,10 +92,14 @@ jQuery(function ($) {
     $("#getToken").click(function() {
         var btn = $(this);
         btn.prop('disabled', true);
-        $.get("/admin/users/token",function(data){
+        var role = $("#role-select").find("option:selected").text();
+        if(role === "Administrator") role = "admin";
+        else role = "user";
+        //var role = $(this).attr('data-role');
+        console.log(role);
+        $.get("/admin/users/token?role="+role,function(data){
             var showToken = $("#show-token");
             var tokenAlert = $("#token-info");
-            showToken.removeClass('alert-hidden');
             showToken.html(data.value);
             tokenAlert.removeClass('alert-hidden');
             setTimeout(function(){

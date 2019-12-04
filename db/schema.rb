@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_145505) do
+ActiveRecord::Schema.define(version: 2019_12_04_152420) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_145505) do
 
   create_table "sub_tabs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
-    t.text "body"
     t.bigint "main_tab_id", null: false
     t.string "slug"
     t.datetime "created_at", precision: 6, null: false
@@ -79,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_145505) do
     t.string "created_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_145505) do
     t.string "background_color", default: "default-theme"
     t.string "background_image", default: "bg1"
     t.string "status"
+    t.string "token"
+    t.string "fullname"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

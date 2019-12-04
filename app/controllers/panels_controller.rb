@@ -29,6 +29,10 @@ class PanelsController < ApplicationController
     check_if_admin
   end
 
+  def tokens
+    check_if_admin
+  end
+
   def sub_tabs
     @main_tabs = MainTab.all
   end
@@ -37,7 +41,8 @@ class PanelsController < ApplicationController
     @token = Token.new
     code = SecureRandom.hex(4)
     value = {value: code}
-    @token.role = "admin"
+    role = params[:role]
+    @token.role = role
     @token.value = code
     @token.created_by = current_user.username
     @token.save

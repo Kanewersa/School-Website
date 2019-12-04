@@ -1,0 +1,21 @@
+<li class="dropdown">
+  <% if main_tab.sub_tabs.count == 0 %>
+    <%= link_to main_tab_path(id: main_tab.slug) do %>
+      <button class="btn text-outline" type="button">
+        <%= main_tab.title %>
+      </button>
+    <% end %>
+  <% else %>
+    <button class="btn text-outline" type="button">
+      <%= main_tab.title %>
+      <i class="fa fa-angle-down"></i>
+    </button>
+    <div class="dropdown-menu">
+      <% main_tab.sub_tabs.each do |sub_tab| %>
+        <%= link_to show_sub_tab_path(main_tab_id: main_tab.slug, id: sub_tab.slug) do %>
+          <button class="dropdown-item" type="button"><span><%= sub_tab.title %></span></button>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</li>

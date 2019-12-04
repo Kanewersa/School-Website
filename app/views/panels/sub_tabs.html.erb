@@ -75,7 +75,7 @@
 
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
-    <h2>Tutaj są wszystkie "wewnętrzne" zakładki~</h2>
+    <h2>Zakładki</h2>
     <hr>
     <div class="card-columns">
       <% @main_tabs.each do |tab| %>
@@ -93,9 +93,9 @@
               <table class="table">
                 <thead class="thead-light">
                 <tr>
-                  <th>Nazwa</th>
-                  <th>Pełny Adres</th>
-                  <th>Edytuj</th>
+                  <th><i class="fas fa-signature">&ensp;</i>Nazwa</th>
+                  <th><i class="fas fa-link">&ensp;</i>Pełny Adres</th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -104,20 +104,21 @@
                     <td><%= sub_tab.title %></td>
                     <td><%= tab.slug + "/" + sub_tab.slug %></td>
                     <td>
-                      <a href="#" class="table-link">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-search fa-stack-1x fa-inverse"></i>
-                    </span>
-                      </a>
-                      <a href="#" class="table-link">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
-                    </span>
-                      </a>
-                      <%= link_to sub_tabs_path(id: sub_tab.id), :class => 'table-link danger', :method => :delete, data: {:confirm => "You sure?"} do %>
-                    <span class="fa-stack">
+
+                      <%= link_to show_sub_tab_path(main_tab_id: sub_tab.main_tab.slug, id: sub_tab.slug), :class => 'table-link' do %>
+                        <span class="fa-stack" data-toggle="tooltip" title="Otwórz">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                        </span>
+                      <% end %>
+                      <%= link_to edit_sub_tab_path(id: sub_tab.slug), :class => 'table-link' do %>
+                        <span class="fa-stack" data-toggle="tooltip" title="Edytuj">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
+                        </span>
+                      <% end %>
+                      <%= link_to tabs_path(id: sub_tab.id), :class => 'table-link danger', :method => :delete, data: {:confirm => "You sure?"} do %>
+                    <span class="fa-stack" data-toggle="tooltip" title="Usuń">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
                     </span>

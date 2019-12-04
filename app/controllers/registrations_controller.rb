@@ -5,14 +5,18 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     token = Token.where(value: params[:user][:token])
-
-    unless token.present?
-      redirect_to register_path and return false;
+    if token.present?
+      super do |user|
+        info = token.select(:role, :name).take!
+        user.fullname = info[:name]
+        user.add_role info[:role]
+        user.activate
+        token = token.take!
+        token.destroy
+      end
     else
-      params[:user].add_role(token.role)
+      redirect_to register_path and false;
     end
-    super
-
   end
 
   def update

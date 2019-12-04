@@ -80,32 +80,19 @@
               <span class="badge badge-pill badge-warning">In-Progress</span>
             <% end %>
           </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
+          <li>
+            <%= link_to tabs_path do %>
               <i class="fa fa-pager"></i>
               <span class="menu-text">Zakładki</span>
               <span class="badge badge-pill badge-warning">In-Progress</span>
-            </a>
-            <div class="sidebar-submenu" style="display: none">
-              <ul>
-                <li>
-                  <%= link_to main_tabs_path do %>
-                    Zakładki główne
-                    <span class="badge badge-pill badge-warning">In-Progress</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to sub_tabs_path do %>
-                    Zakładki wewnętrzne
-                    <span class="badge badge-pill badge-warning">In-Progress</span>
-                  <% end %>
-                </li>
-                <li>
-                  <a href="#">Media
-                    <span class="badge badge-pill badge-danger">Niedostępne</span></a>
-                </li>
-              </ul>
-            </div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to events_path do %>
+              <i class="fas fa-chalkboard"></i>
+              <span class="menu-text">Wydarzenia</span>
+              <span class="badge badge-pill badge-warning">In-Progress</span>
+            <% end %>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
@@ -116,16 +103,10 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Pie chart</a>
+                  <a href="#">Wykresy</a>
                 </li>
                 <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
+                  <a href="#">Inne</a>
                 </li>
               </ul>
             </div>
@@ -155,14 +136,14 @@
               <%= link_to users_path do %>
                 <i class="fa fa-users"></i>
                 <span class="menu-text">Użytkownicy</span>
-                <span class="badge badge-pill badge-warning">In-Progress</span>
+                <i class="fas fa-check" style="background-color: darkgreen; color: white"></i>
               <% end %>
             </li>
             <li>
               <%= link_to tokens_path do %>
                 <i class="fas fa-qrcode"></i>
                 <span class="menu-text">Tokeny</span>
-                <span class="badge badge-pill badge-warning">In-Progress</span>
+                <i class="fas fa-check" style="background-color: darkgreen; color: white"></i>
               <% end %>
             </li>
             <li>

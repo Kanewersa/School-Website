@@ -15,10 +15,25 @@ class SubTabsController < ApplicationController
     @sub_tab = SubTab.new(sub_tab_params)
 
     if @sub_tab.save
-      redirect_back(fallback_location: sub_tabs_path)
+      redirect_to edit_sub_tab_path(id: @sub_tab.id)
     else
-      redirect_back(fallback_location: sub_tabs_path)
+      redirect_back(fallback_location: tabs_path)
     end
+  end
+
+  def edit
+    @sub_tab = SubTab.friendly.find(params[:id])
+    render :layout => 'dashboard'
+  end
+
+  def update
+    @sub_tab = SubTab.find(params[:id])
+    @sub_tab.update(:title => params[:sub_tab][:title],
+                    :slug => params[:sub_tab][:slug],
+                    :body => params[:sub_tab][:body],
+                    :updated_at => Time.now
+                    )
+    redirect_to tabs_path
   end
 
   def show
@@ -29,7 +44,7 @@ class SubTabsController < ApplicationController
   def destroy
     @sub_tab = SubTab.find(params[:id])
     @sub_tab.destroy
-    redirect_back(fallback_location: sub_tabs_path)
+    redirect_back(fallback_location: tabs_path)
   end
 
   def to_param

@@ -1,0 +1,50 @@
+<style>
+  img {
+    position: relative;
+    max-width: 100px;
+    float: left;
+    margin-right: 10px;
+  }
+
+  .user-subhead {
+    font-size: 2em;
+    font-style: italic;
+  }
+</style>
+<div class="modal fade" id="<%= "modal-#{user.id}" %>">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3>Edytuj użytkownika </h3>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <% if user.avatar.attached? %>
+              <%= image_tag(url_for(user.avatar), :alt => "user_picture") %>
+            <% else %>
+              <%= image_tag("adminpanel/user.jpg", :alt => "user_picture") %>
+            <% end %>
+            <h5 class="user-subhead"><i class="fas fa-signature">&ensp;</i>Nazwa: <%= user.username %></h5>
+            <h5 class="user-subhead"><i class="fas fa-user-tag">&ensp;</i>Rola: <%= role_name(user) %></h5>
+            <h5 class="user-subhead">
+              <i class="far fa-calendar-plus">&ensp;</i>Utworzony: <%= user.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            </h5>
+            <h5 class="user-subhead"><i class="fas fa-user-tag">&ensp;</i>Status: <%= status_name(user) %></h5>
+          </div>
+          <div class="col">
+          </div>
+          <div class="col">
+            <% if user.status == "active" %>
+              <%= button_to "Zawieś użytkownika", {:controller => "users", :action => "suspend", :user_id => user}, :method => :post, :class => "btn btn-sm btn-danger" %>
+            <% else %>
+              <%= button_to "Przywróć użytkownika", {:controller => "users", :action => "activate", :user_id => user}, :method => :post, :class => "btn btn-sm btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
