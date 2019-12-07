@@ -11,5 +11,4 @@ class MainTab < ApplicationRecord
     @main_tab = MainTab.find(params[:id])
   end
 
-
 end

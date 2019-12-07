@@ -27,7 +27,7 @@ class SubTabsController < ApplicationController
   end
 
   def update
-    @sub_tab = SubTab.find(params[:id])
+    @sub_tab = SubTab.friendly.find(params[:id])
     @sub_tab.update(:title => params[:sub_tab][:title],
                     :slug => params[:sub_tab][:slug],
                     :body => params[:sub_tab][:body],

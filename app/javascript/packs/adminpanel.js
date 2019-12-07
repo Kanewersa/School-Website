@@ -95,9 +95,8 @@ jQuery(function ($) {
         var role = $("#role-select").find("option:selected").text();
         if(role === "Administrator") role = "admin";
         else role = "user";
-        //var role = $(this).attr('data-role');
-        console.log(role);
-        $.get("/admin/users/token?role="+role,function(data){
+        var name = $("#name-select").val();
+        $.get("/admin/users/token?role="+role+"&name="+name,function(data){
             var showToken = $("#show-token");
             var tokenAlert = $("#token-info");
             showToken.html(data.value);
@@ -118,7 +117,7 @@ jQuery(function ($) {
         $(this).parent().find('input[type=file]').click();
     });
 
-    $("#avatar-preview").on("change", function(){
+    $("#image-name-preview").on("change", function(){
         $(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());
     });
 

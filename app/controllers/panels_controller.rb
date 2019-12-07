@@ -33,17 +33,23 @@ class PanelsController < ApplicationController
     check_if_admin
   end
 
+  def events
+    @events = Event.all
+  end
+
   def sub_tabs
     @main_tabs = MainTab.all
   end
 
   def generate_token
+    check_if_admin
+
     @token = Token.new
     code = SecureRandom.hex(4)
     value = {value: code}
-    role = params[:role]
-    @token.role = role
+    @token.role = params[:role]
     @token.value = code
+    @token.name = params[:name]
     @token.created_by = current_user.username
     @token.save
     render json: value

@@ -4,25 +4,40 @@
       <w>adminpanel</w>
       <w>adres</w>
       <w>aktywny</w>
+      <w>anuluj</w>
       <w>brak</w>
       <w>błąd</w>
       <w>cancancan</w>
       <w>chwili</w>
       <w>dodaj</w>
+      <w>dodawanie</w>
       <w>dropdawn</w>
       <w>edytuj</w>
       <w>fullname</w>
+      <w>galeria</w>
       <w>główną</w>
       <w>hasło</w>
+      <w>imię</w>
+      <w>ipsum</w>
       <w>istnieją</w>
+      <w>kategorię</w>
+      <w>lightbox</w>
+      <w>lorem</w>
       <w>nazwa</w>
+      <w>nazwisko</w>
       <w>nieaktywny</w>
       <w>niedostępne</w>
       <w>nieznana</w>
+      <w>nowego</w>
+      <w>obraz</w>
+      <w>ogłoszenie</w>
+      <w>opcjonalne</w>
       <w>otwórz</w>
       <w>podgląd</w>
       <w>pomoc</w>
       <w>potwierdź</w>
+      <w>priorytet</w>
+      <w>przeglądaj</w>
       <w>przywróć</w>
       <w>qrcode</w>
       <w>rola</w>
@@ -34,12 +49,14 @@
       <w>twój</w>
       <w>twórca</w>
       <w>tytuł</w>
+      <w>usuń</w>
       <w>utworzony</w>
       <w>użytkownicy</w>
       <w>użytkownik</w>
       <w>użytkownika</w>
       <w>wybierz</w>
       <w>wydarzenia</w>
+      <w>wydarzenie</w>
       <w>zakładki</w>
       <w>zakładkę</w>
       <w>zarejestruj</w>

@@ -1,0 +1,87 @@
+<div class="modal fade" id="createEventModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title">Dodawanie nowego wydarzenia</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <%= form_for :event, url: events_path do |f| %>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>
+            <%= f.label "Nazwa wydarzenia:", :class => "h5" %><br>
+            <%= f.text_field :title, id: 'source', :class => "form-control" %>
+          </p>
+          <p>
+            <%= f.label "Adres:", :class => "h5" %>
+            <br>
+            <%= f.text_field :slug, id: 'result', disabled: true, :class => "form-control" %>
+          </p>
+          <p>
+            <%= f.label "Wybierz kategorię:", :class => "h5" %><br>
+            <%= f.select :category_id, Category.all.map { |t| [t.title, t.id] }, {}, {class: "form-control"} %>
+          </p>
+          <p>
+            <%= f.label "Priorytet:", :class => "h5" %>
+            <%= f.check_box :important %>
+            <%= f.label "Ogłoszenie:", :class => "h5" %>
+            <%= f.check_box :announcement %>
+          </p>
+          <p>
+            <%= f.label "Obraz:", :class => "h5" %>
+          </p>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>
+              <%= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
+            </span>
+            <span class="form-control"></span>
+          </div>
+          <p>
+            <br>
+            <%= f.label "Zawartość:", :class => "h5" %><br>
+            <%= f.rich_text_area :body, :spellcheck => false %>
+          </p>
+          <p>
+            <%= f.label "Galeria:", :class => "h5" %><br>
+          </p>
+          <div class="alert alert-danger">
+            <strong>Niedostępne</strong>
+          </div>
+          <br>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <%= f.submit "Dodaj wydarzenie", :class => "btn btn-warning" %>
+          <button class="btn btn-success" disabled="true">Podgląd</button>
+          <button class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+    //Sub-tabs address input
+    const $source = document.querySelector('#source');
+    const $result = document.querySelector('#result');
+
+    String.prototype.escapeDiacritics = function () {
+        return this.replace(/ą/g, 'a').replace(/Ą/g, 'A')
+            .replace(/ć/g, 'c').replace(/Ć/g, 'C')
+            .replace(/ę/g, 'e').replace(/Ę/g, 'E')
+            .replace(/ł/g, 'l').replace(/Ł/g, 'L')
+            .replace(/ń/g, 'n').replace(/Ń/g, 'N')
+            .replace(/ó/g, 'o').replace(/Ó/g, 'O')
+            .replace(/ś/g, 's').replace(/Ś/g, 'S')
+            .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
+            .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
+    };
+
+    const typeHandler = function (e) {
+        var text = e.target.value;
+        $result.value = text.replace(/\s+/g, '-').toLowerCase().escapeDiacritics();
+        console.log(text);
+    };
+    $source.addEventListener('input', typeHandler);
+</script>

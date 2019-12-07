@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   get '/admin/settings' => 'panels#settings', as: :adminsettings
   get '/admin/sub-tabs' => 'panels#sub_tabs', as: :tabs
   get '/admin/help' => 'panels#help', as: :help
+
   get '/admin/events' => 'panels#events', as: :events
+  post '/admin/events' => 'events#create'
+  delete '/admin/events/:id' => 'events#destroy', as: :destroy_event
+  get '/admin/events/:id' => 'events#edit', as: :edit_event
+  patch '/admin/events/:id' => 'events#update', as: :update_event
 
   get '/admin/sub-tabs/:id' => 'sub_tabs#edit', as: :edit_sub_tab
   post '/admin/sub-tabs/:id' => 'sub_tabs#edit', as: :post_edit_sub_tab
@@ -45,6 +50,7 @@ Rails.application.routes.draw do
 
   get ':main_tab_id/:id' => 'sub_tabs#show', as: :show_sub_tab
 
+  resources :galleries, :only => [:show]
   resources :main_tabs, :path => ''
   resources :main_tabs, :path => '', :only => [] do
     resources :sub_tabs, :path => '', :except => [:create, :new, :destroy, :edit, :update]
