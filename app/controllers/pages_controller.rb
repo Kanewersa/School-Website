@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 
   def main
     @main_tabs = MainTab.all
-    @events = Event.order(:important, :created_at).take(properEventsAmount)
+    @categories = Category.all
+    @events_count = properEventsAmount
+    @events = Event.order("important DESC, created_at DESC").take(@events_count)
   end
 
   def properEventsAmount

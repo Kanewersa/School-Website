@@ -34,7 +34,7 @@ class PanelsController < ApplicationController
   end
 
   def events
-    @events = Event.all
+    @events = Event.all.order("important DESC, created_at DESC")
   end
 
   def sub_tabs

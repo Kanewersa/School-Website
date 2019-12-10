@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.7'
+ruby '2.6.5'
 
 gem 'friendly_id'
 gem 'devise'
@@ -11,7 +11,8 @@ gem 'whenever'
 gem 'ffi'
 gem 'ruby-vips'
 
-
+gem 'jquery-ui-rails'
+gem 'rails_sortable'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'

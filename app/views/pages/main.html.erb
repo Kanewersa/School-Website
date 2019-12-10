@@ -2,47 +2,37 @@
 <div id="slides" class="carousel slide" data-ride="carousel" align="center">
   <!-- Indicators -->
   <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0"></li>
-    <li data-target="#demo" data-slide-to="1" class="active"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
+    <% x = 0 %>
+    <% @events.first(@events_count - 6).each do |item| %>
+      <% if x == 1 %>
+        <li data-target="#slides" data-slide-to="<%= x %>" class="active"></li>
+      <% else %>
+        <li data-target="#slides" data-slide-to="<%= x %>"></li>
+      <% end %>
+      <% x = x + 1 %>
+    <% end %>
   </ul>
   <!-- The slideshow -->
   <div class="carousel-inner" role="listbox">
-    <div class="carousel-item">
-      <img class="img-cover" src="https://wallpaperbro.com/img/461689.jpg" width="1920" height="975">
+    <%= %>
+    <% @events.first(@events_count - 6).each do |item| %>
+      <% if @events.second == item %>
+        <div class="carousel-item active">
+      <% else %>
+        <div class="carousel-item">
+      <% end %>
+      <%= image_tag(url_for(item.image), :alt => 'carousel-item-image', :class => "img-cover", :width => 1920, :height => 975) %>
       <div class="carousel-caption">
         <div class="card bg-transparent-dark mb-4 shadow-sm">
-          <h3>Pellentesque habitant!</h3>
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mollis feugiat sem, vel feugiat nisl suscipit in. Nullam tempor ex in dictum hendrerit. Quisque fringilla elit mi, at vehicula massa dapibus placerat. Vivamus et placerat diam. Suspendisse potenti. Nunc a cursus mauris, ut molestie ex.</p>
+          <h3><%= item.title %></h3>
+          <p><%= truncate(strip_tags(item.body.to_s), length: 400, separator: ' ') %></p>
           <div class="card-img-overlay">
             <a href="#" class="btn btn-invisible">Zobacz więcej...</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="carousel-item active">
-      <img class="img-cover" src="https://4ataoa3uu3a1xh5je2xwftw1-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/21803735822_20e187b8b0_o-1920x1080.jpg" width="1920" height="975">
-      <div class="carousel-caption">
-        <div class="card bg-transparent-dark mb-4 shadow-sm">
-          <h3>Lorem ipsum</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus aliquet dolor non vulputate. Donec urna ex, porttitor nec sodales quis, placerat vel ex. Donec facilisis metus est, ac ultrices ipsum finibus at. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-          <div class="card-img-overlay">
-            <a href="#" class="btn btn-invisible">Zobacz więcej...</a>
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="carousel-item">
-      <img class="img-cover" src="https://img.wallpapersafari.com/desktop/1920/1080/93/44/BE0zrn.jpg" width="1920" height="975">
-      <div class="carousel-caption">
-        <div class="card bg-transparent-dark mb-4 shadow-sm">
-          <h3>Morbi fermentum</h3>
-          <p>Morbi fermentum dignissim tortor quis lobortis. Integer aliquet diam libero, ac congue eros volutpat malesuada. Vivamus vulputate sit amet magna vel laoreet. Sed blandit neque at vehicula sagittis. Fusce aliquet molestie neque. Praesent iaculis augue non sem pellentesque posuere. Praesent bibendum, augue non vehicula mattis, nulla eros sodales risus, in fermentum dui purus nec magna. Quisque at massa massa. Cras eleifend lacus in facilisis accumsan.</p>
-          <div class="card-img-overlay">
-            <a href="#" class="btn btn-invisible">Zobacz więcej...</a>
-          </div>
-        </div>
-      </div>
+    <% end %>
     </div>
   </div>
   <!-- Left and right controls -->
@@ -55,131 +45,33 @@
 </div>
 <hr/>
 <div class="container" align="center">
-  <h1 style="padding-top: 100px; padding-bottom: 50px">|  Aktualności  |</h1>
-    <div class="container">
-      <div class="row">
+  <h1 style="padding-top: 100px; padding-bottom: 50px">| Aktualności |</h1>
+  <div class="container">
+    <div class="row">
+      <% @events.drop(@events_count-6).each do |event| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <div class="card-hovereffect">
-            <img class="card-img-top" src="https://animals.net/wp-content/uploads/2018/10/Giraffe-1-650x425.jpg" alt="Card image" style="width:100%">
+              <%= image_tag(url_for(event.image), :alt => "Card-image", :class => "card-img-top", :style => "width:100%") %>
               <div class="card-overlay">
-                <h2>Giraffe</h2>
-                <p><a href="https://animals.net/giraffe/">See more...</a></p>
-              </div>
-            </div>
-              <div class="card-body">
-              <p class="card-text">Giraffes are the tallest living land animals on earth! No one has towered over these creatures since the time of the dinosaurs. Standing at over 18 ft. tall, these creatures are long-necked and long-legged, making these lanky animals perfectly built for browsing on tall trees and branches, taking advantage of food sources other herbivores cannot.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-see">See more...</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-              <div class="card-hovereffect">
-                <img class="card-img-top" src="https://animals.net/wp-content/uploads/2019/04/Arctic-Wolf-6-650x425.jpg" alt="Card image" style="width:100%">
-                <div class="card-overlay">
-                  <h2>Arctic Wolf</h2>
-                  <p><a href="#">See more...</a></p>
-                </div>
-              </div>
-            <div class="card-body">
-              <p class="card-text">The Arctic wolf is a subspecies of grey wolf with a distinct white coat. This coat color is not unknown among other wolf subspecies, but nearly all Arctic wolves are white, which differs greatly from any other wolf subspecies.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-see">See more...</button>
-                </div>
-                <small class="text-muted">12 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-hovereffect">
-              <img class="card-img-top" src="https://animals.net/wp-content/uploads/2019/07/Rabbit-2-650x425.jpg" alt="Card image" style="width:100%">
-              <div class="card-overlay">
-                <h2>Rabbit</h2>
-                <p><a href="#">See more...</a></p>
+                <h2><%= event.title %></h2>
+                <p><a href="https://animals.net/giraffe/">Zobacz więcej...</a></p>
               </div>
             </div>
             <div class="card-body">
-              <p class="card-text">Most people recognize a Rabbit when they see one. It usually has a rather stout body, a rounded back, long ears, and a short tail. It also has strong hind legs and long rear feet.</p>
+              <p class="card-text"><%= truncate(strip_tags(event.body.to_s), length: 300, separator: ' ') %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-see">See more...</button>
+                  <button type="button" class="btn btn-see">Zobacz więcej...</button>
                 </div>
-                <small class="text-muted">15 mins</small>
+                <small class="text-muted"><%= distance_of_time_in_words(Time.now - event.updated_at) + " temu" %></small>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-hovereffect">
-              <img class="card-img-top" src="https://animals.net/wp-content/uploads/2019/05/Hawk-3-650x425.jpg" alt="Card image" style="width:100%">
-              <div class="card-overlay">
-                <h2>Hawk</h2>
-                <p><a href="#">See more...</a></p>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text">Different species of this bird come in a wide variety of sizes and plumage, or feathers. They have sharp talons on their feet, and sharp curved beaks.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-see">See more...</button>
-                </div>
-                <small class="text-muted">18 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-hovereffect">
-              <img class="card-img-top" src="https://animals.net/wp-content/uploads/2018/08/Zebra-4-650x425.jpg" alt="Card image" style="width:100%">
-              <div class="card-overlay">
-                <h2>Zebra</h2>
-                <p><a href="#">See more...</a></p>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text">Zebras have black fur with white stripes and predominantly white bellies. Their feet are capped with a singular, hard hoof, which packs a punch when kicked at predators. They have large, rounded ears with lots of hair to keep dust out of them. Their tail has long, black hair that begins approximately midway down the tail, while the top is striped.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-see">See more...</button>
-                </div>
-                <small class="text-muted">21 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-hovereffect">
-              <img class="card-img-top" src="https://animals.net/wp-content/uploads/2019/03/Shiba-Inu-4-650x425.jpg" alt="Card image" style="width:100%">
-              <div class="card-overlay">
-                <h2>Shiba Inu</h2>
-                <p><a href="#">See more...</a></p>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="card-text">The Shiba Inu, or Shiba for short, is a compact and tough dog that hails from Japan. They were little known in the West until about 60 years ago when they came home with a military family. Thanks to their documentation and migration, they have now exploded into a popular breed in many other countries. This breed’s adorable round face frames an ever-alert expression, making it easy to see why people love these dogs so much.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-see">See more...</button>
-                </div>
-                <small class="text-muted">24 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
+  </div>
 </div>
 <!--#region Extras -->
 <div class="card img-fluid" style="margin-top: 15px; width: 100%; height: 100%; padding: 20px 20%; border: none">
@@ -197,7 +89,8 @@
         <i class="fas fa-info fa-6x text-outline" style="color: white"></i>
         <h4 class="card-title text-outline">I-DZIENNIK</h4>
         <h4 class="card-text-2 text-outline">Zobacz czy zdałeś</h4>
-        <a href="https://iuczniowie.progman.pl/idziennik/login.aspx?ReturnUrl=%2Fidziennik" target="_blank"><i class="btn btn-danger">Kliknij tutaj!</i></a>
+        <a href="https://iuczniowie.progman.pl/idziennik/login.aspx?ReturnUrl=%2Fidziennik" target="_blank"><i class="btn btn-danger">Kliknij
+          tutaj!</i></a>
       </div>
       <div class="col-md-2 text-center">
         <i class="fas fa-theater-masks fa-6x text-outline" style="color: white"></i>
@@ -209,35 +102,35 @@
   </div>
 </div>
 <!--#endregion-->
-  <h1 align="center" style="padding-top: 70px; padding-bottom: 50px">|  Partnerzy  |</h1>
-  <!--#region Partners carousel  -->
-  <div class="container">
-    <div class="carousel slide multi-item-carousel" id="theCarousel" style="margin-bottom: 50px">
-      <div class="carousel-inner row w-100 mx-auto">
-        <div class="carousel-item active col-md-4">
-          <img src="assets/centrumdoradztwa.png" class="img-fluid mx-auto d-block">
-        </div>
-        <div class="carousel-item col-md-4">
-          <img src="assets/liniadzieciom.png" class="img-fluid mx-auto d-block">
-        </div>
-        <div class="carousel-item col-md-4">
-          <img src="assets/pcss.png" class="img-fluid mx-auto d-block">
-        </div>
-        <div class="carousel-item col-md-4">
-          <img src="assets/szacundlazawodowcow.png" class="img-fluid mx-auto d-block">
-        </div>
-        <div class="carousel-item col-md-4">
-          <img src="assets/szkolazmisja.png" class="img-fluid mx-auto d-block">
-        </div>
+<h1 align="center" style="padding-top: 70px; padding-bottom: 50px">| Partnerzy |</h1>
+<!--#region Partners carousel  -->
+<div class="container">
+  <div class="carousel slide multi-item-carousel" id="theCarousel" style="margin-bottom: 50px">
+    <div class="carousel-inner row w-100 mx-auto">
+      <div class="carousel-item active col-md-4">
+        <img src="assets/centrumdoradztwa.png" class="img-fluid mx-auto d-block">
       </div>
-      <a class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
-        <span class="fas fa-arrow-left" aria-hidden="true" style="color: black"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
-        <span class="fas fa-arrow-right" aria-hidden="true" style="color: black"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div class="carousel-item col-md-4">
+        <img src="assets/liniadzieciom.png" class="img-fluid mx-auto d-block">
+      </div>
+      <div class="carousel-item col-md-4">
+        <img src="assets/pcss.png" class="img-fluid mx-auto d-block">
+      </div>
+      <div class="carousel-item col-md-4">
+        <img src="assets/szacundlazawodowcow.png" class="img-fluid mx-auto d-block">
+      </div>
+      <div class="carousel-item col-md-4">
+        <img src="assets/szkolazmisja.png" class="img-fluid mx-auto d-block">
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
+      <span class="fas fa-arrow-left" aria-hidden="true" style="color: black"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
+      <span class="fas fa-arrow-right" aria-hidden="true" style="color: black"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <!--#endregion-->
+</div>
+<!--#endregion-->

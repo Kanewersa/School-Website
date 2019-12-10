@@ -26,6 +26,21 @@
       <ul class="navbar-nav mx-auto">
         <% @main_tabs.each do |main_tab| %>
           <%= render :template => 'main_tabs/show', :locals => { :main_tab =>  main_tab } %>
+          <% if main_tab == @main_tabs.second %>
+            <li class="dropdown">
+              <button class="btn text-outline" type="button">
+                <%= "Wydarzenia" %>
+                <i class="fa fa-angle-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <% @categories.each do |category| %>
+                  <%= link_to show_category_path(id: category.slug) do %>
+                    <button class="dropdown-item" type="button"><span><%= category.title %></span></button>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -44,7 +59,7 @@
         <p>sp60@poznan.interklasa.pl</p>
         <p class="h6"><a class="text-green ml-2" href="https://github.com/Kanewersa" target="_blank">Created by</a></p>
       </div>
-      </hr>
+      <hr>
     </div>
   </div>
   <div class="row" style="width: 100%">

@@ -1,3 +1,9 @@
+<%= stylesheet_link_tag 'custom/bootstrap-datepicker3.standalone.min' %>
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
 <div class="modal fade" id="createEventModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -23,10 +29,13 @@
             <%= f.select :category_id, Category.all.map { |t| [t.title, t.id] }, {}, {class: "form-control"} %>
           </p>
           <p>
-            <%= f.label "Priorytet:", :class => "h5" %>
+            <%= f.label "Priorytet:", :id => "important", :class => "h5" %>
             <%= f.check_box :important %>
             <%= f.label "Ogłoszenie:", :class => "h5" %>
             <%= f.check_box :announcement %>
+          </p>
+          <p>
+            <input id="date-toggle" data-provide="datepicker" class="hidden">
           </p>
           <p>
             <%= f.label "Obraz:", :class => "h5" %>
@@ -62,6 +71,30 @@
   </div>
 </div>
 <script>
+    //Show/Hide datepicker
+    const $announcement = document.querySelector('#event_announcement');
+    const $important = document.querySelector('#event_important');
+    const $date_toggle = document.querySelector('#date-toggle');
+
+    //Toggle important checkbox
+    const setBox = function (e) {
+      if(e.target.checked)
+      {
+        $important.checked = true;
+        $important.disable();
+      } else
+        $important.enable();
+
+      toggleDatePicker();
+    };
+
+    //Toggle datepicker
+    const toggleDatePicker = function (e) {
+      if($important.checked) $date_toggle.classList.remove("hidden");
+      else $date_toggle.classList.add("hidden");
+    };
+    //$('.datepicker').datepicker();
+
     //Sub-tabs address input
     const $source = document.querySelector('#source');
     const $result = document.querySelector('#result');
@@ -81,7 +114,9 @@
     const typeHandler = function (e) {
         var text = e.target.value;
         $result.value = text.replace(/\s+/g, '-').toLowerCase().escapeDiacritics();
-        console.log(text);
     };
     $source.addEventListener('input', typeHandler);
+    $announcement.addEventListener('input', setBox);
+    $important.addEventListener('input', toggleDatePicker);
 </script>
+<%= javascript_pack_tag "datepicker.js" %>

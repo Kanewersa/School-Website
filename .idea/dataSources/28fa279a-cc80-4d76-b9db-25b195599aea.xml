@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="Rails schoolwebsite: test">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.16">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.17">
     <root id="1">
       <ServerVersion>10.4.8</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>

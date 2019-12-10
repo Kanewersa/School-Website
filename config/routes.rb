@@ -48,7 +48,9 @@ Rails.application.routes.draw do
     get '/admin/user/changeColor' => 'panels#change_background_color'
   end
 
+  get 'wydarzenia/:id' => 'categories#show', as: :show_category
   get ':main_tab_id/:id' => 'sub_tabs#show', as: :show_sub_tab
+
 
   resources :galleries, :only => [:show]
   resources :main_tabs, :path => ''

@@ -31,3 +31,44 @@
 
 en:
   hello: "Hello world"
+  datetime:
+    distance_in_words:
+      x_seconds:
+        one: "sekundę"
+        two: "sekundy"
+        three: "sekundy"
+        four: "sekundy"
+        other: "%{count} sekund"
+      x_minutes:
+        one: "minutę"
+        two: "minuty"
+        three: "minuty"
+        four: "minuty"
+        other: "%{count} minut"
+      about_x_hours:
+        one: "godzinę"
+        two: "godziny"
+        three: "godziny"
+        four: "godziny"
+        other: "%{count} godzin"
+      x_hours:
+        one: "godzinę"
+        two: "godziny"
+        three: "godziny"
+        four: "godziny"
+        other: "%{count}h godzin"
+      x_days:
+        one: "dzień"
+        other: "%{count} dni"
+      x_months:
+        one: "miesiąc"
+        two: "miesiące"
+        three: "miesiące"
+        four: "miesiące"
+        other: "%{count} miesięcy"
+      x_years:
+        one: "rok"
+        two: "lata"
+        three: "lata"
+        four: "lata"
+        other: "%{count} lat"

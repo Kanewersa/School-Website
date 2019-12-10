@@ -2,6 +2,8 @@
 require("@rails/activestorage").start();
 require('jquery');
 require('jquery-ujs');
+require('jquery-ui');
+require('rails_sortable');
 //require('malihu-custom-scrollbar-plugin');
 require('bootstrap/dist/js/bootstrap');
 require("trix");
@@ -96,6 +98,7 @@ jQuery(function ($) {
         if(role === "Administrator") role = "admin";
         else role = "user";
         var name = $("#name-select").val();
+        // #TODO Request should be POST, not GET (for sake of security)
         $.get("/admin/users/token?role="+role+"&name="+name,function(data){
             var showToken = $("#show-token");
             var tokenAlert = $("#token-info");

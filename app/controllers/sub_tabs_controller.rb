@@ -38,6 +38,7 @@ class SubTabsController < ApplicationController
 
   def show
     @main_tabs = MainTab.all
+    @categories = Category.all
     @sub_tab = SubTab.friendly.find(params[:id])
   end
 

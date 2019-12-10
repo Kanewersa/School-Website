@@ -98,13 +98,12 @@
                   <th></th>
                 </tr>
                 </thead>
-                <tbody>
-                <% tab.sub_tabs.each do |sub_tab| %>
-                  <tr>
+                <tbody class="sortable">
+                <% tab.sub_tabs.order(:sort).each do |sub_tab, sortable_id| %>
+                  <tr id="<%= sortable_id %>">
                     <td><%= sub_tab.title %></td>
                     <td><%= tab.slug + "/" + sub_tab.slug %></td>
                     <td>
-
                       <%= link_to show_sub_tab_path(main_tab_id: sub_tab.main_tab.slug, id: sub_tab.slug), :class => 'table-link' do %>
                         <span class="fa-stack" data-toggle="tooltip" title="Otwórz">
                           <i class="fa fa-square fa-stack-2x"></i>
@@ -140,3 +139,14 @@
     <%= render :template => 'sub_tabs/new' %>
   </div>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+<script>
+    $(function() {
+        $('.sortable').railsSortable();
+    });
+</script>

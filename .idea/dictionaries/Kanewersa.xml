@@ -3,6 +3,7 @@
     <words>
       <w>adminpanel</w>
       <w>adres</w>
+      <w>aktualności</w>
       <w>aktywny</w>
       <w>anuluj</w>
       <w>brak</w>
@@ -12,17 +13,28 @@
       <w>dodaj</w>
       <w>dodawanie</w>
       <w>dropdawn</w>
+      <w>dzień</w>
       <w>edytuj</w>
       <w>fullname</w>
       <w>galeria</w>
+      <w>godzin</w>
+      <w>godziny</w>
+      <w>godzinę</w>
       <w>główną</w>
       <w>hasło</w>
       <w>imię</w>
       <w>ipsum</w>
       <w>istnieją</w>
       <w>kategorię</w>
+      <w>lata</w>
       <w>lightbox</w>
       <w>lorem</w>
+      <w>miesiąc</w>
+      <w>miesiące</w>
+      <w>miesięcy</w>
+      <w>minut</w>
+      <w>minuty</w>
+      <w>minutę</w>
       <w>nazwa</w>
       <w>nazwisko</w>
       <w>nieaktywny</w>
@@ -31,6 +43,7 @@
       <w>nowego</w>
       <w>obraz</w>
       <w>ogłoszenie</w>
+      <w>ogłoszeniem</w>
       <w>opcjonalne</w>
       <w>otwórz</w>
       <w>podgląd</w>
@@ -42,6 +55,9 @@
       <w>qrcode</w>
       <w>rola</w>
       <w>rolify</w>
+      <w>sekund</w>
+      <w>sekundy</w>
+      <w>sekundę</w>
       <w>skopiowano</w>
       <w>stwórz</w>
       <w>tokeny</w>
@@ -54,6 +70,8 @@
       <w>użytkownicy</w>
       <w>użytkownik</w>
       <w>użytkownika</w>
+      <w>webpacker</w>
+      <w>więcej</w>
       <w>wybierz</w>
       <w>wydarzenia</w>
       <w>wydarzenie</w>
@@ -66,6 +84,7 @@
       <w>zawieś</w>
       <w>zgłoszenia</w>
       <w>zmiany</w>
+      <w>zobacz</w>
       <w>żadne</w>
     </words>
   </dictionary>
