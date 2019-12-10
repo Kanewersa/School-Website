@@ -15,3 +15,10 @@ class ApplicationController < ActionController::Base
     login_path
   end
 end
+
+# TODO Add extra features to trix editor (font size, custom fonts)
+# TODO Add date do events' announcements
+# TODO Complete dashboard
+# TODO Complete help section
+# TODO Repair user settings
+#

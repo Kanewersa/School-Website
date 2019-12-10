@@ -11,7 +11,7 @@
       <i class="fa fa-angle-down"></i>
     </button>
     <div class="dropdown-menu">
-      <% main_tab.sub_tabs.each do |sub_tab| %>
+      <% main_tab.sub_tabs.order(:sort).each do |sub_tab| %>
         <%= link_to show_sub_tab_path(main_tab_id: main_tab.slug, id: sub_tab.slug) do %>
           <button class="dropdown-item" type="button"><span><%= sub_tab.title %></span></button>
         <% end %>

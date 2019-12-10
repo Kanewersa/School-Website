@@ -34,11 +34,12 @@ class PanelsController < ApplicationController
   end
 
   def events
-    @events = Event.all.order("important DESC, created_at DESC")
+    @events = Event.all.where(:status => 1).order("important DESC, created_at DESC")
   end
 
   def sub_tabs
     @main_tabs = MainTab.all
+    # TODO Delete warning get's called twice (duplicated JQUERY)
   end
 
   def generate_token

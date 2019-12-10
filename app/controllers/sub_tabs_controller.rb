@@ -1,4 +1,4 @@
-class SubTabsController < ApplicationController
+class SubTabsController < RequestablesController
   layout 'application'
 
   def index
@@ -15,6 +15,7 @@ class SubTabsController < ApplicationController
     @sub_tab = SubTab.new(sub_tab_params)
 
     if @sub_tab.save
+      @sub_tab.sort = SubTab.count + 1
       redirect_to edit_sub_tab_path(id: @sub_tab.id)
     else
       redirect_back(fallback_location: tabs_path)

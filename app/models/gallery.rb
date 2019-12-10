@@ -1,7 +1,8 @@
 class Gallery < ApplicationRecord
-  has_many :photos
+  # NOTE: Images get deleted on gallery destroy
+  has_many_attached :images
 
   def show
-
+    @images = self.images
   end
 end

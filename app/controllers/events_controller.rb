@@ -1,14 +1,21 @@
-class EventsController < ApplicationController
+class EventsController < RequestablesController
   layout 'application'
 
   def create
     @event = Event.new(event_params)
 
-    if @event.save
-      redirect_to events_path
+    if current_user.has_role?(:admin)
+      @event.status = 1
+      @event.save
     else
-      redirect_back(fallback_location: events_path)
+      @event.save
+      @request = Request.new(status: 1, user_id: current_user.id, action: "create",
+                             requestable_type: "Event", requestable_id: @event.id)
+      @request.save
     end
+
+
+    redirect_to events_path
   end
 
   def edit

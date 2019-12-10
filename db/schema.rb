@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_093820) do
+ActiveRecord::Schema.define(version: 2019_12_10_164209) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 2019_12_10_093820) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.bigint "category_id", null: false
+    t.bigint "gallery_id"
+    t.integer "status", default: 0
     t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["gallery_id"], name: "index_events_on_gallery_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
 
@@ -81,6 +84,18 @@ ActiveRecord::Schema.define(version: 2019_12_10_093820) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.string "action"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "requestable_type"
+    t.bigint "requestable_id"
+    t.index ["requestable_type", "requestable_id"], name: "index_requests_on_requestable_type_and_requestable_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
   create_table "roles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -99,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_093820) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sort"
+    t.integer "status", default: 0
     t.index ["main_tab_id"], name: "index_sub_tabs_on_main_tab_id"
   end
 
@@ -140,5 +156,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_093820) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "categories"
+  add_foreign_key "events", "galleries"
+  add_foreign_key "requests", "users"
   add_foreign_key "sub_tabs", "main_tabs"
 end

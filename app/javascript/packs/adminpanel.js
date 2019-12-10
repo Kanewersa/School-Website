@@ -1,9 +1,11 @@
 //require("turbolinks").start();
 require("@rails/activestorage").start();
+//require jquery
+//require jquery-ujs
+//require jquery-ui
 require('jquery');
 require('jquery-ujs');
 require('jquery-ui');
-require('rails_sortable');
 //require('malihu-custom-scrollbar-plugin');
 require('bootstrap/dist/js/bootstrap');
 require("trix");

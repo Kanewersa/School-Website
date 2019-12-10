@@ -99,8 +99,8 @@
                 </tr>
                 </thead>
                 <tbody class="sortable">
-                <% tab.sub_tabs.order(:sort).each do |sub_tab, sortable_id| %>
-                  <tr id="<%= sortable_id %>">
+                <% tab.sub_tabs.where(:status => 1).order(:sort).each_with_sortable_id do |sub_tab| %>
+                  <tr id="<%= sub_tab.sortable_id %>">
                     <td><%= sub_tab.title %></td>
                     <td><%= tab.slug + "/" + sub_tab.slug %></td>
                     <td>
@@ -141,12 +141,40 @@
 </main>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js"></script>
 <script
   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
 <script>
+      (function($) {
+
+        $.fn.railsSortable = function(options) {
+            options = options || {};
+            var settings = $.extend({}, options);
+
+            settings.update = function(event, ui) {
+                if (typeof options.update === 'function') {
+                    options.update(event, ui);
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/sortable/reorder'  + "?&authenticity_token=",
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        rails_sortable: $(this).sortable('toArray'),
+                    }),
+                });
+            };
+
+            this.sortable(settings);
+        };
+    })(jQuery);
     $(function() {
-        $('.sortable').railsSortable();
+        $('.sortable').railsSortable({
+            revert : true
+        });
     });
 </script>
