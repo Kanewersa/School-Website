@@ -147,11 +147,11 @@
               <% end %>
             </li>
             <li>
-              <a href="#">
+              <%= link_to requests_path do %>
                 <i class="fa fa-tasks"></i>
                 <span class="menu-text">Zgłoszenia</span>
-                <span class="badge badge-pill badge-danger">Niedostępne</span>
-              </a>
+                <span class="badge badge-pill badge-warning">In-Progress</span>
+              <% end %>>
             </li>
           <% end %>
         </ul>

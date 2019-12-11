@@ -1,0 +1,14 @@
+<main class="page-content pt-2">
+  <div class="container-fluid p-5">
+    <h2>Zgłoszenia</h2>
+    <hr>
+    <div class="container">
+      <% @requests.each do |request| %>
+        <h2>Request is here!</h2>
+        <%= request.requestable_type %>
+        <%= request.requestable_id %>
+        <%= request.action %>
+      <% end %>
+    </div>
+  </div>
+</main>

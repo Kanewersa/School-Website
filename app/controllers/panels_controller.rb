@@ -42,6 +42,10 @@ class PanelsController < ApplicationController
     # TODO Delete warning get's called twice (duplicated JQUERY)
   end
 
+  def requests
+    @requests = Request.all.where("status > 0").order("FIELD(status, '1', '3', '2')")
+  end
+
   def generate_token
     check_if_admin
 

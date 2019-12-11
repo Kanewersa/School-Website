@@ -104,7 +104,7 @@
                     <td><%= sub_tab.title %></td>
                     <td><%= tab.slug + "/" + sub_tab.slug %></td>
                     <td>
-                      <%= link_to show_sub_tab_path(main_tab_id: sub_tab.main_tab.slug, id: sub_tab.slug), :class => 'table-link' do %>
+                      <%= link_to show_sub_tab_path(main_tab_id: tab.slug, id: sub_tab.slug), :class => 'table-link' do %>
                         <span class="fa-stack" data-toggle="tooltip" title="Otwórz">
                           <i class="fa fa-square fa-stack-2x"></i>
                           <i class="fa fa-search fa-stack-1x fa-inverse"></i>

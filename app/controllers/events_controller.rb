@@ -4,7 +4,7 @@ class EventsController < RequestablesController
   def create
     @event = Event.new(event_params)
 
-    if current_user.has_role?(:admin)
+    if has_role?(:admin)
       @event.status = 1
       @event.save
     else
@@ -13,7 +13,6 @@ class EventsController < RequestablesController
                              requestable_type: "Event", requestable_id: @event.id)
       @request.save
     end
-
 
     redirect_to events_path
   end
