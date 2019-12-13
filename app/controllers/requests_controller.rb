@@ -3,31 +3,24 @@ class RequestsController < ApplicationController
 
   def accept
     @request = Request.find(params[:id])
-    @obj = find_request_object(@request)
-
+    @obj = @request.requestable
     case @request[:action]
     when "create"
+      @obj.status = 1
     when "destroy"
-      @obj.destroy
+      @obj.status = 2
     else
-      @source = @request[:requestable_type].classify.constantize.find(@request[:requestable_id])
-      if @obj.instance_variable_defined?(:image)
-        unless ActiveStorage::Attachment.where(:id => @source.image).empty?
-          @obj.image.attach(@source.image)
+      @target = @obj.class.find(@request.action.split("/")[1])  #Find requestable you want to edit
+      if @obj.class.name == "Event"                             #If edit source is an Event
+        if @obj.image.attached?                                 #and has an image attached
+          @target.image.attach(ActiveStorage::Blob.find(@obj.image.id)) #set the image for target image
         end
       end
-      @obj.update_attributes(@source.attributes.except("id", "slug"))
-      #@source.attachments.each do |attachment|
-      #  @obj.attach(attachment)
+      @target.update_attributes(@obj.attributes.except("id", "slug")) # Copies attributes from source to target
+      @obj.status = 2
+      @target.save
     end
-
-
-    if @obj != NIL
-      @obj.status = 1
-    end
-    @request.status = 2
     @obj.save
-    @request.save
     redirect_to requests_path
   end
 
@@ -42,6 +35,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.status = 1
     @request.save
+    redirect_to requests_path
   end
 
   def show
