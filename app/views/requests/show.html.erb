@@ -1,5 +1,64 @@
+<style>
+  .gallery-block {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .gallery-block .heading {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .gallery-block .heading h2 {
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  .gallery-block.cards-gallery h6 {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .gallery-block.cards-gallery .card {
+    transition: 0.4s ease;
+  }
+
+  .gallery-block.cards-gallery .card img {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .gallery-block.cards-gallery .card-body {
+    text-align: center;
+  }
+
+  .gallery-block.cards-gallery .card-body p {
+    font-size: 15px;
+  }
+
+  .gallery-block.cards-gallery a {
+    color: #212529;
+  }
+
+  .gallery-block.cards-gallery a:hover {
+    text-decoration: none;
+  }
+
+  .gallery-block.cards-gallery .card {
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (min-width: 576px) {
+
+    .gallery-block .transform-on-hover:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+</style>
 <div class="col-md-6 col-lg-4">
-  <div class="card border-0 transform-on-hover">
+  <div class="card border-0">
     <div class="card-body">
       <!-- Body -->
       <h4>Zgłoszenie nr <%= request.id %></h4>
@@ -14,7 +73,11 @@
 
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group ml-auto">
-          Jakies przyciski czy cos...
+          <button type="button" class="btn btn-success">Zaakceptuj</button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createEventModal">
+            Podgląd
+          </button>
+          <button type="button" class="btn btn-danger">Odrzuć</button>
         </div>
       </div>
     </div>

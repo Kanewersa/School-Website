@@ -2,18 +2,20 @@
   <div class="container-fluid p-5">
     <h2>Zgłoszenia</h2>
     <hr>
-    <div class="container">
-      <% if @requests.count == 0 %>
-        <div class="alert alert-warning">
-          <strong>W tej chwili nie istnieją żadne wydarzenia.</strong>
-        </div>
-      <% else %>
-        <div class="row">
-          <% @requests.each do |request| %>
-            <%= render :template => 'requests/show', :locals => {:request => request} %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <section class="gallery-block cards-gallery">
+      <div class="container">
+        <% if @requests.count == 0 %>
+          <div class="alert alert-warning">
+            <strong>W tej chwili nie istnieją żadne wydarzenia.</strong>
+          </div>
+        <% else %>
+          <div class="row">
+            <% @requests.each do |request| %>
+              <%= render :template => 'requests/show', :locals => {:request => request} %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </section>
   </div>
 </main>
