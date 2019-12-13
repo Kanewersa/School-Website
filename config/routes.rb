@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get '/admin/users' => 'panels#users', as: :users # Privileges done
   get '/admin/tokens' => 'panels#tokens', as: :tokens
   get '/admin/users/token' => 'panels#generate_token', as: :generate_token
+  post '/admin/requests/accept' => 'requests#accept', as: :accept_request
+  post '/admin/requests/reject' => 'requests#reject', as: :reject_request
   post '/admin/users/suspend' => 'users#suspend'
   post '/admin/users/activate' => 'users#activate'
   post '/admin/users/delete' => 'users#delete', as: :delete_user

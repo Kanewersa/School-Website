@@ -61,24 +61,40 @@
   <div class="card border-0">
     <div class="card-body">
       <!-- Body -->
-      <h4>Zgłoszenie nr <%= request.id %></h4>
+      <h4 class="font-weight-bold">Zgłoszenie nr <%= request.id %></h4>
       <h6 class="text-muted font-italic">od <%= request.user.fullname %></h6>
       <p class="font-italic text-muted"><%= status_name(request.status) %></p>
       <hr>
-      <p class="card-text font-weight-bold">
+      <h5 class="card-text">
         <%= action_name(request.action) %>
-        <%= resource_type_name(request.requestable_type) %>:<br>
+        <%= resource_type_name(request.requestable_type) %>:
+      </h5>
+      <p class="card-text font-weight-bold">
         "<%= find_request_object(request).title %>"
       </p>
       <hr>
 
       <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group ml-auto">
-          <button type="button" class="btn btn-success">Zaakceptuj</button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createEventModal">
+        <div class="btn-group mx-auto">
+          <% if current_user.has_role?(:admin) && request.status == "pending" %>
+            <%= link_to accept_request_path(:id => request.id), :method => :post do %>
+              <button type="button" class="btn btn-success">Zaakceptuj</button>
+            <% end %>
+            <button type="button" class="btn btn-warning">Edytuj</button>
+            <button type="button" class="btn btn-danger">Odrzuć</button>
+          <% end %>
+          <% if !current_user.has_role?(:admin) && request.status != "approved" %>
+            <button type="button" class="btn btn-warning">Edytuj</button>
+          <% end %>
+          <% if !current_user.has_role?(:admin) && request.status == "pending" %>
+            <button type="button" class="btn btn-danger">Anuluj</button>
+          <% end %>
+          <% if !current_user.has_role?(:admin) && (request.status == "canceled" || request.status == "rejected") %>
+            <button type="button" class="btn btn-warning">Wyślij ponownie</button>
+          <% end %>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createEventModal">
             Podgląd
           </button>
-          <button type="button" class="btn btn-danger">Odrzuć</button>
         </div>
       </div>
     </div>
