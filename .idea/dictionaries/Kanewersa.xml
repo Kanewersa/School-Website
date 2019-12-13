@@ -5,6 +5,7 @@
       <w>adres</w>
       <w>aktualności</w>
       <w>aktywny</w>
+      <w>anulowano</w>
       <w>anuluj</w>
       <w>brak</w>
       <w>błąd</w>
@@ -42,6 +43,8 @@
       <w>nieznana</w>
       <w>nowego</w>
       <w>obraz</w>
+      <w>odrzucono</w>
+      <w>odrzuć</w>
       <w>ogłoszenie</w>
       <w>ogłoszeniem</w>
       <w>opcjonalne</w>
@@ -63,6 +66,7 @@
       <w>skopiowano</w>
       <w>stwórz</w>
       <w>tokeny</w>
+      <w>trakcie</w>
       <w>turbolinks</w>
       <w>twój</w>
       <w>twórca</w>
@@ -77,6 +81,8 @@
       <w>wybierz</w>
       <w>wydarzenia</w>
       <w>wydarzenie</w>
+      <w>zaakceptowano</w>
+      <w>zaakceptuj</w>
       <w>zakładki</w>
       <w>zakładkę</w>
       <w>zarejestruj</w>
