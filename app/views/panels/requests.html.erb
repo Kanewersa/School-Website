@@ -3,11 +3,16 @@
     <h2>Zgłoszenia</h2>
     <hr>
     <div class="container">
-      <% @requests.each do |request| %>
-        <h2>Request is here!</h2>
-        <%= request.requestable_type %>
-        <%= request.requestable_id %>
-        <%= request.action %>
+      <% if @requests.count == 0 %>
+        <div class="alert alert-warning">
+          <strong>W tej chwili nie istnieją żadne wydarzenia.</strong>
+        </div>
+      <% else %>
+        <div class="row">
+          <% @requests.each do |request| %>
+            <%= render :template => 'requests/show', :locals => {:request => request} %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

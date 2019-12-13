@@ -9,6 +9,11 @@ class PanelsController < ApplicationController
     end
   end
 
+  helper_method :find_request_object
+  def find_request_object(request)
+    request[:requestable_type].classify.constantize.find(request[:requestable_id])
+  end
+
   def check_if_admin
     unless current_user.has_role?(:admin)
       redirect_to login_path

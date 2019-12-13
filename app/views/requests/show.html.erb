@@ -1,0 +1,23 @@
+<div class="col-md-6 col-lg-4">
+  <div class="card border-0 transform-on-hover">
+    <div class="card-body">
+      <!-- Body -->
+      <h4>Zgłoszenie nr <%= request.id %></h4>
+      <h6 class="text-muted font-italic">od <%= request.user.fullname %></h6>
+      <hr>
+      <p class="card-text font-weight-bold">
+        <%= action_name(request.action) %>
+        <%= resource_type(request.requestable_type) %>:<br>
+        "<%= find_request_object(request).title %>"
+      </p>
+      <hr>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group ml-auto">
+          Jakies przyciski czy cos...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
