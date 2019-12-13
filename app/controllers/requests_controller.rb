@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-
+  layout 'dashboard'
   def show
 
   end
