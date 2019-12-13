@@ -24,7 +24,13 @@ class EventsController < RequestablesController
 
   def destroy
     @event = Event.friendly.find(params[:id])
-    @event.destroy
+    if has_role?(:admin)
+      @event.destroy
+    else
+      @request = Request.new(status: 1, user_id: current_user.id, action: "destroy",
+                             requestable_type: "Event", requestable_id: @event.id)
+      @request.save
+    end
     redirect_to events_path
   end
 
