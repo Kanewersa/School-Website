@@ -7,4 +7,5 @@ class Event < ApplicationRecord
   has_rich_text :body
   has_one_attached :image
   has_one :gallery
+  has_many :requests, :as => :requestable
 end
