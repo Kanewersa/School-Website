@@ -81,7 +81,9 @@
               <button type="button" class="btn btn-success">Zaakceptuj</button>
             <% end %>
             <button type="button" class="btn btn-warning">Edytuj</button>
-            <button type="button" class="btn btn-danger">Odrzuć</button>
+            <%= link_to reject_request_path(:id => request.id), :method => :post do %>
+              <button type="button" class="btn btn-danger">Odrzuć</button>
+            <% end %>
           <% end %>
           <% if !current_user.has_role?(:admin) && request.status != "approved" %>
             <button type="button" class="btn btn-warning">Edytuj</button>
@@ -90,7 +92,9 @@
             <button type="button" class="btn btn-danger">Anuluj</button>
           <% end %>
           <% if !current_user.has_role?(:admin) && (request.status == "canceled" || request.status == "rejected") %>
-            <button type="button" class="btn btn-warning">Wyślij ponownie</button>
+            <%= link_to resend_request_path(:id => request.id), :method => :post do %>
+              <button type="button" class="btn btn-warning">Wyślij ponownie</button>
+            <% end %>
           <% end %>
           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createEventModal">
             Podgląd
