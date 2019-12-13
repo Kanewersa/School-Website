@@ -14,11 +14,18 @@ class SubTabsController < RequestablesController
     sub_tab_params[:main_tab] = main_tab 
     @sub_tab = SubTab.new(sub_tab_params)
 
-    if @sub_tab.save
-      @sub_tab.sort = SubTab.count + 1
-      redirect_to edit_sub_tab_path(id: @sub_tab.id)
+    if has_role?(:admin)
+      @sub_tab.status = 1
+      @sub_tab.save
     else
-      redirect_back(fallback_location: tabs_path)
+      @sub_tab.save
+      @request = Request.new(status: 1, user_id: current_user.id, action: "create",
+                             requestable_type: "SubTab", requestable_id: @sub_tab.id)
+      @request.save
+    end
+    @sub_tab.sort = SubTab.count + 1
+    if @sub_tab.save
+      redirect_to edit_sub_tab_path(id: @sub_tab.id)
     end
   end
 
