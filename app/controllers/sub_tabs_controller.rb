@@ -36,11 +36,22 @@ class SubTabsController < RequestablesController
 
   def update
     @sub_tab = SubTab.friendly.find(params[:id])
-    @sub_tab.update(:title => params[:sub_tab][:title],
-                    :slug => params[:sub_tab][:slug],
-                    :body => params[:sub_tab][:body],
-                    :updated_at => Time.now
-                    )
+    if has_role?(:admin)
+      @sub_tab.update(:title => params[:sub_tab][:title],
+                      :slug => params[:sub_tab][:slug],
+                      :body => params[:sub_tab][:body],
+                      :updated_at => Time.now)
+    else
+      @new_sub_tab = SubTab.new(:title => params[:sub_tab][:title],
+                                :slug => params[:sub_tab][:slug],
+                                :body => params[:sub_tab][:body],
+                                :updated_at => Time.now)
+      @new_sub_tab.status = 2
+      @new_sub_tab.save
+      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @sub_tab.id,
+                             requestable_type: "Event", requestable_id: @new_sub_tab.id)
+      @request.save
+    end
     redirect_to tabs_path
   end
 
