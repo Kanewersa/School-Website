@@ -56,7 +56,7 @@ class EventsController < RequestablesController
                              :updated_at => Time.now)
       @new_event.status = 2
       @new_event.save
-      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id,
+      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id.to_s,
                              requestable_type: "Event", requestable_id: @new_event.id)
       @request.save
     end

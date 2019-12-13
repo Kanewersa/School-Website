@@ -48,7 +48,7 @@ class SubTabsController < RequestablesController
                                 :updated_at => Time.now)
       @new_sub_tab.status = 2
       @new_sub_tab.save
-      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @sub_tab.id,
+      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @sub_tab.id.to_s,
                              requestable_type: "Event", requestable_id: @new_sub_tab.id)
       @request.save
     end
