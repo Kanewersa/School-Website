@@ -11,12 +11,16 @@ class RequestsController < ApplicationController
       @obj.destroy
     else
       @source = @request[:requestable_type].classify.constantize.find(@request[:requestable_id])
-      @obj.update_attributes(@source.attributes)
-      @obj.purge
-      @source.attachments.each do |attachment|
-        @obj.attach(attachment)
+      if @obj.instance_variable_defined?(:image)
+        unless ActiveStorage::Attachment.where(:id => @source.image).empty?
+          @obj.image.attach(@source.image)
+        end
       end
+      @obj.update_attributes(@source.attributes.except("id", "slug"))
+      #@source.attachments.each do |attachment|
+      #  @obj.attach(attachment)
     end
+
 
     if @obj != NIL
       @obj.status = 1
@@ -30,6 +34,13 @@ class RequestsController < ApplicationController
   def reject
     @request = Request.find(params[:id])
     @request.status = 3
+    @request.save
+    redirect_to requests_path
+  end
+
+  def resend
+    @request = Request.find(params[:id])
+    @request.status = 1
     @request.save
   end
 
