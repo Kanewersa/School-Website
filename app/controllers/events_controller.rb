@@ -36,14 +36,30 @@ class EventsController < RequestablesController
 
   def update
     @event = Event.friendly.find(params[:id])
-    @event.update(:title => params[:event][:title],
-                  :slug => params[:event][:slug],
-                  :body => params[:event][:body],
-                  :category_id => params[:event][:category_id],
-                  :important => params[:event][:important],
-                  :announcement => params[:event][:announcement],
-                  :image => params[:event][:image],
-                  :updated_at => Time.now)
+    if has_role?(:admin)
+      @event.update(:title => params[:event][:title],
+                    :slug => params[:event][:slug],
+                    :body => params[:event][:body],
+                    :category_id => params[:event][:category_id],
+                    :important => params[:event][:important],
+                    :announcement => params[:event][:announcement],
+                    :image => params[:event][:image],
+                    :updated_at => Time.now)
+    else
+      @new_event = Event.new(:title => params[:event][:title],
+                             :slug => params[:event][:slug],
+                             :body => params[:event][:body],
+                             :category_id => params[:event][:category_id],
+                             :important => params[:event][:important],
+                             :announcement => params[:event][:announcement],
+                             :image => params[:event][:image],
+                             :updated_at => Time.now)
+      @new_event.status = 2
+      @new_event.save
+      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id,
+                             requestable_type: "Event", requestable_id: @new_event.id)
+      @request.save
+    end
     redirect_to events_path
   end
 
