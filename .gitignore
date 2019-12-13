@@ -30,3 +30,4 @@
 /lib/vips-dev-8.8
 yarn-debug.log*
 .yarn-integrity
+./idea
