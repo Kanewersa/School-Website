@@ -1,16 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :find_request_object
-  def find_request_object(request)
-    id = request[:requestable_id]
-    if request[:action].start_with?("edit")
-      text = request[:action].split("/")
-      id = text[1]
-    end
-    request[:requestable_type].classify.constantize.find(id)
-  end
-
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :token])
