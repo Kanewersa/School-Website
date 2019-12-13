@@ -43,7 +43,12 @@ class PanelsController < ApplicationController
   end
 
   def requests
-    @requests = Request.all.where("status > 0").order("FIELD(status, '1', '3', '2')")
+    if current_user.has_role?(:admin)
+      @requests = Request.all.where("status > 0").order("FIELD(status, '1', '3', '2')")
+    else
+      @requests = Request.all.where(:user_id => current_user).order("FIELD(status, '1', '3', '2')")
+    end
+
   end
 
   def generate_token
