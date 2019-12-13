@@ -11,7 +11,12 @@ class PanelsController < ApplicationController
 
   helper_method :find_request_object
   def find_request_object(request)
-    request[:requestable_type].classify.constantize.find(request[:requestable_id])
+    id = request[:requestable_id]
+    if request[:action].start_with?("edit")
+      text = request[:action].split("/")
+      id = text[1]
+    end
+    request[:requestable_type].classify.constantize.find(id)
   end
 
   def check_if_admin
