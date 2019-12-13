@@ -4,7 +4,7 @@ class EventsController < RequestablesController
   def create
     @event = Event.new(event_params)
 
-    if has_role?(:admin)
+    if current_user.has_role?(:admin)
       @event.status = 1
       @event.save
     else
@@ -24,7 +24,7 @@ class EventsController < RequestablesController
 
   def destroy
     @event = Event.friendly.find(params[:id])
-    if has_role?(:admin)
+    if current_user.has_role?(:admin)
       @event.destroy
     else
       @request = Request.new(status: 1, user_id: current_user.id, action: "destroy",
@@ -36,7 +36,7 @@ class EventsController < RequestablesController
 
   def update
     @event = Event.friendly.find(params[:id])
-    if has_role?(:admin)
+    if current_user.has_role?(:admin)
       @event.update(:title => params[:event][:title],
                     :slug => params[:event][:slug],
                     :body => params[:event][:body],

@@ -14,7 +14,7 @@ class SubTabsController < RequestablesController
     sub_tab_params[:main_tab] = main_tab 
     @sub_tab = SubTab.new(sub_tab_params)
 
-    if has_role?(:admin)
+    if current_user.has_role?(:admin)
       @sub_tab.status = 1
       @sub_tab.save
     else
@@ -36,7 +36,7 @@ class SubTabsController < RequestablesController
 
   def update
     @sub_tab = SubTab.friendly.find(params[:id])
-    if has_role?(:admin)
+    if current_user.has_role?(:admin)
       @sub_tab.update(:title => params[:sub_tab][:title],
                       :slug => params[:sub_tab][:slug],
                       :body => params[:sub_tab][:body],
@@ -63,7 +63,7 @@ class SubTabsController < RequestablesController
 
   def destroy
     @sub_tab = SubTab.find(params[:id])
-    if has_role?(:admin)
+    if current_user.has_role?(:admin)
       @sub_tab.destroy
     else
       @request = Request.new(status: 1, user_id: current_user.id, action: "destroy",
