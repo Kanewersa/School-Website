@@ -63,10 +63,11 @@
       <!-- Body -->
       <h4>Zgłoszenie nr <%= request.id %></h4>
       <h6 class="text-muted font-italic">od <%= request.user.fullname %></h6>
+      <p class="font-italic text-muted"><%= status_name(request.status) %></p>
       <hr>
       <p class="card-text font-weight-bold">
         <%= action_name(request.action) %>
-        <%= resource_type(request.requestable_type) %>:<br>
+        <%= resource_type_name(request.requestable_type) %>:<br>
         "<%= find_request_object(request).title %>"
       </p>
       <hr>
