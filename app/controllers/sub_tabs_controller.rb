@@ -52,7 +52,13 @@ class SubTabsController < RequestablesController
 
   def destroy
     @sub_tab = SubTab.find(params[:id])
-    @sub_tab.destroy
+    if has_role?(:admin)
+      @sub_tab.destroy
+    else
+      @request = Request.new(status: 1, user_id: current_user.id, action: "destroy",
+                             requestable_type: "SubTab", requestable_id: @sub_tab.id)
+      @request.save
+    end
     redirect_back(fallback_location: tabs_path)
   end
 
