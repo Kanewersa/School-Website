@@ -16,11 +16,11 @@ class RequestsController < ApplicationController
           @target.image.attach(ActiveStorage::Blob.find(@obj.image.id)) #set the image for target image
         end
       end
-      @target.update_attributes(@obj.attributes.except("id", "slug")) # Copies attributes from source to target
+      @target.update_attributes(@obj.attributes.except("id", "slug", "status")) # Copies attributes from source to target
       @obj.status = 2
       @target.save
     end
-    @request.status = 3
+    @request.status = 2
     @request.save
     @obj.save
     redirect_to requests_path

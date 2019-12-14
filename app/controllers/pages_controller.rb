@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @main_tabs = MainTab.all
     @categories = Category.all
     @events_count = properEventsAmount
-    @events = Event.where(:status == 1).order("important DESC, created_at DESC").take(@events_count)
+    @events = Event.where("status = 1").order("important DESC, created_at DESC").take(@events_count)
   end
 
   def properEventsAmount
