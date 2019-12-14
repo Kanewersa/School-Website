@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   end
 
   get 'wydarzenia/:id' => 'categories#show', as: :show_category
+  get 'wydarzenia/:category_id/:id' => 'events#show', as: :show_event
   get ':main_tab_id/:id' => 'sub_tabs#show', as: :show_sub_tab
 
 

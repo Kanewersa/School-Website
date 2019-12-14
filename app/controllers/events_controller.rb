@@ -1,4 +1,5 @@
 class EventsController < RequestablesController
+  include Rails.application.routes.url_helpers
   layout 'application'
 
   def create
@@ -32,6 +33,13 @@ class EventsController < RequestablesController
       @request.save
     end
     redirect_to events_path
+  end
+
+  def show
+    @main_tabs = MainTab.all
+    @categories = Category.all
+    @event = Event.friendly.find(params[:id])
+    @image_url = rails_blob_path(@event.image, disposition: "attachment", only_path: true)
   end
 
   def update
