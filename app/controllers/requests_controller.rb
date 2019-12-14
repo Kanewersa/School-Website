@@ -20,6 +20,8 @@ class RequestsController < ApplicationController
       @obj.status = 2
       @target.save
     end
+    @request.status = 3
+    @request.save
     @obj.save
     redirect_to requests_path
   end
