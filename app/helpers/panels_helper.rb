@@ -22,7 +22,7 @@ module PanelsHelper
     end
   end
 
-  def status_name(user)
+  def user_status_name(user)
     case user.status
     when "active"
       "<i class='fas fa-check'></i> Aktywny".html_safe
