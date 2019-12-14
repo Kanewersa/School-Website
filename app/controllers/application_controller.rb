@@ -21,4 +21,9 @@ end
 # TODO Complete dashboard
 # TODO Complete help section
 # TODO Repair user settings
-#
+# TODO Main tabs should have banner image
+# TODO Sorting Requests
+# TODO Sorting events (panel admin and site)
+# TODO Remove multiple blobs for one image
+# TODO Admin rights & owner role
+# TODO Add tooltips
