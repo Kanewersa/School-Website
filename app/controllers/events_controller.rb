@@ -51,8 +51,10 @@ class EventsController < RequestablesController
                     :category_id => params[:event][:category_id],
                     :important => params[:event][:important],
                     :announcement => params[:event][:announcement],
-                    :image => params[:event][:image],
                     :updated_at => Time.now)
+      unless params[:event][:image].nil?
+        @event.update(:image => params[:event][:image])
+      end
     else
       @new_event = Event.new(:title => params[:event][:title],
                              :slug => params[:event][:slug],
@@ -60,8 +62,11 @@ class EventsController < RequestablesController
                              :category_id => params[:event][:category_id],
                              :important => params[:event][:important],
                              :announcement => params[:event][:announcement],
-                             :image => params[:event][:image],
                              :updated_at => Time.now)
+      unless params[:event][:image].nil?
+        @new_event.update(:image => params[:event][:image])
+      end
+
       @new_event.status = 2
       @new_event.save
       @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id.to_s,

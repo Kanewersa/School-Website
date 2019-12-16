@@ -17,12 +17,13 @@ class ApplicationController < ActionController::Base
 end
 
 # TODO Add extra features to trix editor (font size, custom fonts)
-# TODO Add date do events' announcements
+# TODO Add date to events' announcements
+# TODO Keep image attached on event edit
 # TODO Complete dashboard
 # TODO Complete help section
 # TODO Repair user settings
+# TODO Add requests display in users tab
 # TODO Main tabs should have banner image
 # TODO Sorting events (panel admin and site)
-# TODO Remove multiple blobs for one image
 # TODO Admin rights & owner role
 # TODO Add tooltips

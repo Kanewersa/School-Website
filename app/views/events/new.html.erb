@@ -34,9 +34,11 @@
             <%= f.label "Ogłoszenie:", :class => "h5" %>
             <%= f.check_box :announcement %>
           </p>
-          <p>
-            <input id="date-toggle" data-provide="datepicker" class="hidden">
-          </p>
+            <div class="container hidden" id="date-toggle">
+              <%= f.label "Ważny do:", :id => "valid_date", :class => "h6" %>
+              <%= f.text_field :valid_date, :data => {:provide => "datepicker"} %>
+            </div>
+          <p></p>
           <p>
             <%= f.label "Obraz:", :class => "h5" %>
           </p>
@@ -70,6 +72,7 @@
     </div>
   </div>
 </div>
+<%= javascript_pack_tag "datepicker.js" %>
 <script>
     //Show/Hide datepicker
     const $announcement = document.querySelector('#event_announcement');
@@ -81,9 +84,9 @@
       if(e.target.checked)
       {
         $important.checked = true;
-        $important.disable();
+        $important.disabled = true;
       } else
-        $important.enable();
+        $important.disabled = false;
 
       toggleDatePicker();
     };
