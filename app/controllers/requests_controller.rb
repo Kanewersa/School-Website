@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
           @target.image.attach(@obj.image.blob)                 #set the blob for target image
         end
       end
-      @target.update_attributes(@obj.attributes.except("id", "slug", "status")) # Copies attributes from source to target
+      @target.update_attributes(@obj.attributes.except("id", "slug", "status", "created_at", "updated_at")) # Copies attributes from source to target
       @obj.status = 2
       @target.save
     end
