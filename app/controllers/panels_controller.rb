@@ -43,12 +43,29 @@ class PanelsController < ApplicationController
   end
 
   def requests
-    if current_user.has_role?(:admin)
-      @requests = Request.all.where("status > 0").order("FIELD(status, '1', '3', '2')")
+    case params[:command]
+    when "all"
+      adm = "status > 0"
+      usr = ":user_id => current_user"
+    when "new"
+      adm = "status = 1"
+      usr = ":user_id => current_user, status = 1"
+    when "approved"
+      adm = "status = 2"
+      usr = ":user_id => current_user, status = 2"
+    when"rejected"
+      adm = "status = 3"
+      usr = ":user_id => current_user, status = 3"
     else
-      @requests = Request.all.where(:user_id => current_user).order("FIELD(status, '1', '3', '2')")
+      adm = "status = 4"
+      usr = ":user_id => current_user, status = 4"
     end
 
+    if current_user.has_role?(:admin)
+      @requests = Request.all.where(adm).order("FIELD(status, '1', '3', '2')")
+    else
+      @requests = Request.all.where(usr).order("FIELD(status, '1', '3', '2')")
+    end
   end
 
   def generate_token

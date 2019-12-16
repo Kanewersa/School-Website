@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/admin/sub-tabs' => 'panels#sub_tabs', as: :tabs
   get '/admin/help' => 'panels#help', as: :help
   get '/admin/requests' => 'panels#requests', as: :requests
+  post '/admin/requests' => 'panels#requests'
 
   get '/admin/events' => 'panels#events', as: :events
   post '/admin/events' => 'events#create'

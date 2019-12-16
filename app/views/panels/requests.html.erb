@@ -1,12 +1,25 @@
+<style>
+  form {
+    display: inline;
+  }
+</style>
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
     <h2>Zgłoszenia</h2>
     <hr>
+    <div class="container text-muted font-weight-bold" style="font-size: 25px">
+      Sortuj:
+      <%= button_to "Wszystkie", requests_path, params: {:command => "all"}, :class => "btn btn-warning btn-lg" %>
+      <%= button_to "Nowe", requests_path, params: {:command => "new"}, :class => "btn btn-warning btn-lg" %>
+      <%= button_to "Zaakceptowane", requests_path, params: {:command => "approved"}, :class => "btn btn-warning btn-lg" %>
+      <%= button_to "Odrzucone", requests_path, params: {:command => "rejected"}, :class => "btn btn-warning btn-lg" %>
+    </div>
     <section class="gallery-block cards-gallery">
       <div class="container">
         <% if @requests.count == 0 %>
+          <br>
           <div class="alert alert-warning">
-            <strong>W tej chwili nie istnieją żadne wydarzenia.</strong>
+            <strong>Brak zgłoszeń.</strong>
           </div>
         <% else %>
           <div class="row">
