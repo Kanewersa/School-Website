@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_164209) do
+ActiveRecord::Schema.define(version: 2019_12_16_111849) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_164209) do
     t.bigint "category_id", null: false
     t.bigint "gallery_id"
     t.integer "status", default: 0
+    t.date "valid_date"
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["gallery_id"], name: "index_events_on_gallery_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
