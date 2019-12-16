@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
       @target = @obj.class.find(@request.action.split("/")[1])  #Find requestable you want to edit
       if @obj.class.name == "Event"                             #If edit source is an Event
         if @obj.image.attached?                                 #and has an image attached
-          @target.image.attach(ActiveStorage::Blob.find(@obj.image.id)) #set the image for target image
+          @target.image.attach(@obj.image.blob)                 #set the blob for target image
         end
       end
       @target.update_attributes(@obj.attributes.except("id", "slug", "status")) # Copies attributes from source to target
