@@ -1,10 +1,14 @@
 //require("turbolinks").start();
 require("@rails/activestorage").start();
 require('bootstrap/dist/js/bootstrap');
-require('jquery/src/jquery');
-require('jquery-ui-dist/jquery-ui');
+import {} from 'jquery'
+import {} from 'jquery-ujs'
+import {} from 'jquery-ui'
 require("trix");
 require("@rails/actiontext");
+
+window.jQuery = $;
+window.$ = $;
 
 jQuery(function ($) {
     // Dropdown menu

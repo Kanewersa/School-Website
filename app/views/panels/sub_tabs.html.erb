@@ -140,10 +140,6 @@
   </div>
 </main>
 
-<script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-  crossorigin="anonymous"></script>
 <% if has_role?(:admin) %>
 <script>
       (function($) {
@@ -159,6 +155,7 @@
 
                 $.ajax({
                     type: 'POST',
+                    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
                     url: '/sortable/reorder'  + "?&authenticity_token=",
                     dataType: 'json',
                     contentType: 'application/json',
