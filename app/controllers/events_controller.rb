@@ -4,7 +4,10 @@ class EventsController < RequestablesController
 
   def create
     @event = Event.new(event_params)
-
+    if @event.announcement
+      @event.important = 1
+    end
+    abort @event.inspect
     if current_user.has_role?(:admin)
       @event.status = 1
       @event.save
@@ -51,6 +54,7 @@ class EventsController < RequestablesController
                     :category_id => params[:event][:category_id],
                     :important => params[:event][:important],
                     :announcement => params[:event][:announcement],
+                    :valid_date => params[:event][:valid_date],
                     :updated_at => Time.now)
       unless params[:event][:image].nil?
         @event.update(:image => params[:event][:image])
@@ -62,6 +66,7 @@ class EventsController < RequestablesController
                              :category_id => params[:event][:category_id],
                              :important => params[:event][:important],
                              :announcement => params[:event][:announcement],
+                             :valid_date => params[:event][:valid_date],
                              :updated_at => Time.now)
       unless params[:event][:image].nil?
         @new_event.update(:image => params[:event][:image])
@@ -77,6 +82,6 @@ class EventsController < RequestablesController
   end
 
   private def event_params
-    params.require(:event).permit(:title, :slug, :category_id, :body, :important, :announcement, :image)
+    params.require(:event).permit(:title, :slug, :category_id, :body, :important, :announcement, :image, :valid_date)
   end
 end
