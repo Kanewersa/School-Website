@@ -36,9 +36,9 @@
           </p>
             <div class="container hidden" id="date-toggle">
               <%= f.label "Ważny do:", :id => "valid_date", :class => "h6" %>
-              <%= f.text_field :valid_date, :data => {:provide => "datepicker"} %>
+              <%= f.text_field :valid_date, :data => {:provide => "datepicker"}, :class => "form-control w-25" %>
+              <br>
             </div>
-          <p></p>
           <p>
             <%= f.label "Obraz:", :class => "h5" %>
           </p>

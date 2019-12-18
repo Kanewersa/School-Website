@@ -18,6 +18,7 @@ end
 
 # TODO Add extra features to trix editor (font size, custom fonts)
 # TODO Add date to events' announcements
+# TODO Create tasks for events removal
 # TODO Keep image attached on event edit
 # TODO Complete dashboard
 # TODO Complete help section
