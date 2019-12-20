@@ -7,7 +7,6 @@ class EventsController < RequestablesController
     if @event.announcement
       @event.important = 1
     end
-    abort @event.inspect
     if current_user.has_role?(:admin)
       @event.status = 1
       @event.save

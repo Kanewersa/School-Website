@@ -5,7 +5,7 @@ namespace :batch do
     tokens.each { |t| t.destroy }
   end
   task take_off_announcements: :environment do
-    announcements = Event.where('valid_date < ?', 2.hours.ago)
+    announcements = Event.where(('valid_date != null') && 'valid_date < ?', 2.hours.ago )
     announcements.each { |a|
       a.important = 0
       a.status = 2 # set status to 'old'
