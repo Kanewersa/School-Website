@@ -7,8 +7,11 @@
 #
 # set :output, "/path/to/my/cron_log.log"
 #
-every 1.day, at: '1:30 pm' do
+every 1.day, at: '1:30 am' do
   rake 'batch:delete_old_tokens'
+end
+every 1.day, at: '2:00 am' do
+  rake 'batch:take_off_announcements'
 end
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
