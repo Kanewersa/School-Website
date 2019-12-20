@@ -372,7 +372,20 @@ body {
   //-o-animation: fadein 0.5s;
   //animation: fadein 0.5s;
 }
-
+@media (max-height: 850px) {
+  body {
+    line-height: 1.1;
+  }
+  .sidebar-wrapper .sidebar-brand {
+    height: 40px;
+  }
+  .sidebar-wrapper .sidebar-header {
+    padding: 6px;
+  }
+  .sidebar-wrapper .sidebar-search > div {
+    padding: .5rem 1.2rem;
+  }
+}
 /*----------------page-wrapper----------------*/
 .page-wrapper {
   height: 100vh; }

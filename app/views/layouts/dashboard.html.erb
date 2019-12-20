@@ -63,7 +63,6 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                   </span>
             </div>
-            <span class="badge badge-pill badge-danger">Niedostępne</span>
           </div>
         </div>
       </div>
@@ -77,21 +76,18 @@
             <%= link_to dashboard_path do %>
               <i class="fa fa-solar-panel"></i>
               <span class="menu-text">Pulpit nawigacyjny</span>
-              <span class="badge badge-pill badge-warning">In-Progress</span>
             <% end %>
           </li>
           <li>
             <%= link_to tabs_path do %>
               <i class="fa fa-pager"></i>
               <span class="menu-text">Zakładki</span>
-              <span class="badge badge-pill badge-warning">In-Progress</span>
             <% end %>
           </li>
           <li>
             <%= link_to events_path do %>
               <i class="fas fa-chalkboard"></i>
               <span class="menu-text">Wydarzenia</span>
-              <span class="badge badge-pill badge-warning">In-Progress</span>
             <% end %>
           </li>
           <li class="sidebar-dropdown">
@@ -115,7 +111,6 @@
             <%= link_to requests_path(:command => "all") do %>
               <i class="fa fa-tasks"></i>
               <span class="menu-text">Zgłoszenia</span>
-              <span class="badge badge-pill badge-warning">In-Progress</span>
             <% end %>
           </li>
           <li class="header-menu">
@@ -143,14 +138,12 @@
               <%= link_to users_path do %>
                 <i class="fa fa-users"></i>
                 <span class="menu-text">Użytkownicy</span>
-                <i class="fas fa-check" style="background-color: darkgreen; color: white"></i>
               <% end %>
             </li>
             <li>
               <%= link_to tokens_path do %>
                 <i class="fas fa-qrcode"></i>
                 <span class="menu-text">Tokeny</span>
-                <i class="fas fa-check" style="background-color: darkgreen; color: white"></i>
               <% end %>
             </li>
           <% end %>
