@@ -11,6 +11,8 @@ gem 'whenever'
 gem 'ffi'
 gem 'ruby-vips'
 
+gem 'remotipart', github: 'jbox-web/remotipart'
+
 gem 'jquery-ui-rails'
 gem 'rails_sortable'
 
