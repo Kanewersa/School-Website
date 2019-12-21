@@ -7,18 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description">
   <title>Dashboard</title>
-
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_pack_tag 'application' %>
   <%= stylesheet_link_tag 'adminpanel/css/sidebar-themes.css' %>
   <%= stylesheet_link_tag 'adminpanel/css/main' %>
-  <%= javascript_pack_tag 'adminpanel' %>
   <!-- using online links -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
-
   <!-- using local links -->
   <link rel="shortcut icon" type="image/png" href="assets/adminpanel/favicon.png"/>
 </head>
@@ -40,7 +37,6 @@
           <% else %>
             <%= image_tag("adminpanel/user.jpg", :alt => "user_picture") %>
           <% end %>
-
         </div>
         <div class="user-info">
               <span class="user-name">
@@ -238,8 +234,8 @@
       </div>
     </div>
   </nav>
-
   <%= yield %>
+  <%= javascript_pack_tag 'adminpanel' %>
 </div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
     <div class="container"><h2><%= @sub_tab.title %></h2>
-      <hr></div>
-
+      <hr>
+    </div>
     <%= form_for @sub_tab, url: update_sub_tab_path do |f| %>
       <div class="container">
         <p>
@@ -25,27 +25,3 @@
     <% end %>
   </div>
 </main>
-<script>
-    //Sub-tabs address input
-    const $source = document.querySelector('#source');
-    const $result = document.querySelector('#result');
-
-    String.prototype.escapeDiacritics = function()
-    {
-        return this.replace(/ą/g, 'a').replace(/Ą/g, 'A')
-            .replace(/ć/g, 'c').replace(/Ć/g, 'C')
-            .replace(/ę/g, 'e').replace(/Ę/g, 'E')
-            .replace(/ł/g, 'l').replace(/Ł/g, 'L')
-            .replace(/ń/g, 'n').replace(/Ń/g, 'N')
-            .replace(/ó/g, 'o').replace(/Ó/g, 'O')
-            .replace(/ś/g, 's').replace(/Ś/g, 'S')
-            .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
-            .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
-    };
-
-    const typeHandler = function(e) {
-        var text = e.target.value;
-        $result.value = text.replace(/\s+/g, '-').toLowerCase().escapeDiacritics();
-    };
-    $source.addEventListener('input', typeHandler);
-</script>
