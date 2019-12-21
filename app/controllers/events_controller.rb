@@ -1,23 +1,33 @@
 class EventsController < RequestablesController
   include Rails.application.routes.url_helpers
   layout 'application'
+  respond_to :js
 
   def create
-    @event = Event.new(event_params)
-    if @event.announcement
-      @event.important = 1
-    end
-    if current_user.has_role?(:admin)
-      @event.status = 1
-      @event.save
+    if params[:commit] == 'Podgląd'
+      @main_tabs = MainTab.all
+      @categories = Category.all
+      @event = Event.new(event_params)
+      @event.image = nil
+      preview('preview')
+      return
     else
-      @event.save
-      @request = Request.new(status: 1, user_id: current_user.id, action: "create",
-                             requestable_type: "Event", requestable_id: @event.id)
-      @request.save
-    end
+      @event = Event.new(event_params)
+      if @event.announcement
+        @event.important = 1
+      end
+      if current_user.has_role?(:admin)
+        @event.status = 1
+        @event.save
+      else
+        @event.save
+        @request = Request.new(status: 1, user_id: current_user.id, action: "create",
+                               requestable_type: "Event", requestable_id: @event.id)
+        @request.save
+      end
 
-    redirect_to events_path
+      redirect_to events_path
+    end
   end
 
   def edit
@@ -41,10 +51,14 @@ class EventsController < RequestablesController
     @main_tabs = MainTab.all
     @categories = Category.all
     @event = Event.friendly.find(params[:id])
-    @image_url = rails_blob_path(@event.image, disposition: "attachment", only_path: true)
   end
 
   def update
+    if params[:submit] == 'Podgląd'
+      @event.attributes = params[:event]
+      preview('show')
+      return
+    end
     @event = Event.friendly.find(params[:id])
     if current_user.has_role?(:admin)
       @event.update(:title => params[:event][:title],
@@ -78,6 +92,14 @@ class EventsController < RequestablesController
       @request.save
     end
     redirect_to events_path
+  end
+
+  protected def preview(action)
+    @preview = @event.valid?
+    respond_to do |format|
+      format.js { render :action => action}
+    end
+      #render :action => action, formats: :js
   end
 
   private def event_params

@@ -12,7 +12,7 @@
         <h3 class="modal-title">Dodawanie nowego wydarzenia</h3>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <%= form_for :event, url: events_path do |f| %>
+      <%= form_for :event, :remote => true, authenticity_token: true, url: events_path do |f| %>
         <!-- Modal body -->
         <div class="modal-body">
           <p>
@@ -65,13 +65,41 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <%= f.submit "Dodaj wydarzenie", :class => "btn btn-warning" %>
-          <button class="btn btn-success" disabled="true">Podgląd</button>
-          <button class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+          <%= f.submit "Podgląd", :class => "btn btn-success" %>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+<div class="modal fade" id="testmodal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <!-- Modal body -->
+      <div id="event-preview" class="modal-body">
+        XD
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+    $('form').on('ajax:success', function(event, data, status, xhr) {
+        console.log(data);
+        $('#testmodal').modal('show');
+        var source = $("#image-name-preview");
+        if(source[0].files.length > 0)
+        {
+            var getImagePath = URL.createObjectURL(source[0].files[0]);
+            $('#jumbo').css('background', 'url(' + getImagePath + ')');
+        }
+    });
+    $('form').on('ajax:error', function(event, data, status, xhr) {
+        //location.reload();
+        console.log(data);
+    });
+</script>
 <script>
     //Show/Hide datepicker
     const $announcement = document.querySelector('#event_announcement');
@@ -120,5 +148,33 @@
     $source.addEventListener('input', typeHandler);
     $announcement.addEventListener('input', setBox);
     $important.addEventListener('input', toggleDatePicker);
+
+    $(document).ready(function () {
+
+        $('#openBtn').click(function () {
+            $('#myModal').modal({
+                show: true
+            })
+        });
+
+        $(document).on({
+            'show.bs.modal': function () {
+                var zIndex = 1040 + (10 * $('.modal:visible').length);
+                $(this).css('z-index', zIndex);
+                setTimeout(function() {
+                    $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+                }, 0);
+            },
+            'hidden.bs.modal': function() {
+                if ($('.modal:visible').length > 0) {
+                    // restore the modal-open class to the body element, so that scrolling works
+                    // properly after de-stacking a modal.
+                    setTimeout(function() {
+                        $(document.body).addClass('modal-open');
+                    }, 0);
+                }
+            }
+        }, '.modal');
+    });
 </script>
 <%= javascript_pack_tag "datepicker.js" %>

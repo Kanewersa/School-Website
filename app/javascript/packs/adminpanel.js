@@ -4,6 +4,8 @@ require('bootstrap/dist/js/bootstrap');
 import {} from 'jquery'
 import {} from 'jquery-ujs'
 import {} from 'jquery-ui'
+require('jquery.remotipart');
+require('jquery.iframe-transport');
 require("trix");
 require("@rails/actiontext");
 
@@ -109,6 +111,9 @@ jQuery(function ($) {
                 btn.prop('disabled', false);
             }, 2000);
         });
+    });
+    $("#toggle-preview").click(function() {
+
     });
 
     // Makes the name of the file appear on select
