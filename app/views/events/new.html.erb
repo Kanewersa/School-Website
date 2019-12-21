@@ -34,11 +34,11 @@
             <%= f.label "Ogłoszenie:", :class => "h5" %>
             <%= f.check_box :announcement %>
           </p>
-            <div class="container hidden" id="date-toggle">
-              <%= f.label "Ważny do:", :id => "valid_date", :class => "h6" %>
-              <%= f.text_field :valid_date, :data => {:provide => "datepicker", :date_format => "yyyy-mm-dd"}, :class => "form-control w-25" %>
-              <br>
-            </div>
+          <div class="container hidden" id="date-toggle">
+            <%= f.label "Ważny do:", :id => "valid_date", :class => "h6" %>
+            <%= f.text_field :valid_date, :data => {:provide => "datepicker", :date_format => "yyyy-mm-dd"}, :class => "form-control w-25" %>
+            <br>
+          </div>
           <p>
             <%= f.label "Obraz:", :class => "h5" %>
           </p>
@@ -73,13 +73,8 @@
   </div>
 </div>
 <div class="modal fade" id="testmodal">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-
-      <!-- Modal body -->
-      <div id="event-preview" class="modal-body">
-        XD
-      </div>
+  <div class="modal-dialog modal-xl" style="max-width: 1366px">
+    <div id="event-preview" class="modal-content">
 
     </div>
   </div>
