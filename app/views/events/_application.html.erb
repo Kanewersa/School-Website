@@ -32,7 +32,7 @@
                 <%= "Wydarzenia" %>
                 <i class="fa fa-angle-down"></i>
               </button>
-              <div class="dropdown-menu">
+              <div class="dropdown-menu dropdown-navbar">
                 <% @categories.each do |category| %>
                   <%= link_to show_category_path(id: category.slug) do %>
                     <button class="dropdown-item" type="button"><span><%= category.title %></span></button>
