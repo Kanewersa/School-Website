@@ -1,12 +1,12 @@
 <li class="dropdown">
   <% if main_tab.sub_tabs.count == 0 %>
     <%= link_to main_tab_path(id: main_tab.slug) do %>
-      <button class="btn text-outline" type="button">
+      <button class="btn btn-navbar text-outline" type="button">
         <%= main_tab.title %>
       </button>
     <% end %>
   <% else %>
-    <button class="btn text-outline" type="button">
+    <button class="btn btn-navbar text-outline" type="button">
       <%= main_tab.title %>
       <i class="fa fa-angle-down"></i>
     </button>
