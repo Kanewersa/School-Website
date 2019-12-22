@@ -9,9 +9,8 @@
   <title>Dashboard</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_pack_tag 'application' %>
-  <%= stylesheet_link_tag 'adminpanel/css/sidebar-themes.css' %>
-  <%= stylesheet_link_tag 'adminpanel/css/main' %>
+  <%= stylesheet_link_tag 'adminpanel/css/sidebar-themes.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'adminpanel/css/main', media: 'all', 'data-turbolinks-track': 'reload' %>
   <!-- using online links -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -235,7 +234,7 @@
     </div>
   </nav>
   <%= yield %>
-  <%= javascript_pack_tag 'adminpanel' %>
+  <%= javascript_pack_tag 'adminpanel', media: 'all', 'data-turbolinks-track': 'reload' %>
 </div>
 </body>
 </html>
