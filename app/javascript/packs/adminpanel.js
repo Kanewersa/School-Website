@@ -17,6 +17,7 @@ import {} from 'adminpanel/address-translate';
 import {} from 'adminpanel/event-preview';
 import {} from 'adminpanel/embedded-modals';
 import {} from 'adminpanel/sortable-tabs';
+import {} from 'adminpanel/preview-navbar-animation'
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
