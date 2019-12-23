@@ -1,5 +1,5 @@
 $('form').on('ajax:success', function(event, data, status, xhr) {
-    $('#testmodal').modal('show');
+    $('#preview-modal').modal('show');
     var source = $("#image-name-preview");
     if(source[0].files.length > 0)
     {
