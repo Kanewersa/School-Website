@@ -9,7 +9,8 @@ require("@rails/actiontext");
 //Import custom scripts
 import {} from './carouselanimation'
 import {} from './navbaranimation'
-require("turbolinks").start();
+//var TurboLinks = require("turbolinks");
+//TurboLinks.start();
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
