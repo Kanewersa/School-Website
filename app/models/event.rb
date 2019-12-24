@@ -8,4 +8,8 @@ class Event < ApplicationRecord
   has_one_attached :image
   has_one :gallery
   has_many :requests, :as => :requestable
+
+  validates :title, :presence => true
+  validates :image, :presence => true
+  validates :body, :presence => true
 end

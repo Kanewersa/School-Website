@@ -1,5 +1,5 @@
 <div class="modal fade" id="createTabModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
       <%= form_for :sub_tab, url: tabs_path do |f| %>
@@ -22,6 +22,10 @@
           <p>
             <%= f.label "Wybierz główną zakładkę:" %><br>
             <%= f.select :main_tab_id, MainTab.all.map{|t| [t.title, t.id]}, {}, {class: "form-control"} %>
+          </p>
+          <p>
+            <%= f.label :body, "Zawartość zakładki" %><br>
+            <%= f.rich_text_area :body, :spellcheck => false %>
           </p>
           <br>
         </div>

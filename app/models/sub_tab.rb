@@ -10,6 +10,9 @@ class SubTab < ApplicationRecord
   has_rich_text :body
   set_sortable :sort
 
+  validates :title, :presence => true
+  validates :body, :presence => true
+
   def should_generate_new_friendly_id?
     title_changed?
   end

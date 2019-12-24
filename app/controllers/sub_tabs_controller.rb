@@ -24,9 +24,8 @@ class SubTabsController < RequestablesController
       @request.save
     end
     @sub_tab.sort = SubTab.count + 1
-    if @sub_tab.save
-      redirect_to edit_sub_tab_path(id: @sub_tab.id)
-    end
+    @sub_tab.save
+    redirect_to tabs_path
   end
 
   def edit
