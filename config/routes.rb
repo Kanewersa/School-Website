@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   as :user do
     get 'login' => 'devise/sessions#new'
+    post 'login' => 'devise/sessions#create'
     get '/users/sign_out' => 'devise/sessions#destroy'
     get 'password' => 'devise/passwords#new'
     get 'register' => 'registrations#new'

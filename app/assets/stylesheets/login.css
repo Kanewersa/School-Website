@@ -263,7 +263,67 @@ input[type=text]::placeholder, input[type=password]::placeholder {
     width: 100%;
 }
 
+/* Alerts */
 
+.notice {
+    padding: 15px;
+    background-color: #fafafa;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.notice-sm {
+    padding: 10px;
+    font-size: 80%;
+}
+.notice-lg {
+    padding: 35px;
+    font-size: large;
+}
+
+/* Primary */
+.notice-primary {
+    border-left: 6px solid #cce5ff !important;
+}
+.notice-primary>strong {
+    color: #004085;
+}
+/* Secondary */
+.notice-secondary {
+    border-left: 6px solid #e2e3e5 !important;
+}
+.notice-secondary>strong {
+    color: #383d41;
+}
+/* Success */
+.notice-success {
+    border-left: 6px solid #d4edda !important;
+}
+.notice-success>strong {
+    color: #155724;
+}
+/* Information */
+.notice-info {
+    border-left: 6px solid #d1ecf1 !important;
+}
+.notice-info>strong {
+    color: #0c5460;
+}
+/* Warning */
+.notice-warning {
+    border-left: 6px solid #fff3cd !important;
+}
+.notice-warning>strong {
+    color: #856404;
+}
+/* Danger */
+.notice-danger {
+    border-left: 6px solid #f8d7da !important;
+}
+.notice-danger>strong {
+    color: #721c24;
+}
 
 /* OTHERS */
 
