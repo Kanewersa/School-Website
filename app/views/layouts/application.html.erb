@@ -7,44 +7,47 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application.css', media: 'all', 'data-turbolinks-track': 'reload' %>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-<!--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"-->
-<!--        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">-->
-<!--  <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">-->
+  <!--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"-->
+  <!--        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">-->
+  <!--  <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">-->
   <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
 <!-- using online links -->
-<div class="banner banner-bg" style="background-color: rgb(250,250,250); padding-bottom: 40px; padding-top: 20px; font-family: 'Open Sans Semibold'">
+<div class="banner banner-bg">
   <%= link_to root_path do %>
     <h1 align="center" class="text-outline" style="color: white">Szkoła Podstawowa nr 60</h1>
     <h1 align="center" class="text-outline" style="color: white; margin-bottom: 15px;">im. Wojciecha Bogusławskiego w
       Poznaniu</h1>
   <% end %>
 </div>
-<nav class="navbar navbar-expand-md bg-semitransparent sticky-top draw-shadow" style="margin-top: -53px; z-index: 99; width: 100%; overflow-x: unset">
-  <div class="container">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-      <ul class="navbar-nav mx-auto">
-        <% @main_tabs.each do |main_tab| %>
-          <%= render :template => 'main_tabs/show', :locals => {:main_tab => main_tab} %>
-          <% if main_tab == @main_tabs.second %>
-            <li class="dropdown">
-              <button class="btn btn-navbar text-outline" type="button">
-                <%= "Wydarzenia" %>
-                <i class="fa fa-angle-down"></i>
-              </button>
-              <div class="dropdown-menu dropdown-navbar">
-                <% @categories.each do |category| %>
-                  <%= link_to show_category_path(id: category.slug) do %>
-                    <button class="dropdown-item" type="button"><span><%= category.title %></span></button>
-                  <% end %>
+<nav class="navbar navbar-expand-md bg-semitransparent sticky-top draw-shadow" style="margin-top: -53px;">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#topNavBar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" id="topNavBar">
+    <ul class="nav navbar-nav mx-auto">
+      <% @main_tabs.each do |main_tab| %>
+        <%= render :template => 'main_tabs/show', :locals => {:main_tab => main_tab} %>
+        <% if main_tab == @main_tabs.second %>
+          <li class="dropdown">
+            <button class="btn btn-navbar text-outline" type="button">
+              <%= "Wydarzenia" %>
+              <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="dropdown-menu dropdown-navbar">
+              <% @categories.each do |category| %>
+                <%= link_to show_category_path(id: category.slug) do %>
+                  <button class="dropdown-item" type="button"><span><%= category.title %></span></button>
                 <% end %>
-              </div>
-            </li>
-          <% end %>
+              <% end %>
+            </div>
+          </li>
         <% end %>
-      </ul>
-    </div>
+      <% end %>
+    </ul>
   </div>
 </nav>
 <%= yield %>

@@ -24,8 +24,12 @@ class SubTabsController < RequestablesController
       @request.save
     end
     @sub_tab.sort = SubTab.count + 1
-    @sub_tab.save
-    redirect_to tabs_path
+    if @sub_tab.save
+      redirect_to tabs_path
+    else
+      @sub_tab.errors
+    end
+
   end
 
   def edit
