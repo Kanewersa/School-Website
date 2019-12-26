@@ -7,8 +7,8 @@ import {} from 'jquery-ui'
 require("trix");
 require("@rails/actiontext");
 //Import custom scripts
-import {} from './carouselanimation'
-import {} from './navbaranimation'
+require("carouselanimation");
+require("navbaranimation");
 //var TurboLinks = require("turbolinks");
 //TurboLinks.start();
 //Allow jQuery
