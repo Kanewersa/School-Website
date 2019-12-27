@@ -7,9 +7,9 @@
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
     <div class="container"><h2><%= @event.title %></h2>
-      <hr></div>
-
-    <%= form_for @event, url: update_event_path do |f| %>
+      <hr>
+    </div>
+    <%= form_for @event, :remote => true, authenticity_token: true, url: update_event_path do |f| %>
       <div class="container">
         <p>
           <%= f.label "Nazwa wydarzenia:", :class => "h5" %><br>
@@ -58,10 +58,18 @@
         </div>
         <br>
         <p>
-          <%= f.submit "Zatwierdź zmiany" %>
+          <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>
+          <%= f.submit "Podgląd", :class => "btn btn-success" %>
         </p>
       </div>
     <% end %>
   </div>
 </main>
+<div class="modal fade" id="preview-modal">
+  <div class="modal-dialog modal-xl" style="max-width: 1366px">
+    <div id="event-preview" class="modal-content">
+
+    </div>
+  </div>
+</div>
 <%= javascript_pack_tag "datepicker.js" %>

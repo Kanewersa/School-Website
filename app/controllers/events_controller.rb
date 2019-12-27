@@ -10,7 +10,7 @@ class EventsController < RequestablesController
       @event = Event.new(event_params)
       @event.image = nil
       preview('preview')
-      return
+      nil
     else
       @event = Event.new(event_params)
       if @event.announcement
@@ -54,52 +54,55 @@ class EventsController < RequestablesController
   end
 
   def update
-    if params[:submit] == 'Podgląd'
-      @event.attributes = params[:event]
-      preview('show')
-      return
-    end
-    @event = Event.friendly.find(params[:id])
-    if current_user.has_role?(:admin)
-      @event.update(:title => params[:event][:title],
-                    :slug => params[:event][:slug],
-                    :body => params[:event][:body],
-                    :category_id => params[:event][:category_id],
-                    :important => params[:event][:important],
-                    :announcement => params[:event][:announcement],
-                    :valid_date => params[:event][:valid_date],
-                    :updated_at => Time.now)
-      unless params[:event][:image].nil?
-        @event.update(:image => params[:event][:image])
-      end
+    if params[:commit] == 'Podgląd'
+      @main_tabs = MainTab.all
+      @categories = Category.all
+      @event = Event.new(event_params)
+      @event.image = nil
+      preview('preview')
+      nil
     else
-      @new_event = Event.new(:title => params[:event][:title],
-                             :slug => params[:event][:slug],
-                             :body => params[:event][:body],
-                             :category_id => params[:event][:category_id],
-                             :important => params[:event][:important],
-                             :announcement => params[:event][:announcement],
-                             :valid_date => params[:event][:valid_date],
-                             :updated_at => Time.now)
-      unless params[:event][:image].nil?
-        @new_event.update(:image => params[:event][:image])
-      end
+      @event = Event.friendly.find(params[:id])
+      if current_user.has_role?(:admin)
+        @event.update(:title => params[:event][:title],
+                      :slug => params[:event][:slug],
+                      :body => params[:event][:body],
+                      :category_id => params[:event][:category_id],
+                      :important => params[:event][:important],
+                      :announcement => params[:event][:announcement],
+                      :valid_date => params[:event][:valid_date],
+                      :updated_at => Time.now)
+        unless params[:event][:image].nil?
+          @event.update(:image => params[:event][:image])
+        end
+      else
+        @new_event = Event.new(:title => params[:event][:title],
+                               :slug => params[:event][:slug],
+                               :body => params[:event][:body],
+                               :category_id => params[:event][:category_id],
+                               :important => params[:event][:important],
+                               :announcement => params[:event][:announcement],
+                               :valid_date => params[:event][:valid_date],
+                               :updated_at => Time.now)
+        unless params[:event][:image].nil?
+          @new_event.update(:image => params[:event][:image])
+        end
 
-      @new_event.status = 2
-      @new_event.save
-      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id.to_s,
-                             requestable_type: "Event", requestable_id: @new_event.id)
-      @request.save
+        @new_event.status = 2
+        @new_event.save
+        @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id.to_s,
+                               requestable_type: "Event", requestable_id: @new_event.id)
+        @request.save
+      end
+      redirect_to events_path
     end
-    redirect_to events_path
   end
 
   protected def preview(action)
     @preview = @event.valid?
     respond_to do |format|
-      format.js { render :action => action}
+      format.js { render :action => action }
     end
-      #render :action => action, formats: :js
   end
 
   private def event_params
