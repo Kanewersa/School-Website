@@ -28,7 +28,10 @@ class MainTabsController < ApplicationController
   end
 
   def show
+    @main_tabs = MainTab.all
+    @categories = Category.all
     @main_tab = MainTab.friendly.find(params[:id])
+    render layout: 'application'
   end
 
   def sub_tabs

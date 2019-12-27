@@ -1,21 +1,15 @@
-<li class="dropdown">
-  <% if main_tab.sub_tabs.count == 0 %>
-    <%= link_to main_tab_path(id: main_tab.slug) do %>
-      <button class="btn btn-navbar text-outline" type="button">
-        <%= main_tab.title %>
-      </button>
-    <% end %>
-  <% else %>
-    <button class="btn btn-navbar text-outline" type="button">
-      <%= main_tab.title %>
-      <i class="fa fa-angle-down"></i>
-    </button>
-    <div class="dropdown-menu dropdown-navbar">
-      <% main_tab.sub_tabs.order(:sort).each do |sub_tab| %>
-        <%= link_to show_sub_tab_path(main_tab_id: main_tab.slug, id: sub_tab.slug) do %>
-          <button class="dropdown-item" type="button"><span><%= sub_tab.title %></span></button>
-        <% end %>
-      <% end %>
-    </div>
+<article class="index-intro">
+  <% if @main_tab.image.attached? %>
+    <div class="jumbotron text-outline" style="background: url(<%= url_for(@main_tab.image) %>) no-repeat;
+        padding-top: 200px; background-size: cover; background-position-x: center; background-position-y: 45%">
   <% end %>
-</li>
+  </div>
+</article>
+<hr/>
+<h1 align="center" style="color: black;font-size: 80px; font-weight: bold"><%= @main_tab.title %></h1>
+<hr style="width: 40%"/>
+<div class="container" style="padding-top: 40px; padding-bottom: 92px">
+  <p><%= @main_tab.body %></p>
+  <hr>
+</div>
+
