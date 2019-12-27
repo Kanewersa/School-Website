@@ -1,6 +1,7 @@
 <article class="index-intro">
   <% if @event.image.attached? %>
-  <div class="jumbotron text-outline" style="padding-top: 200px; background: url(<%= url_for(@event.image) %>) no-repeat;background-size: cover;background-position-x: center; background-position-y: 45% ">
+  <div class="jumbotron text-outline" style="background: url(<%= url_for(@event.image) %>) no-repeat;
+      padding-top: 200px; background-size: cover; background-position-x: center; background-position-y: 45% ">
   <% end %>
   </div>
 </article>

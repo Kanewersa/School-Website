@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   get '/admin/events/:id' => 'events#edit', as: :edit_event
   patch '/admin/events/:id' => 'events#update', as: :update_event
 
+  get '/admin/main-tabs/:id' => 'main_tabs#edit', as: :edit_main_tab
+  post '/admin/main-tabs/:id' => 'main_tabs#edit', as: :post_edit_main_tab
+  patch '/admin/main-tabs/:id' => 'main_tabs#update', as: :update_main_tab
+
   get '/admin/sub-tabs/:id' => 'sub_tabs#edit', as: :edit_sub_tab
   post '/admin/sub-tabs/:id' => 'sub_tabs#edit', as: :post_edit_sub_tab
   patch '/admin/sub-tabs/:id' => 'sub_tabs#update', as: :update_sub_tab

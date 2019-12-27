@@ -80,6 +80,12 @@
         <div class="card bg-light">
           <div class="card-body text-center">
             <h3 class="card-text"><b><%= tab.title %></b></h3>
+            <%= link_to edit_main_tab_path(id: tab.slug), :class => 'table-link' do %>
+              <span class="fa-stack" data-toggle="tooltip" title="Edytuj">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
+              </span>
+            <% end %>
             <hr>
             <% if tab.sub_tabs.count == 0 %>
               <div class="alert alert-warning">
@@ -137,8 +143,3 @@
     <%= render :template => 'sub_tabs/new' %>
   </div>
 </main>
-<% if has_role?(:admin) %>
-  <script>
-
-  </script>
-<% end %>

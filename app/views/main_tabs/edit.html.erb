@@ -1,0 +1,45 @@
+<main class="page-content pt-2">
+  <div class="container-fluid p-5">
+    <div class="container"><h2><%= @main_tab.title %></h2>
+      <hr>
+    </div>
+    <%= form_for @main_tab, url: update_main_tab_path do |f| %>
+      <div class="container">
+        <p>
+          <%= f.label "Nazwa" %><br>
+          <%= f.text_field :title, id: 'source', :class => "form-control" %>
+        </p>
+        <p>
+          <%= f.label "Adres" %>
+          <br>
+          <%= f.text_field :slug, id: 'result', readonly: true, :class => "form-control" %>
+        </p>
+        <p>
+          <%= f.label "Obraz:", :class => "h5" %>
+        </p>
+        <div class="input-group">
+            <span class="input-group-btn">
+              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>
+              <%= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
+            </span>
+          <span class="form-control"></span>
+        </div>
+        <br>
+        <p>
+          <%= f.label :body, "Zawartość zakładki" %><br>
+          <%= f.rich_text_area :body, :spellcheck => false %>
+        </p>
+        <p>
+          <%= f.submit "Zatwierdź zmiany" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</main>
+<div class="modal fade" id="preview-modal">
+  <div class="modal-dialog modal-xl" style="max-width: 1366px">
+    <div id="tab-preview" class="modal-content">
+
+    </div>
+  </div>
+</div>
