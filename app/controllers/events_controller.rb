@@ -1,7 +1,7 @@
 class EventsController < RequestablesController
   include Rails.application.routes.url_helpers
   layout 'application'
-  respond_to :js
+  respond_to :js, :html
 
   def create
     if params[:commit] == 'Podgląd'
@@ -24,7 +24,7 @@ class EventsController < RequestablesController
                                requestable_type: "Event", requestable_id: @event.id)
         @request.save
       end
-      redirect_to events_path
+      ajax_redirect_to(events_path)
     end
   end
 
@@ -94,7 +94,7 @@ class EventsController < RequestablesController
                                requestable_type: "Event", requestable_id: @new_event.id)
         @request.save
       end
-      redirect_to events_path
+      ajax_redirect_to(events_path)
     end
   end
 
