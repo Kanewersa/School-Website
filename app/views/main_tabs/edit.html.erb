@@ -3,7 +3,7 @@
     <div class="container"><h2><%= @main_tab.title %></h2>
       <hr>
     </div>
-    <%= form_for @main_tab, url: update_main_tab_path do |f| %>
+    <%= form_for @main_tab, :remote => true, authenticity_token: true, url: update_main_tab_path do |f| %>
       <div class="container">
         <p>
           <%= f.label "Nazwa" %><br>
@@ -30,7 +30,8 @@
           <%= f.rich_text_area :body, :spellcheck => false %>
         </p>
         <p>
-          <%= f.submit "Zatwierdź zmiany" %>
+          <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>
+          <%= f.submit "Podgląd", :class => "btn btn-success", :id => 'preview-button' %>
         </p>
       </div>
     <% end %>
@@ -38,8 +39,7 @@
 </main>
 <div class="modal fade" id="preview-modal">
   <div class="modal-dialog modal-xl" style="max-width: 1366px">
-    <div id="tab-preview" class="modal-content">
-
+    <div id="preview-body" class="modal-content">
     </div>
   </div>
 </div>

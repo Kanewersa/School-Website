@@ -11,20 +11,30 @@ class MainTabsController < ApplicationController
 
   def edit
     @main_tab = MainTab.friendly.find(params[:id])
-      #abort @main_tab.image.inspect
   end
 
   def update
-    @main_tab = MainTab.friendly.find(params[:id])
-    @main_tab.update(:title => params[:main_tab][:title],
-                    :slug => params[:main_tab][:slug],
-                    :body => params[:main_tab][:body],
-                    :updated_at => Time.now)
-    unless params[:main_tab][:image].nil?
-      @main_tab.update(:image => params[:main_tab][:image])
+    if params[:commit] == 'Podgląd'
+      @main_tabs = MainTab.all
+      @categories = Category.all
+      @main_tab = MainTab.new(main_tab_params)
+      if main_tab_params[:image] == nil
+        @main_tab.image.attach(MainTab.friendly.find(params[:id]).image.blob)
+      end
+      preview('preview')
+      nil
+    else
+      @main_tab = MainTab.friendly.find(params[:id])
+      @main_tab.update(:title => params[:main_tab][:title],
+                       :slug => params[:main_tab][:slug],
+                       :body => params[:main_tab][:body],
+                       :updated_at => Time.now)
+      unless params[:main_tab][:image].nil?
+        @main_tab.update(:image => params[:main_tab][:image])
+      end
+      @main_tab.save
+      ajax_redirect_to(tabs_path)
     end
-    @main_tab.save
-    redirect_to tabs_path
   end
 
   def show
@@ -36,6 +46,13 @@ class MainTabsController < ApplicationController
 
   def sub_tabs
     SubTab.where(main_tab: this)
+  end
+
+  protected def preview(action)
+    @preview = @main_tab.valid?
+    respond_to do |format|
+      format.js { render :action => action }
+    end
   end
 
   private def main_tab_params
