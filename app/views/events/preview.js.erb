@@ -1,4 +1,4 @@
-$('#event-preview').html('<%= escape_javascript( render :partial => 'preview', :layout => 'application', locals: { event: @event, preview: true} ) %>');
+$('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: @event, preview: true} ) %>');
 var source = $("#image-name-preview");
 if(source[0].files.length > 0)
 {
