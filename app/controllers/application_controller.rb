@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     login_path
   end
+
+  def ajax_redirect_to(path)
+    respond_to do |format|
+      format.js { render js: "window.location='#{path}'" }
+    end
+  end
 end
 
 # TODO Add extra features to trix editor (font size, custom fonts)
