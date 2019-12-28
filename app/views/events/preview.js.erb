@@ -1,1 +1,12 @@
 $('#event-preview').html('<%= escape_javascript( render :partial => 'preview', :layout => 'application', locals: { event: @event, preview: true} ) %>');
+var source = $("#image-name-preview");
+if(source[0].files.length > 0)
+{
+    var getImagePath = URL.createObjectURL(source[0].files[0]);
+    $('#jumbo').css({"background": 'url(' + getImagePath + ') no-repeat', "background-position-y": '45%',
+        "background-position-x": "center", "background-size": "cover"});
+} else
+{
+    $('#jumbo').css({"background": 'url(' + '<%= url_for(@event.image) if @event.image.attached? %>' + ') no-repeat', "background-position-y": '45%',
+        "background-position-x": "center", "background-size": "cover"});
+}

@@ -8,7 +8,6 @@ class EventsController < RequestablesController
       @main_tabs = MainTab.all
       @categories = Category.all
       @event = Event.new(event_params)
-      @event.image = nil
       preview('preview')
       nil
     else
@@ -25,7 +24,6 @@ class EventsController < RequestablesController
                                requestable_type: "Event", requestable_id: @event.id)
         @request.save
       end
-
       redirect_to events_path
     end
   end
@@ -58,7 +56,9 @@ class EventsController < RequestablesController
       @main_tabs = MainTab.all
       @categories = Category.all
       @event = Event.new(event_params)
-      @event.image = nil
+      if event_params[:image] == nil
+        @event.image.attach(Event.friendly.find(params[:id]).image.blob)
+      end
       preview('preview')
       nil
     else
