@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-      <%= form_for :sub_tab, url: tabs_path do |f| %>
+      <%= form_for :sub_tab, :remote => true, authenticity_token: true, url: tabs_path do |f| %>
         <!-- Modal Header -->
         <div class="modal-header">
           <h3 class="modal-title">Tworzenie zakładki</h3>
@@ -32,12 +32,18 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <%= f.submit "Dodaj", :class => "btn btn-warning" %>
-          <%= f.submit "Podgląd", :class => "btn btn-success" %>
+          <%= f.submit "Podgląd", :class => "btn btn-success", :id => 'preview-button' %>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
         </div>
 
       <% end %>
 
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="preview-modal">
+  <div class="modal-dialog modal-xl" style="max-width: 1366px">
+    <div id="preview-body" class="modal-content">
     </div>
   </div>
 </div>

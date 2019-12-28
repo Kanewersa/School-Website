@@ -1,5 +1,6 @@
 class SubTabsController < RequestablesController
   layout 'application'
+  respond_to :js, :html
 
   def index
     @sub_tabs = SubTab.all
@@ -10,26 +11,30 @@ class SubTabsController < RequestablesController
   end
 
   def create
-    main_tab = MainTab.find(sub_tab_params[:main_tab_id])
-    sub_tab_params[:main_tab] = main_tab 
-    @sub_tab = SubTab.new(sub_tab_params)
-
-    if current_user.has_role?(:admin)
-      @sub_tab.status = 1
-      @sub_tab.save
+    if params[:commit] == 'Podgląd'
+      @main_tabs = MainTab.all
+      @categories = Category.all
+      @sub_tab = SubTab.new(sub_tab_params)
+      preview('preview')
+      nil
     else
-      @sub_tab.save
-      @request = Request.new(status: 1, user_id: current_user.id, action: "create",
-                             requestable_type: "SubTab", requestable_id: @sub_tab.id)
-      @request.save
-    end
-    @sub_tab.sort = SubTab.count + 1
-    if @sub_tab.save
-      redirect_to tabs_path
-    else
-      @sub_tab.errors
-    end
+      main_tab = MainTab.find(sub_tab_params[:main_tab_id])
+      sub_tab_params[:main_tab] = main_tab
+      @sub_tab = SubTab.new(sub_tab_params)
 
+      if current_user.has_role?(:admin)
+        @sub_tab.status = 1
+        @sub_tab.save
+      else
+        @sub_tab.save
+        @request = Request.new(status: 1, user_id: current_user.id, action: "create",
+                               requestable_type: "SubTab", requestable_id: @sub_tab.id)
+        @request.save
+      end
+      @sub_tab.sort = SubTab.count + 1
+      @sub_tab.save
+      ajax_redirect_to(tabs_path)
+    end
   end
 
   def edit
@@ -38,24 +43,33 @@ class SubTabsController < RequestablesController
   end
 
   def update
-    @sub_tab = SubTab.friendly.find(params[:id])
-    if current_user.has_role?(:admin)
-      @sub_tab.update(:title => params[:sub_tab][:title],
-                      :slug => params[:sub_tab][:slug],
-                      :body => params[:sub_tab][:body],
-                      :updated_at => Time.now)
+    if params[:commit] == 'Podgląd'
+      @main_tabs = MainTab.all
+      @categories = Category.all
+      @sub_tab = SubTab.new(sub_tab_params)
+      @sub_tab.main_tab_id = SubTab.friendly.find(params[:id]).main_tab_id
+      preview('preview')
+      nil
     else
-      @new_sub_tab = SubTab.new(:title => params[:sub_tab][:title],
-                                :slug => params[:sub_tab][:slug],
-                                :body => params[:sub_tab][:body],
-                                :updated_at => Time.now)
-      @new_sub_tab.status = 2
-      @new_sub_tab.save
-      @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @sub_tab.id.to_s,
-                             requestable_type: "Event", requestable_id: @new_sub_tab.id)
-      @request.save
+      @sub_tab = SubTab.friendly.find(params[:id])
+      if current_user.has_role?(:admin)
+        @sub_tab.update(:title => params[:sub_tab][:title],
+                        :slug => params[:sub_tab][:slug],
+                        :body => params[:sub_tab][:body],
+                        :updated_at => Time.now)
+      else
+        @new_sub_tab = SubTab.new(:title => params[:sub_tab][:title],
+                                  :slug => params[:sub_tab][:slug],
+                                  :body => params[:sub_tab][:body],
+                                  :updated_at => Time.now)
+        @new_sub_tab.status = 2
+        @new_sub_tab.save
+        @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @sub_tab.id.to_s,
+                               requestable_type: "Event", requestable_id: @new_sub_tab.id)
+        @request.save
+      end
+      ajax_redirect_to(tabs_path)
     end
-    redirect_to tabs_path
   end
 
   def show
@@ -78,6 +92,13 @@ class SubTabsController < RequestablesController
 
   def to_param
     "#{title}"
+  end
+
+  protected def preview(action)
+    @preview = @sub_tab.valid?
+    respond_to do |format|
+      format.js { render :action => action }
+    end
   end
 
   private def sub_tab_params
