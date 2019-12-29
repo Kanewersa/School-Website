@@ -1,5 +1,5 @@
 var clicked = false;
-$('#preview-button').click(function(){
+$('[id="preview-button"]').click(function(){
     clicked = true;
 });
 $('#preview-modal').on('hidden.bs.modal', function () {
