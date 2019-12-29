@@ -1,4 +1,4 @@
-class MainTabsController < ApplicationController
+class MainTabsController < RequestablesController
   layout 'dashboard'
 
   def index
@@ -21,7 +21,7 @@ class MainTabsController < ApplicationController
       if main_tab_params[:image] == nil
         @main_tab.image.attach(MainTab.friendly.find(params[:id]).image.blob)
       end
-      preview('preview')
+      preview('preview', @main_tab)
       nil
     else
       @main_tab = MainTab.friendly.find(params[:id])
@@ -46,13 +46,6 @@ class MainTabsController < ApplicationController
 
   def sub_tabs
     SubTab.where(main_tab: this)
-  end
-
-  protected def preview(action)
-    @preview = @main_tab.valid?
-    respond_to do |format|
-      format.js { render :action => action }
-    end
   end
 
   private def main_tab_params

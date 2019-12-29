@@ -8,7 +8,7 @@ class EventsController < RequestablesController
       @main_tabs = MainTab.all
       @categories = Category.all
       @event = Event.new(event_params)
-      preview('preview')
+      preview('preview', @event)
       nil
     else
       @event = Event.new(event_params)
@@ -59,7 +59,7 @@ class EventsController < RequestablesController
       if event_params[:image] == nil
         @event.image.attach(Event.friendly.find(params[:id]).image.blob)
       end
-      preview('preview')
+      preview('preview', @event)
       nil
     else
       @event = Event.friendly.find(params[:id])
@@ -95,13 +95,6 @@ class EventsController < RequestablesController
         @request.save
       end
       ajax_redirect_to(events_path)
-    end
-  end
-
-  protected def preview(action)
-    @preview = @event.valid?
-    respond_to do |format|
-      format.js { render :action => action }
     end
   end
 

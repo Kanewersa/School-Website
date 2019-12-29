@@ -15,7 +15,7 @@ class SubTabsController < RequestablesController
       @main_tabs = MainTab.all
       @categories = Category.all
       @sub_tab = SubTab.new(sub_tab_params)
-      preview('preview')
+      preview('preview', @sub_tab)
       nil
     else
       main_tab = MainTab.find(sub_tab_params[:main_tab_id])
@@ -48,7 +48,7 @@ class SubTabsController < RequestablesController
       @categories = Category.all
       @sub_tab = SubTab.new(sub_tab_params)
       @sub_tab.main_tab_id = SubTab.friendly.find(params[:id]).main_tab_id
-      preview('preview')
+      preview('preview', @sub_tab)
       nil
     else
       @sub_tab = SubTab.friendly.find(params[:id])
@@ -92,13 +92,6 @@ class SubTabsController < RequestablesController
 
   def to_param
     "#{title}"
-  end
-
-  protected def preview(action)
-    @preview = @sub_tab.valid?
-    respond_to do |format|
-      format.js { render :action => action }
-    end
   end
 
   private def sub_tab_params

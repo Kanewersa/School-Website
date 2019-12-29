@@ -16,4 +16,9 @@ class SubTab < ApplicationRecord
   def should_generate_new_friendly_id?
     title_changed?
   end
+
+  def image
+    main_tab.image
+  end
+
 end
