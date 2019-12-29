@@ -1,4 +1,4 @@
-class RequestsController < ApplicationController
+class RequestsController < RequestablesController
   layout 'dashboard'
 
   def accept
@@ -42,6 +42,11 @@ class RequestsController < ApplicationController
 
   def show
 
+  end
+
+  def preview_request
+    @requestable = Request.find(params[:request]).requestable
+    preview('preview', @requestable)
   end
 
   private def request_params

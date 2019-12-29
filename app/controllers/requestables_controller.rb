@@ -4,7 +4,7 @@ class RequestablesController < ApplicationController
   protected def preview(action, resource)
     @main_tabs = MainTab.all
     @categories = Category.all
-    @preview = resource.valid?
+    @preview = resource
     respond_to do |format|
       format.js { render :action => action }
     end

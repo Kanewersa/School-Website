@@ -1,22 +1,8 @@
 $('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: @preview, preview: true} ) %>');
 var source = $("#image-name-preview");
-var setJumbo = $('#jumbo').css({
-    "background": 'url(' + '<%= url_for(@resource.image) if @resource.image.attached? %>' + ') no-repeat',
+$('#jumbo').css({
+    "background": 'url(' + '<%= url_for(@preview.image) if @preview.image.attached? %>' + ') no-repeat',
     "background-position-y": '45%',
     "background-position-x": "center",
     "background-size": "cover"
 });
-if (source) {
-    if (source[0].files.length > 0) {
-        var getImagePath = URL.createObjectURL(source[0].files[0]);
-        $('#jumbo').css({
-            "background": 'url(' + getImagePath + ') no-repeat', "background-position-y": '45%',
-            "background-position-x": "center", "background-size": "cover"
-        });
-    } else
-    {
-        setJumbo();
-    }
-} else {
-    setJumbo();
-}

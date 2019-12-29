@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   post '/admin/sub-tabs' => 'sub_tabs#new'
   delete '/admin/sub-tabs' => 'sub_tabs#destroy'
   delete '/admin/users' => 'users#destroy'
+
+  post '/admin/requests/preview' => 'requests#preview_request', as: :preview_request
   ### Only Admin
   get '/admin/users' => 'panels#users', as: :users # Privileges done
   get '/admin/tokens' => 'panels#tokens', as: :tokens
