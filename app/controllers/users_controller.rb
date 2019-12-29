@@ -3,22 +3,19 @@ class UsersController < ApplicationController
 
   def delete
     user = User.find(params[:user_id])
-    user.status = "inactive"
-    user.save
+    user.update_attribute('status', 'inactive')
     redirect_to users_path
   end
 
   def suspend
     user = User.find(params[:user_id])
-    user.status = "suspended"
-    user.save
+    user.update_attribute('status', 'suspended')
     redirect_to users_path
   end
 
   def activate
     user = User.find(params[:user_id])
-    user.status = "active"
-    user.save
+    user.update_attribute('status', 'active')
     redirect_to users_path
   end
 
