@@ -15,8 +15,6 @@ class MainTabsController < RequestablesController
 
   def update
     if params[:commit] == 'Podgląd'
-      @main_tabs = MainTab.all
-      @categories = Category.all
       @main_tab = MainTab.new(main_tab_params)
       if main_tab_params[:image] == nil
         @main_tab.image.attach(MainTab.friendly.find(params[:id]).image.blob)

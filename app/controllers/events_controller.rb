@@ -5,8 +5,6 @@ class EventsController < RequestablesController
 
   def create
     if params[:commit] == 'Podgląd'
-      @main_tabs = MainTab.all
-      @categories = Category.all
       @event = Event.new(event_params)
       preview('preview', @event)
       nil
@@ -53,8 +51,6 @@ class EventsController < RequestablesController
 
   def update
     if params[:commit] == 'Podgląd'
-      @main_tabs = MainTab.all
-      @categories = Category.all
       @event = Event.new(event_params)
       if event_params[:image] == nil
         @event.image.attach(Event.friendly.find(params[:id]).image.blob)

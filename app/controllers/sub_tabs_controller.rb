@@ -12,8 +12,6 @@ class SubTabsController < RequestablesController
 
   def create
     if params[:commit] == 'Podgląd'
-      @main_tabs = MainTab.all
-      @categories = Category.all
       @sub_tab = SubTab.new(sub_tab_params)
       preview('preview', @sub_tab)
       nil
@@ -44,8 +42,6 @@ class SubTabsController < RequestablesController
 
   def update
     if params[:commit] == 'Podgląd'
-      @main_tabs = MainTab.all
-      @categories = Category.all
       @sub_tab = SubTab.new(sub_tab_params)
       @sub_tab.main_tab_id = SubTab.friendly.find(params[:id]).main_tab_id
       preview('preview', @sub_tab)
