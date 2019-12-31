@@ -14,68 +14,107 @@
 </head>
 <body>
 <!-- using online links -->
-<div class="banner banner-bg">
-  <%= link_to root_path do %>
-    <h1 align="center" class="text-outline" style="color: white">Szkoła Podstawowa nr 60</h1>
-    <h1 align="center" class="text-outline" style="color: white; margin-bottom: 15px;">im. Wojciecha Bogusławskiego w
-      Poznaniu</h1>
-  <% end %>
+<div id="mySidebar" class="phonebar">
+  <a href="javascript:void(0)" id="sidebar-close" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
-<nav class="navbar navbar-expand-md bg-semitransparent sticky-top draw-shadow" style="margin-top: -53px;">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#topNavBar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<section>
+  <div id="dim-cover">
+
   </div>
-  <div class="collapse navbar-collapse" id="topNavBar">
-    <ul class="nav navbar-nav mx-auto">
-      <% @main_tabs.each do |main_tab| %>
-        <%= render :template => 'main_tabs/show_button', :locals => {:main_tab => main_tab} %>
-        <% if main_tab == @main_tabs.second %>
-          <li class="dropdown">
-            <button class="btn btn-navbar text-outline" type="button">
-              <%= "Wydarzenia" %>
-              <i class="fa fa-angle-down"></i>
-            </button>
-            <div class="dropdown-menu dropdown-navbar">
-              <% @categories.each do |category| %>
-                <%= link_to show_category_path(id: category.slug) do %>
-                  <button class="dropdown-item" type="button"><span><%= category.title %></span></button>
-                <% end %>
-              <% end %>
-            </div>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
+  <div class="banner banner-bg">
+    <%= link_to root_path do %>
+      <h1 align="center" class="text-outline" style="color: white">Szkoła Podstawowa nr 60</h1>
+      <h1 align="center" class="text-outline" style="color: white; margin-bottom: 15px;">im. Wojciecha Bogusławskiego w
+        Poznaniu</h1>
+    <% end %>
   </div>
-</nav>
-<%= yield %>
-<section id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-        <p><b>Szkoła podstawowa nr 60 im. Wojciecha Bogusławskiego w Poznaniu</b></p>
-        <p>ul. Boranta 2, 61-608 Poznań</p>
-        <p>tel: 606 141 555</p>
-        <p>fax: 61 820 21 72</p>
-        <p>sp60@poznan.interklasa.pl</p>
-        <p class="h6"><a class="text-green ml-2" href="https://github.com/Kanewersa" target="_blank">Created by</a></p>
-      </div>
-      <hr>
+  <nav class="navbar navbar-expand-md bg-semitransparent sticky-top draw-shadow" style="margin-top: -53px;">
+    <div class="navbar-header">
+      <button type="button" id="toggler" class="navbar-toggler custom-toggler" onclick="openNav()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-  </div>
-  <div class="row" style="width: 100%">
-    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-3">
-      <ul class="list-unstyled list-inline social text-center">
-        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-google-plus"></i></a></li>
-        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+    <div class="collapse navbar-collapse" id="topNavBar">
+      <ul class="nav navbar-nav mx-auto">
+        <% @main_tabs.each do |main_tab| %>
+          <%= render :template => 'main_tabs/show_button', :locals => {:main_tab => main_tab} %>
+          <% if main_tab == @main_tabs.second %>
+            <li class="dropdown">
+              <button class="btn btn-navbar text-outline" type="button">
+                <%= "Wydarzenia" %>
+                <i class="fa fa-angle-down"></i>
+              </button>
+              <div class="dropdown-menu dropdown-navbar">
+                <% @categories.each do |category| %>
+                  <%= link_to show_category_path(id: category.slug) do %>
+                    <button class="dropdown-item" type="button"><span><%= category.title %></span></button>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
-  </div>
+  </nav>
+  <%= yield %>
+  <section id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p><b>Szkoła podstawowa nr 60 im. Wojciecha Bogusławskiego w Poznaniu</b></p>
+          <p>ul. Boranta 2, 61-608 Poznań</p>
+          <p>tel: 606 141 555</p>
+          <p>fax: 61 820 21 72</p>
+          <p>sp60@poznan.interklasa.pl</p>
+          <p class="h6"><a class="text-green ml-2" href="https://github.com/Kanewersa" target="_blank">Created by</a>
+          </p>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <div class="row" style="width: 100%">
+      <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-3">
+        <ul class="list-unstyled list-inline social text-center">
+          <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-google-plus"></i></a></li>
+          <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </section>
 </body>
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+
+    $(document).ready(function(){
+        var dim = $("#dim-cover");
+        function toggleCover(){
+            dim.toggleClass("coverall");
+        }
+
+        $("#toggler").click(toggleCover);
+        $("#sidebar-close").click(toggleCover);
+
+        dim.click(function(){
+            toggleCover();
+            closeNav();
+        });
+    });
+</script>
 </html>
