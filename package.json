@@ -8,6 +8,7 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "4.3.1",
+    "dropzone": "^5.5.1",
     "imports-loader": "^0.8.0",
     "jquery": "^3.4.1",
     "jquery-mousewheel": "^3.1.13",
@@ -16,6 +17,7 @@
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "npm": "^6.13.3",
     "popper.js": "^1.16.0",
+    "stimulus": "^1.1.1",
     "trix": "1.0.0",
     "turbolinks": "^5.2.0",
     "yarn": "^1.19.1"

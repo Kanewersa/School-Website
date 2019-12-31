@@ -10,6 +10,7 @@ gem 'rolify'
 gem 'whenever'
 gem 'ffi'
 gem 'ruby-vips'
+gem 'dropzonejs-rails'
 
 gem 'remotipart', github: 'jbox-web/remotipart'
 
