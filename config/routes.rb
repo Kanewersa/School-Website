@@ -9,25 +9,25 @@ Rails.application.routes.draw do
 
   ##########################################
   ### Admin panel
-  get 'admin' => 'panels#dashboard'
-  get '/admin/dashboard' => 'panels#dashboard', as: :dashboard
-  get '/admin/settings' => 'panels#settings', as: :adminsettings
-  get '/admin/sub-tabs' => 'panels#sub_tabs', as: :tabs
-  get '/admin/help' => 'panels#help', as: :help
-  get '/admin/requests' => 'panels#requests', as: :requests
+  get 'admin/' => 'panels#dashboard'
+  get '/admin/dashboard/' => 'panels#dashboard', as: :dashboard
+  get '/admin/settings/' => 'panels#settings', as: :adminsettings
+  get '/admin/sub-tabs/' => 'panels#sub_tabs', as: :tabs
+  get '/admin/help/' => 'panels#help', as: :help
+  get '/admin/requests/' => 'panels#requests', as: :requests
   post '/admin/requests' => 'panels#requests'
 
-  get '/admin/events' => 'panels#events', as: :events
+  get '/admin/events/' => 'panels#events', as: :events
   post '/admin/events' => 'events#create'
   delete '/admin/events/:id' => 'events#destroy', as: :destroy_event
-  get '/admin/events/:id' => 'events#edit', as: :edit_event
+  get '/admin/events/:id/' => 'events#edit', as: :edit_event
   patch '/admin/events/:id' => 'events#update', as: :update_event
 
-  get '/admin/main-tabs/:id' => 'main_tabs#edit', as: :edit_main_tab
+  get '/admin/main-tabs/:id/' => 'main_tabs#edit', as: :edit_main_tab
   post '/admin/main-tabs/:id' => 'main_tabs#edit', as: :post_edit_main_tab
   patch '/admin/main-tabs/:id' => 'main_tabs#update', as: :update_main_tab
 
-  get '/admin/sub-tabs/:id' => 'sub_tabs#edit', as: :edit_sub_tab
+  get '/admin/sub-tabs/:id/' => 'sub_tabs#edit', as: :edit_sub_tab
   post '/admin/sub-tabs/:id' => 'sub_tabs#edit', as: :post_edit_sub_tab
   patch '/admin/sub-tabs/:id' => 'sub_tabs#update', as: :update_sub_tab
   post '/admin/sub-tabs' => 'sub_tabs#create'
@@ -37,9 +37,9 @@ Rails.application.routes.draw do
 
   post '/admin/requests/preview' => 'requests#preview_request', as: :preview_request
   ### Only Admin
-  get '/admin/users' => 'panels#users', as: :users # Privileges done
-  get '/admin/tokens' => 'panels#tokens', as: :tokens
-  get '/admin/users/token' => 'panels#generate_token', as: :generate_token
+  get '/admin/users/' => 'panels#users', as: :users # Privileges done
+  get '/admin/tokens/' => 'panels#tokens', as: :tokens
+  get '/admin/users/token/' => 'panels#generate_token', as: :generate_token
   post '/admin/requests/accept' => 'requests#accept', as: :accept_request
   post '/admin/requests/reject' => 'requests#reject', as: :reject_request
   post '/admin/requests/reject' => 'requests#resend', as: :resend_request
@@ -47,22 +47,22 @@ Rails.application.routes.draw do
   post '/admin/users/activate' => 'users#activate'
   post '/admin/users/delete' => 'users#delete', as: :delete_user
   ##########################################
-  get 'test' => 'pages#test'
+  get 'test/' => 'pages#test'
 
   as :user do
-    get 'login' => 'devise/sessions#new'
+    get 'login/' => 'devise/sessions#new'
     post 'login' => 'devise/sessions#create'
-    get '/users/sign_out' => 'devise/sessions#destroy'
-    get 'password' => 'devise/passwords#new'
-    get 'register' => 'registrations#new'
-    get '/admin/edit-account' => 'panels#edit_account', as: :edit_current_user
-    get '/admin/user/changeImg' => 'panels#change_background_image'
-    get '/admin/user/changeColor' => 'panels#change_background_color'
+    get '/users/sign_out/' => 'devise/sessions#destroy'
+    get 'password/' => 'devise/passwords#new'
+    get 'register/' => 'registrations#new'
+    get '/admin/edit-account/' => 'panels#edit_account', as: :edit_current_user
+    get '/admin/user/changeImg/' => 'panels#change_background_image'
+    get '/admin/user/changeColor/' => 'panels#change_background_color'
   end
 
-  get 'wydarzenia/:id' => 'categories#show', as: :show_category
-  get 'wydarzenia/:category_id/:id' => 'events#show', as: :show_event
-  get ':main_tab_id/:id' => 'sub_tabs#show', as: :show_sub_tab
+  get 'wydarzenia/:id/' => 'categories#show', as: :show_category
+  get 'wydarzenia/:category_id/:id/' => 'events#show', as: :show_event
+  get ':main_tab_id/:id/' => 'sub_tabs#show', as: :show_sub_tab
 
 
   resources :galleries, :only => [:show]
