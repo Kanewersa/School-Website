@@ -21,3 +21,5 @@ import {} from 'adminpanel/preview-navbar-animation'
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
+window.Dropzone = require('dropzone/dist/min/dropzone.min');
+import {} from 'adminpanel/dropzone-upload'

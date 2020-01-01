@@ -1,6 +1,10 @@
 //= require trix/dist/trix
+//= require dropzone/dropzone
 @import "bootstrap";
 
+.dz-message {
+  font-size: 22px;
+}
 @-webkit-keyframes swing {
   0%, 30%, 50%, 70%, 100% {
     -webkit-transform: rotate(0deg);
