@@ -33,6 +33,21 @@
         </div>
       </div>
     <% end %>
+    <% if main_tab == @main_tabs.second %>
+      <hr>
+      <div class="sidebar-dropdown">
+        <a href="#" style=""><%= "Wydarzenia" %>
+          <i class="fas fa-angle-right"></i>
+        </a>
+        <div class="sidebar-submenu">
+          <ul>
+            <% @categories.each do |category| %>
+              <%= link_to category.title, show_category_path(id: category.slug) %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
     <hr>
   <% end %>
 </div>
