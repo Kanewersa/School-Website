@@ -1,5 +1,5 @@
 $('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: @event, preview: true} ) %>');
-var source = $("#image-name-preview");
+var source = $('input[name ="event[image]"]');
 if(source[0].files.length > 0)
 {
     var getImagePath = URL.createObjectURL(source[0].files[0]);
