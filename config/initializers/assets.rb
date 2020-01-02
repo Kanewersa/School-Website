@@ -17,3 +17,5 @@ Rails.application.config.assets.precompile += %w( adminpanel/css/main.scss )
 Rails.application.config.assets.precompile += %w( adminpanel/css/sidebar-themes.css )
 Rails.application.config.assets.precompile += %w( test.css )
 Rails.application.config.assets.precompile += %w( custom/bootstrap-datepicker3.standalone.min.css )
+# Precompile all fonts
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf|otf|woff2)\z/
