@@ -38,13 +38,20 @@
         <p>
           <%= f.label "Obraz:", :class => "h5" %>
         </p>
-        <div class="input-group">
-            <span class="input-group-btn">
-              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>
-              <%= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
-            </span>
-          <span class="form-control"></span>
+
+        <div class="input-field">
+          <div class="event-image-input" style="padding-top: .5rem;"></div>
         </div>
+
+
+<!--        <div class="input-group">-->
+<!--            <span class="input-group-btn">-->
+<!--              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>-->
+              <%#= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
+<!--            </span>-->
+<!--          <span class="form-control"></span>-->
+<!--        </div>-->
+
         <p>
           <br>
           <%= f.label "Zawartość:", :class => "h5" %><br>

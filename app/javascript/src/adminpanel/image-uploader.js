@@ -1,8 +1,11 @@
-/*! Image Uploader - v1.0.0 - 15/07/2019
+/*! Image Uploader - v1.2.3 - 26/11/2019
  * Copyright (c) 2019 Christian Bayer; Licensed MIT */
 $(document).ready(function(){
 
-    $('.input-images').imageUploader();
+    $('.event-image-input').imageUploader({
+        imagesInputName: 'event[image]',
+        maxFiles: 1
+    });
 
 });
 (function ($) {
@@ -12,13 +15,23 @@ $(document).ready(function(){
         // Default settings
         let defaults = {
             preloaded: [],
-            imagesInputName: 'images',
+            imagesInputName: 'name[param]',
             preloadedInputName: 'preloaded',
-            label: 'Drag & Drop files here or click to browse'
+            label: 'Przeciągnij zdjęcie lub kliknij aby przeglądać',
+            extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+            mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+            maxSize: undefined,
+            maxFiles: 10,
         };
 
         // Get instance
         let plugin = this;
+
+        // Will keep the files
+        let dataTransfer = new DataTransfer();
+
+        // The file input
+        let $input;
 
         // Set empty settings
         plugin.settings = {};
@@ -63,24 +76,22 @@ $(document).ready(function(){
 
         };
 
-
-        let dataTransfer = new DataTransfer();
-
         let createContainer = function () {
 
             // Create the image uploader container
-            let $container = $('<div>', {class: 'image-uploader'}),
+            let $container = $('<div>', {class: 'image-uploader'});
 
-                // Create the input type file and append it to the container
-                $input = $('<input>', {
-                    type: 'file',
-                    id: plugin.settings.imagesInputName + '-' + random(),
-                    name: plugin.settings.imagesInputName + '[]',
-                    multiple: ''
-                }).appendTo($container),
+            // Create the input type file and append it to the container
+            $input = $('<input>', {
+                type: 'file',
+                id: plugin.settings.imagesInputName + '-' + random(),
+                name: plugin.settings.imagesInputName,
+                accept: plugin.settings.extensions.join(','),
+                multiple: ''
+            }).appendTo($container);
 
-                // Create the uploaded images container and append it to the container
-                $uploadedContainer = $('<div>', {class: 'uploaded'}).appendTo($container),
+            // Create the uploaded images container and append it to the container
+            let $uploadedContainer = $('<div>', {class: 'uploaded'}).appendTo($container),
 
                 // Create the text container and append it to the container
                 $textContainer = $('<div>', {
@@ -88,7 +99,7 @@ $(document).ready(function(){
                 }).appendTo($container),
 
                 // Create the icon and append it to the text container
-                $i = $('<i>', {class: 'material-icons', text: 'cloud_upload'}).appendTo($textContainer),
+                $i = $('<i>', {class: 'iui-cloud-upload'}).appendTo($textContainer),
 
                 // Create the text and append it to the text container
                 $span = $('<span>', {text: plugin.settings.label}).appendTo($textContainer);
@@ -121,7 +132,7 @@ $(document).ready(function(){
             e.stopPropagation();
         };
 
-        let createImg = function (src, id) {
+        let createImg = function (src, id, preloaded) {
 
             // Create the upladed image container
             let $container = $('<div>', {class: 'uploaded-image'}),
@@ -133,10 +144,11 @@ $(document).ready(function(){
                 $button = $('<button>', {class: 'delete-image'}).appendTo($container),
 
                 // Create the delete icon
-                $i = $('<i>', {class: 'material-icons', text: 'clear'}).appendTo($button);
+                $i = $('<i>', {class: 'iui-close'}).appendTo($button);
 
-            // If the images are preloaded
-            if (plugin.settings.preloaded.length) {
+
+            // If the image is preloaded
+            if (preloaded) {
 
                 // Set a identifier
                 $container.attr('data-preloaded', true);
@@ -144,13 +156,13 @@ $(document).ready(function(){
                 // Create the preloaded input and append it to the container
                 let $preloaded = $('<input>', {
                     type: 'hidden',
-                    name: plugin.settings.preloadedInputName + '[]',
+                    name: plugin.settings.preloadedInputName,
                     value: id
                 }).appendTo($container)
 
             } else {
 
-                // Set the identifier
+                // Set the index
                 $container.attr('data-index', id);
 
             }
@@ -163,17 +175,28 @@ $(document).ready(function(){
 
             // Set delete action
             $button.on("click", function (e) {
+
                 // Prevent browser default event and stop propagation
                 prevent(e);
 
+                // Get the parent element
+                let $parent = $container.parent();
+
                 // If is not a preloaded image
-                if ($container.data('index')) {
+                if ($container.data('preloaded') === true) {
+
+                    // Remove from preloaded array
+                    plugin.settings.preloaded = plugin.settings.preloaded.filter(function (p) {
+                        return p.id !== id;
+                    });
+
+                } else {
 
                     // Get the image index
                     let index = parseInt($container.data('index'));
 
                     // Update other indexes
-                    $container.find('.uploaded-image[data-index]').each(function (i, cont) {
+                    $parent.find('.uploaded-image[data-index]').each(function (i, cont) {
                         if (i > index) {
                             $(cont).attr('data-index', i - 1);
                         }
@@ -181,16 +204,19 @@ $(document).ready(function(){
 
                     // Remove the file from input
                     dataTransfer.items.remove(index);
+
+                    // Update input files
+                    $input.prop('files', dataTransfer.files);
                 }
 
                 // Remove this image from the container
                 $container.remove();
 
                 // If there is no more uploaded files
-                if (!$container.find('.uploaded-image').length) {
+                if (!$parent.children().length) {
 
                     // Remove the 'has-files' class
-                    $container.removeClass('has-files');
+                    $parent.parent().removeClass('has-files');
 
                 }
 
@@ -220,14 +246,89 @@ $(document).ready(function(){
             // Get the jQuery element instance
             let $container = $(this);
 
-            // Change the container style
-            $container.removeClass('drag-over');
+            // Get the files as an array of files
+            let files = Array.from(e.target.files || e.originalEvent.dataTransfer.files);
 
-            // Get the files
-            let files = e.target.files || e.originalEvent.dataTransfer.files;
+            // Will keep only the valid files
+            let validFiles = [];
 
-            // Makes the upload
-            setPreview($container, files);
+            // Run through the files
+            $(files).each(function (i, file) {
+                // Run the validations
+                if (plugin.settings.extensions && !validateExtension(file)) {
+                    return;
+                }
+                if (plugin.settings.mimes && !validateMIME(file)) {
+                    return;
+                }
+                if (plugin.settings.maxSize && !validateMaxSize(file)) {
+                    return;
+                }
+                if (plugin.settings.maxFiles && !validateMaxFiles(validFiles.length, file)) {
+                    return;
+                }
+                validFiles.push(file);
+            });
+
+            // If there is at least one valid file
+            if (validFiles.length) {
+                // Change the container style
+                $container.removeClass('drag-over');
+
+                // Makes the upload
+                setPreview($container, validFiles);
+            } else {
+
+                // Update input files (it is now empty due to a default browser action)
+                $input.prop('files', dataTransfer.files);
+
+            }
+        };
+
+        let validateExtension = function (file) {
+
+            if (plugin.settings.extensions.indexOf(file.name.replace(new RegExp('^.*\\.'), '.')) < 0) {
+                alert(`The file "${file.name}" does not match with the accepted file extensions: "${plugin.settings.extensions.join('", "')}"`);
+
+                return false;
+            }
+
+            return true;
+        };
+
+        let validateMIME = function (file) {
+
+            if (plugin.settings.mimes.indexOf(file.type) < 0) {
+                alert(`The file "${file.name}" does not match with the accepted mime types: "${plugin.settings.mimes.join('", "')}"`);
+
+                return false;
+            }
+
+            return true;
+        };
+
+        let validateMaxSize = function (file) {
+
+            if (file.size > plugin.settings.maxSize) {
+                alert(`The file "${file.name}" exceeds the maximum size of ${plugin.settings.maxSize / 1024 / 1024}Mb`);
+
+                return false;
+            }
+
+            return true;
+
+        };
+
+        let validateMaxFiles = function (index, file) {
+
+            if ((index + dataTransfer.items.length + plugin.settings.preloaded.length) >= plugin.settings.maxFiles) {
+                alert(`The file "${file.name}" could not be added because the limit of ${plugin.settings.maxFiles} files was reached`);
+
+                return false;
+            }
+
+            return true;
+
         };
 
         let setPreview = function ($container, files) {
@@ -248,7 +349,7 @@ $(document).ready(function(){
                 dataTransfer.items.add(file);
 
                 // Set preview
-                $uploadedContainer.append(createImg(URL.createObjectURL(file), dataTransfer.items.length - 1));
+                $uploadedContainer.append(createImg(URL.createObjectURL(file), dataTransfer.items.length - 1), false);
 
             });
 
