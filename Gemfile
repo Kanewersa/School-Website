@@ -10,7 +10,6 @@ gem 'rolify'
 gem 'whenever'
 gem 'ffi'
 gem 'ruby-vips'
-gem 'jquery-fileupload-rails'
 
 gem 'remotipart', github: 'jbox-web/remotipart'
 

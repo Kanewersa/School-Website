@@ -91,8 +91,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    dropzonejs-rails (0.8.4)
-      rails (> 3.1)
     erubi (1.9.0)
     ffi (1.11.3-x64-mingw32)
     friendly_id (5.3.0)
@@ -237,7 +235,6 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15)
   devise
-  dropzonejs-rails
   ffi
   friendly_id
   image_processing (~> 1.2)

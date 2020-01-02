@@ -8,6 +8,7 @@ require('jquery.iframe-transport');
 require("trix");
 require("@rails/actiontext");
 //Import custom scripts
+import {} from 'adminpanel/image-uploader'
 import {} from 'adminpanel/admin-navbar';
 import {} from 'adminpanel/file-input-preview';
 import {} from 'adminpanel/get-token-ajax';
