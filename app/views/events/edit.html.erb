@@ -41,7 +41,6 @@
         <p class="mb-0">
           <%= f.label "Obraz:", :class => "h5" %>
         </p>
-        <%= hidden_field_tag 'event[cache][]', '' %>
         <div class="input-field">
           <div class="event-image-input"></div>
         </div>
@@ -56,6 +55,7 @@
         <div class="input-field">
           <div class="event-gallery-input"></div>
         </div>
+        <%= hidden_field_tag 'event[cache][]', '' %>
         <br>
         <p>
           <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>

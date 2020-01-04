@@ -10,9 +10,7 @@ class EventsController < RequestablesController
       nil
     else
       @event = Event.new(event_params)
-      if @event.announcement
-        @event.important = 1
-      end
+      @event.important = 1 if @event.announcement
       if current_user.has_role?(:admin)
         @event.status = 1
         @event.save
@@ -28,7 +26,7 @@ class EventsController < RequestablesController
 
   def edit
     @event = Event.friendly.find(params[:id])
-    #abort @event.gallery_images.blobs[0].inspect
+    #abort @event.gallery_images.blobs.inspect
     render :layout => 'dashboard'
   end
 
@@ -138,6 +136,6 @@ class EventsController < RequestablesController
   end
 
   private def event_params
-    params.require(:event).permit(:title, :slug, :category_id, :body, :cache, :important, :announcement, :image, :valid_date)
+    params.require(:event).permit(:title, :slug, :category_id, :body, :important, :announcement, :image, :valid_date, :gallery_images => [])
   end
 end

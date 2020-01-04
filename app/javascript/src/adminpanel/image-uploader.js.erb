@@ -3,15 +3,14 @@
 import { DirectUpload } from "@rails/activestorage"
 const galleryIds = $('#signed_ids').data('source');
 $(document).ready(function(){
-    for(const id in galleryIds)
-    {
-        console.log("Array id is: " + galleryIds[id]);
-    }
-
     var imageUrl = $('#image_url').data('source');
-    let image = [
-        {id: 1, src: imageUrl}
-    ];
+    let image = [];
+    if(imageUrl)
+    {
+        image = [
+            {id: 1, src: imageUrl}
+        ];
+    }
     const galleryUrls = $('#gallery_urls').data('source');
     var images = []
     for (const url in galleryUrls)

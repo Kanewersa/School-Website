@@ -42,24 +42,21 @@
           <p>
             <%= f.label "Obraz:", :class => "h5" %>
           </p>
-          <div class="input-group">
-            <span class="input-group-btn">
-              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>
-              <%= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
-            </span>
-            <span class="form-control"></span>
+          <div class="input-field">
+            <div class="event-image-input"></div>
           </div>
           <p>
             <br>
             <%= f.label "Zawartość:", :class => "h5" %><br>
             <%= f.rich_text_area :body, :spellcheck => false %>
           </p>
-          <p>
+          <p class="mb-0">
             <%= f.label "Galeria:", :class => "h5" %><br>
           </p>
-          <div class="alert alert-danger">
-            <strong>Niedostępne</strong>
+          <div class="input-field">
+            <div class="event-gallery-input"></div>
           </div>
+          <%= hidden_field_tag 'event[cache][]', '' %>
           <br>
         </div>
         <!-- Modal footer -->
