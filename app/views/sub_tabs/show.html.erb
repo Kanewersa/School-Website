@@ -1,15 +1,18 @@
 <article class="index-intro">
   <% if @sub_tab.main_tab.image.attached? %>
-  <div class="jumbotron text-outline" style="background: url(<%= url_for(@sub_tab.main_tab.image) %>) no-repeat;
-      padding-top: 200px; background-size: cover; background-position-x: center; background-position-y: 45%">
+    <div class="jumbotron text-outline" style="background: url(<%= url_for(@sub_tab.main_tab.image) %>) no-repeat;
+        padding-top: 200px; background-size: cover; background-position-x: center; background-position-y: 45%">
   <% end %>
   </div>
 </article>
-<hr/>
-<h1 align="center" style="color: black;font-size: 80px; font-weight: bold"><%= @sub_tab.title %></h1>
-<hr style="width: 40%"/>
-<div class="container" style="padding-top: 40px; padding-bottom: 92px">
-  <p><%= @sub_tab.body %></p>
-  <hr>
-</div>
+<section id="page-section">
+  <hr/>
+  <h1><%= @sub_tab.title %></h1>
+  <hr class="w-75"/>
+  <div class="container">
+    <p><%= @sub_tab.body %></p>
+    <hr>
+  </div>
+</section>
+
 

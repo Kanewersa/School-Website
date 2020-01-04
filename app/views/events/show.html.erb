@@ -6,26 +6,28 @@
   </div>
 </article>
 <hr/>
-<h1 align="center" style="color: black;font-size: 80px; font-weight: bold; padding: 15px"><%= @event.title %></h1>
-<hr style="width: 70%"/>
-<div class="container" style="padding-top: 40px; padding-bottom: 92px">
-  <p style="font-size: 30px"><%= @event.body %></p>
-  <hr>
-  <section class="gallery-block grid-gallery">
-    <div class="container">
-      <div class="row">
+<section id="page-section">
+  <h1><%= @event.title %></h1>
+  <hr class="w-75"/>
+  <div class="container">
+    <p><%= @event.body %></p>
+    <hr>
+    <section class="gallery-block grid-gallery">
+      <div class="container">
+        <div class="row">
 
-        <% @event.gallery_images.each do |image| %>
-          <div class="col-md-6 col-lg-4 item">
-            <%= link_to image, :class => "lightbox" do %>
-              <%= image_tag image, :class => "img-fluid image scale-on-hover" %>
-            <% end %>
-          </div>
-        <% end %>
+          <% @event.gallery_images.each do |image| %>
+            <div class="col-md-6 col-lg-4 item">
+              <%= link_to image, :class => "lightbox" do %>
+                <%= image_tag image, :class => "img-fluid image scale-on-hover" %>
+              <% end %>
+            </div>
+          <% end %>
 
+        </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
+</section>
 
 

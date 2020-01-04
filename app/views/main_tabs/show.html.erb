@@ -6,9 +6,11 @@
   </div>
 </article>
 <hr/>
-<h1 align="center" style="color: black;font-size: 80px; font-weight: bold"><%= @main_tab.title %></h1>
-<hr style="width: 40%"/>
-<div class="container" style="padding-top: 40px; padding-bottom: 92px">
-  <p><%= @main_tab.body %></p>
-  <hr>
-</div>
+<section id="page-section">
+  <h1><%= @main_tab.title %></h1>
+  <hr class="w-75"/>
+  <div class="container">
+    <p><%= @main_tab.body %></p>
+    <hr>
+  </div>
+</section>
