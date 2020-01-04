@@ -13,6 +13,7 @@
 @import 'bootstrap.css';
 @import url('https://use.fontawesome.com/releases/v5.11.2/css/all.css');
 @import 'page_fade.css';
+@import 'gallery.css';
 
 body {
     background-color: rgb(250,250,250);

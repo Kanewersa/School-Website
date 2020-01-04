@@ -9,6 +9,8 @@ require("@rails/actiontext");
 //Import custom scripts
 require("carouselanimation");
 require("navbaranimation");
+window.baguetteBox = require('baguettebox.js');
+import 'application/gallery-init'
 //var TurboLinks = require("turbolinks");
 //TurboLinks.start();
 //Allow jQuery
