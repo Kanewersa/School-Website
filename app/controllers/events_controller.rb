@@ -28,6 +28,7 @@ class EventsController < RequestablesController
 
   def edit
     @event = Event.friendly.find(params[:id])
+    #abort @event.gallery_images.blobs[0].inspect
     render :layout => 'dashboard'
   end
 
@@ -50,6 +51,7 @@ class EventsController < RequestablesController
   end
 
   def update
+    gallery_cache = params[:event][:cache][0].split(',')
     if params[:commit] == 'Podgląd'
       @event = Event.new(event_params)
       if event_params[:image] == nil
@@ -71,6 +73,18 @@ class EventsController < RequestablesController
         unless params[:event][:image].nil?
           @event.update(:image => params[:event][:image])
         end
+        old_keys []
+        new_keys = []
+        @event.gallery_images.blobs.each do |blob|
+          old_keys.push(blob.signed_id)
+        end
+        params[:event][:gallery_images].each do |key|
+          new_keys.push(key)
+        end
+
+        #unless params[:event][:gallery_images].nil?
+        #  @event.update(:gallery_images => params[:event][:gallery_images])
+        #end
       else
         @new_event = Event.new(:title => params[:event][:title],
                                :slug => params[:event][:slug],
@@ -95,6 +109,6 @@ class EventsController < RequestablesController
   end
 
   private def event_params
-    params.require(:event).permit(:title, :slug, :category_id, :body, :important, :announcement, :image, :valid_date)
+    params.require(:event).permit(:title, :slug, :category_id, :body, :cache, :important, :announcement, :image, :valid_date)
   end
 end

@@ -6,6 +6,8 @@
 </style>
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
+    <%= content_tag :div, '', id: 'image_url', data: { source: event_image_url } %>
+    <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls } %>
     <div class="container"><h2><%= @event.title %></h2>
       <hr>
     </div>
@@ -35,34 +37,24 @@
           <%= f.text_field :valid_date, :data => {:provide => "datepicker"}, :class => "form-control w-25" %>
           <br>
         </div>
-        <p>
+        <p class="mb-0">
           <%= f.label "Obraz:", :class => "h5" %>
         </p>
-
+        <%= hidden_field_tag 'event[cache][]', '' %>
         <div class="input-field">
-          <div class="event-image-input" style="padding-top: .5rem;"></div>
+          <div class="event-image-input"></div>
         </div>
-
-<!--        <div class="input-group">-->
-<!--            <span class="input-group-btn">-->
-<!--              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>-->
-              <%#= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
-<!--            </span>-->
-<!--          <span class="form-control"></span>-->
-<!--        </div>-->
-
         <p>
           <br>
           <%= f.label "Zawartość:", :class => "h5" %><br>
           <%= f.rich_text_area :body, :spellcheck => false %>
         </p>
-        <p>
+        <p class="mb-0">
           <%= f.label "Galeria:", :class => "h5" %><br>
         </p>
-
-<!--        <div class="input-images"></div>-->
-
-
+        <div class="input-field">
+          <div class="event-gallery-input"></div>
+        </div>
         <br>
         <p>
           <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>

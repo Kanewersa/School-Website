@@ -8,7 +8,7 @@ require('jquery.iframe-transport');
 require("trix");
 require("@rails/actiontext");
 //Import custom scripts
-import {} from 'adminpanel/image-uploader'
+import {} from 'adminpanel/image-uploader.js.erb'
 import {} from 'adminpanel/admin-navbar';
 import {} from 'adminpanel/file-input-preview';
 import {} from 'adminpanel/get-token-ajax';
@@ -22,5 +22,3 @@ import {} from 'adminpanel/preview-navbar-animation'
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
-window.Dropzone = require('dropzone/dist/min/dropzone.min');
-import {} from 'adminpanel/dropzone-upload'

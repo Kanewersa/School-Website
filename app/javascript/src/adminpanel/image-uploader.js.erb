@@ -1,12 +1,31 @@
 /*! Image Uploader - v1.2.3 - 26/11/2019
  * Copyright (c) 2019 Christian Bayer; Licensed MIT */
 $(document).ready(function(){
-
+    var imageUrl = $('#image_url').data('source');
+    let image = [
+        {id: 1, src: imageUrl}
+    ];
+    const galleryUrls = $('#gallery_urls').data('source');
+    var images = []
+    for (const url in galleryUrls)
+    {
+        images.push({id: url, src: galleryUrls[url]});
+    }
     $('.event-image-input').imageUploader({
+        preloaded: image,
         imagesInputName: 'event[image]',
         maxFiles: 1
     });
-
+    $('.event-gallery-input').imageUploader({
+        preloaded: images,
+        imagesInputName: 'event[gallery_images][]',
+        maxFiles: undefined
+    });
+    var cache = $('#event_cache_');
+    for (const url in galleryUrls)
+    {
+        cache.val(cache.val() + galleryUrls[url] + ",");
+    }
 });
 (function ($) {
 
@@ -322,7 +341,7 @@ $(document).ready(function(){
         let validateMaxFiles = function (index, file) {
 
             if ((index + dataTransfer.items.length + plugin.settings.preloaded.length) >= plugin.settings.maxFiles) {
-                alert(`The file "${file.name}" could not be added because the limit of ${plugin.settings.maxFiles} files was reached`);
+                alert(`Plik "${file.name}" nie mógł zostać dodany z powodu limitu ( maksymalnie ${plugin.settings.maxFiles} plik/pliki ) `);
 
                 return false;
             }
