@@ -51,29 +51,6 @@ class EventsController < RequestablesController
   end
 
   def update
-    new_keys = params[:event][:cache][0].split(',')
-    new_keys = new_keys.reject { |key| key.empty? }
-    @event = Event.friendly.find(params[:id])
-
-    #@event.gallery_images = params[:event][:gallery_images]
-    #@event.save
-    #return
-    images = params[:event][:gallery_images]
-    blobs = []
-    new_keys.each do |key|
-      blobs.push(ActiveStorage::Blob.find_signed(key))
-    end
-    @event.gallery_images.purge_later
-    @event.gallery_images.attach(blobs)
-
-    unless images.nil?
-        @event.gallery_images.attach(images)
-    end
-
-    ajax_redirect_to(edit_event_path(:id => params[:id]))
-    return
-    #
-    abort @event.gallery_images.blobs.inspect
     if params[:commit] == 'Podgląd'
       @event = Event.new(event_params)
       if event_params[:image] == nil
@@ -83,7 +60,9 @@ class EventsController < RequestablesController
       nil
     else
       @event = Event.friendly.find(params[:id])
+      #If user is an admin
       if current_user.has_role?(:admin)
+        #Update event's attributes
         @event.update(:title => params[:event][:title],
                       :slug => params[:event][:slug],
                       :body => params[:event][:body],
@@ -92,22 +71,24 @@ class EventsController < RequestablesController
                       :announcement => params[:event][:announcement],
                       :valid_date => params[:event][:valid_date],
                       :updated_at => Time.now)
+        #If banner image was changed replace it
         unless params[:event][:image].nil?
           @event.update(:image => params[:event][:image])
         end
-        old_keys []
-        new_keys = []
-        @event.gallery_images.blobs.each do |blob|
-          old_keys.push(blob.signed_id)
+        # Get new blob id's from params
+        blobs = get_blobs_from_ids(params[:event][:cache][0])
+        # Purge old images and replace them with new ones
+        @event.gallery_images.purge_later
+        @event.gallery_images.attach(blobs)
+        # Get new images from params
+        new_images = params[:event][:gallery_images]
+        #If new images were added add them to the event
+        unless new_images.nil?
+          @event.gallery_images.attach(new_images)
         end
-        params[:event][:gallery_images].each do |key|
-          new_keys.push(key)
-        end
-
-        #unless params[:event][:gallery_images].nil?
-        #  @event.update(:gallery_images => params[:event][:gallery_images])
-        #end
+      #If user is not an admin
       else
+        #Create new event with given attributes
         @new_event = Event.new(:title => params[:event][:title],
                                :slug => params[:event][:slug],
                                :body => params[:event][:body],
@@ -116,18 +97,44 @@ class EventsController < RequestablesController
                                :announcement => params[:event][:announcement],
                                :valid_date => params[:event][:valid_date],
                                :updated_at => Time.now)
+        #If banner image was included add it
         unless params[:event][:image].nil?
           @new_event.update(:image => params[:event][:image])
         end
-
+        # Get new blob id's from params
+        blobs = get_blobs_from_ids(params[:event][:cache][0])
+        # Attach blobs to the new event
+        @new_event.gallery_images.attach(blobs)
+        # Get uploaded images from params
+        new_images = params[:event][:gallery_images]
+        #If new images were added add them to the event
+        unless new_images.nil?
+          @new_event.gallery_images.attach(new_images)
+        end
+        #Change event status to unaccepted
         @new_event.status = 2
         @new_event.save
+        #Add new request to the admin
         @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id.to_s,
                                requestable_type: "Event", requestable_id: @new_event.id)
         @request.save
       end
       ajax_redirect_to(events_path)
     end
+  end
+
+  private def get_blobs_from_ids(source)
+    #Split source and get array of ids
+    new_ids = source.split(',')
+    #Remove empty records caused by users deletion of gallery images
+    new_ids = new_ids.reject { |key| key.empty? }
+    # Create blobs array from id's
+    blobs = []
+    new_ids.each do |key|
+      blobs.push(ActiveStorage::Blob.find_signed(key))
+    end
+    #Return blobs array
+    blobs
   end
 
   private def event_params
