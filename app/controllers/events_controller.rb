@@ -51,7 +51,29 @@ class EventsController < RequestablesController
   end
 
   def update
-    gallery_cache = params[:event][:cache][0].split(',')
+    new_keys = params[:event][:cache][0].split(',')
+    new_keys = new_keys.reject { |key| key.empty? }
+    @event = Event.friendly.find(params[:id])
+
+    #@event.gallery_images = params[:event][:gallery_images]
+    #@event.save
+    #return
+    images = params[:event][:gallery_images]
+    blobs = []
+    new_keys.each do |key|
+      blobs.push(ActiveStorage::Blob.find_signed(key))
+    end
+    @event.gallery_images.purge_later
+    @event.gallery_images.attach(blobs)
+
+    unless images.nil?
+        @event.gallery_images.attach(images)
+    end
+
+    ajax_redirect_to(edit_event_path(:id => params[:id]))
+    return
+    #
+    abort @event.gallery_images.blobs.inspect
     if params[:commit] == 'Podgląd'
       @event = Event.new(event_params)
       if event_params[:image] == nil

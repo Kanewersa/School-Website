@@ -11,4 +11,12 @@ module EventsHelper
     end
     urls
   end
+
+  def gallery_images_signed_ids
+    ids = []
+    @event.gallery_images.blobs.each do |blob|
+      ids.push(blob.signed_id)
+    end
+    ids
+  end
 end

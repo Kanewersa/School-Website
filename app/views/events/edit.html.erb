@@ -8,6 +8,7 @@
   <div class="container-fluid p-5">
     <%= content_tag :div, '', id: 'image_url', data: { source: event_image_url } %>
     <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls } %>
+    <%= content_tag :div, '', id: 'signed_ids', data: { source: gallery_images_signed_ids } %>
     <div class="container"><h2><%= @event.title %></h2>
       <hr>
     </div>
