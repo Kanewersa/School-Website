@@ -10,7 +10,9 @@ class EventsController < RequestablesController
       nil
     else
       @event = Event.new(event_params)
-      @event.important = 1 if @event.announcement
+      if @event.announcement
+        @event.important = 1
+      end
       if current_user.has_role?(:admin)
         @event.status = 1
         @event.save
