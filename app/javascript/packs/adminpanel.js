@@ -19,6 +19,7 @@ import {} from 'adminpanel/event-preview';
 import {} from 'adminpanel/embedded-modals';
 import {} from 'adminpanel/sortable-tabs';
 import {} from 'adminpanel/preview-navbar-animation'
+import './trix-overrides'
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
