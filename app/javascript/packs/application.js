@@ -2,7 +2,8 @@ require("@rails/activestorage").start();
 require("channels");
 require('bootstrap/dist/js/bootstrap');
 import {} from 'jquery'
-import {} from 'jquery-ujs'
+import 'jquery-ujs'
+require("jquery-ujs");
 import {} from 'jquery-ui'
 require("trix");
 require("@rails/actiontext");
@@ -17,3 +18,11 @@ import './trix-overrides'
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
+
+$(document).ready(function () {
+    //TODO Can't add target="_blank" to link_to inside trix body
+    $(".pdf").click(function(event) {
+        event.preventDefault();
+        window.open($(this).attr('href'));
+    });
+});

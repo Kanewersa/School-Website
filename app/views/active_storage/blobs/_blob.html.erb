@@ -3,15 +3,16 @@
     <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [400, 300] : [400, 300]) %>
   <% end %>
   <% if blob.content_type == "application/pdf" %>
-    <%= link_to "Pobierz " + blob.filename.to_s, rails_blob_path(blob, disposition: "attachment") %>
+    <%= link_to "Pobierz " + blob.filename.to_s, rails_blob_path(blob), :class => "pdf" %>
+    <!--    <#%= link_to "Pobierz " + blob.filename.to_s, download_file_path(-->
+    <!--        :path => "http://localhost:3000" + rails_blob_path(blob)) %>-->
   <% end %>
-
   <figcaption class="attachment__caption">
     <% if (caption = blob.try(:caption)) %>
       <%= caption %>
-<!--    <#% else %>-->
-<!--      <span class="attachment__name"><%#= blob.filename %></span>-->
-<!--      <span class="attachment__size"><%#= number_to_human_size blob.byte_size %></span>-->
+      <!--    <#% else %>-->
+      <!--      <span class="attachment__name"><%#= blob.filename %></span>-->
+      <!--      <span class="attachment__size"><%#= number_to_human_size blob.byte_size %></span>-->
     <% end %>
   </figcaption>
 </figure>
