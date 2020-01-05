@@ -11,6 +11,7 @@ require("carouselanimation");
 require("navbaranimation");
 window.baguetteBox = require('baguettebox.js');
 import 'application/gallery-init'
+import './trix-overrides'
 //var TurboLinks = require("turbolinks");
 //TurboLinks.start();
 //Allow jQuery
