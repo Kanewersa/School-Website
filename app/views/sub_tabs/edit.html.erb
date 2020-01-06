@@ -1,5 +1,8 @@
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
+    <%= content_tag :div, '', id: 'image_url', data: { source: main_image_url(@sub_tab) } %>
+    <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls(@sub_tab) } %>
+    <%= content_tag :div, '', id: 'signed_ids', data: { source: gallery_images_signed_ids(@sub_tab) } %>
     <div class="container"><h2><%= @sub_tab.title %></h2>
       <hr>
     </div>
@@ -18,6 +21,14 @@
           <%= f.label :body, "Zawartość zakładki" %><br>
           <%= f.rich_text_area :body, :spellcheck => false %>
         </p>
+        <p class="mb-0">
+          <%= f.label "Galeria:", :class => "h5" %><br>
+        </p>
+        <div class="input-field">
+          <div id="galleryInput" datasrc="sub_tab[gallery_images][]"></div>
+        </div>
+        <%= hidden_field_tag('sub_tab[cache][]', '', {:id => "galleryCache"}) %>
+        <br>
         <p>
           <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>
           <%= f.submit "Podgląd", :class => "btn btn-success", :id => 'preview-button' %>
