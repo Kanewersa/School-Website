@@ -1,6 +1,5 @@
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
-    <%= content_tag :div, '', id: 'image_url', data: { source: main_image_url(@sub_tab) } %>
     <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls(@sub_tab) } %>
     <%= content_tag :div, '', id: 'signed_ids', data: { source: gallery_images_signed_ids(@sub_tab) } %>
     <div class="container"><h2><%= @sub_tab.title %></h2>
