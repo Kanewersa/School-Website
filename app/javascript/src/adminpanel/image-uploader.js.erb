@@ -6,28 +6,29 @@ $(document).ready(function(){
     var imageUrl = $('#image_url').data('source');
     let image = [];
     if(imageUrl)
-    {
         image = [
             {id: 1, src: imageUrl}
         ];
-    }
+
     const galleryUrls = $('#gallery_urls').data('source');
     var images = []
     for (const url in galleryUrls)
     {
         images.push({id: url, src: galleryUrls[url]});
     }
-    $('.event-image-input').imageUploader({
+    var imageInput = $('#imageInput');
+    imageInput.imageUploader({
         preloaded: image,
-        imagesInputName: 'event[image]',
+        imagesInputName: imageInput.attr('datasrc'),
         maxFiles: 1
     });
-    $('.event-gallery-input').imageUploader({
+    var galleryInput = $('#galleryInput');
+    galleryInput.imageUploader({
         preloaded: images,
-        imagesInputName: 'event[gallery_images][]',
+        imagesInputName: galleryInput.attr('datasrc'),
         maxFiles: undefined
     });
-    var cache = $('#event_cache_');
+    var cache = $('#galleryCache');
     for (const id in galleryIds)
     {
         cache.val(cache.val() + galleryIds[id] + ",");
@@ -217,12 +218,7 @@ $(document).ready(function(){
                     });
                     // Remove no longer used blob by removing it's id from cache
                     galleryIds[id] = '';
-                    console.log("Removed id from index " +id);
-                    console.log("Ids are now: ")
-                    for(var key in galleryIds){
-                        console.log(galleryIds[key]);
-                    }
-                    var cache = $('#event_cache_');
+                    var cache = $('#galleryCache');
                     cache.val('');
                     for (const id in galleryIds)
                     {
