@@ -3,7 +3,6 @@ class SubTab < ApplicationRecord
   include RailsSortable::Model
   include Requestable
   belongs_to :main_tab
-  has_one :gallery
   has_many :requests, :as => :requestable
 
   friendly_id :title, use: :slugged
