@@ -6,9 +6,9 @@
 </style>
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
-    <%= content_tag :div, '', id: 'image_url', data: { source: event_image_url } %>
-    <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls } %>
-    <%= content_tag :div, '', id: 'signed_ids', data: { source: gallery_images_signed_ids } %>
+    <%= content_tag :div, '', id: 'image_url', data: { source: main_image_url(@event) } %>
+    <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls(@event) } %>
+    <%= content_tag :div, '', id: 'signed_ids', data: { source: gallery_images_signed_ids(@event) } %>
     <div class="container"><h2><%= @event.title %></h2>
       <hr>
     </div>
@@ -42,7 +42,7 @@
           <%= f.label "Obraz:", :class => "h5" %>
         </p>
         <div class="input-field">
-          <div class="event-image-input"></div>
+          <div id="imageInput" datasrc="event[image]"></div>
         </div>
         <p>
           <br>
@@ -53,9 +53,9 @@
           <%= f.label "Galeria:", :class => "h5" %><br>
         </p>
         <div class="input-field">
-          <div class="event-gallery-input"></div>
+          <div id="galleryInput" datasrc="event[gallery_images][]"></div>
         </div>
-        <%= hidden_field_tag 'event[cache][]', '' %>
+        <%= hidden_field_tag('event[cache][]', '', {:id => "galleryCache"}) %>
         <br>
         <p>
           <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>

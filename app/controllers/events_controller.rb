@@ -28,7 +28,6 @@ class EventsController < RequestablesController
 
   def edit
     @event = Event.friendly.find(params[:id])
-    #abort @event.gallery_images.blobs.inspect
     render :layout => 'dashboard'
   end
 
@@ -111,10 +110,10 @@ class EventsController < RequestablesController
         unless new_images.nil?
           @new_event.gallery_images.attach(new_images)
         end
-        #Change event status to unaccepted
+        #Change event status to unapproved
         @new_event.status = 2
         @new_event.save
-        #Add new request to the admin
+        #Add new request for the admin
         @request = Request.new(status: 1, user_id: current_user.id, action: "edit/" + @event.id.to_s,
                                requestable_type: "Event", requestable_id: @new_event.id)
         @request.save
@@ -123,19 +122,6 @@ class EventsController < RequestablesController
     end
   end
 
-  private def get_blobs_from_ids(source)
-    #Split source and get array of ids
-    new_ids = source.split(',')
-    #Remove empty records caused by users deletion of gallery images
-    new_ids = new_ids.reject { |key| key.empty? }
-    # Create blobs array from id's
-    blobs = []
-    new_ids.each do |key|
-      blobs.push(ActiveStorage::Blob.find_signed(key))
-    end
-    #Return blobs array
-    blobs
-  end
 
   private def event_params
     params.require(:event).permit(:title, :slug, :category_id, :body, :important, :announcement, :image, :valid_date, :gallery_images => [])
