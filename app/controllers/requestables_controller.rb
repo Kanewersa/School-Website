@@ -9,6 +9,19 @@ class RequestablesController < ApplicationController
       format.js { render :action => action }
     end
   end
+  private def get_blobs_from_ids(source)
+    #Split source and get array of ids
+    new_ids = source.split(',')
+    #Remove empty records caused by users deletion of gallery images
+    new_ids = new_ids.reject { |key| key.empty? }
+    # Create blobs array from id's
+    blobs = []
+    new_ids.each do |key|
+      blobs.push(ActiveStorage::Blob.find_signed(key))
+    end
+    #Return blobs array
+    blobs
+  end
   private def requestable_params
     params.permit(:status, :user_id, :action, :requestable_type, :requestable_id)
   end
