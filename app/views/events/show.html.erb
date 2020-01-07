@@ -15,7 +15,6 @@
     <section class="gallery-block grid-gallery">
       <div class="container">
         <div class="row">
-
           <% @event.gallery_images.each do |image| %>
             <div class="col-md-6 col-lg-4 item">
               <%= link_to image, :class => "lightbox" do %>
@@ -23,7 +22,6 @@
               <% end %>
             </div>
           <% end %>
-
         </div>
       </div>
     </section>
