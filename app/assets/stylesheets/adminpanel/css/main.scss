@@ -115,7 +115,9 @@ a {
   text-transform: uppercase;
   font-size: 0.875em;
 }
-
+.table {
+  font-size: .9rem;
+}
 .table thead tr th {
   border-bottom: 2px solid #e7ebee;
 }
@@ -132,7 +134,6 @@ a {
   padding: 12px 8px;
 }
 /*endregion*/
-
 .hidden {
   display: none;
 }
@@ -517,7 +518,7 @@ a {
       animation: sonar 1.5s infinite; }
 
 body {
-  font-size: .9rem !important;
+  font-size: .9rem;
   background:#eee !important;
   font-family: 'Roboto', sans-serif;
   //-webkit-animation: fadein 0.5s;
@@ -666,3 +667,35 @@ body {
 .boder-radius-on .sidebar-search .input-group-append .input-group-text {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px; }
+
+/*region Laptop settings*/
+@media (max-width: 1500px) {
+  .table {
+    font-size: .8rem;
+  }
+  .sidebar-item {
+    font-size: .8rem;
+  }
+  .sidebar-wrapper {
+    width: 240px;
+  }
+  .sidebar-wrapper .sidebar-brand {
+    height: 10px;
+    padding: .8rem 1.2rem;
+  }
+  .sidebar-wrapper .sidebar-header {
+    padding: 3px;
+  }
+  .sidebar-wrapper .sidebar-search > div {
+    padding: .3rem .7rem;
+  }
+  .form-control {
+    height: calc(1.5em + .2rem + 2px);
+  }
+}
+@media (max-height: 900px) {
+  .sidebar-wrapper .sidebar-menu ul li a {
+    padding: 4px 30px 4px 20px;
+  }
+}
+/*endregion*/
