@@ -1,7 +1,6 @@
 <div class="modal fade" id="createTabModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-
       <%= form_for :sub_tab, :remote => true, authenticity_token: true, url: tabs_path do |f| %>
         <!-- Modal Header -->
         <div class="modal-header">
@@ -27,6 +26,13 @@
             <%= f.label :body, "Zawartość zakładki" %><br>
             <%= f.rich_text_area :body, :spellcheck => false %>
           </p>
+          <p class="mb-0">
+            <%= f.label "Galeria:", :class => "h5" %><br>
+          </p>
+          <div class="input-field">
+            <div id="galleryInput" datasrc="sub_tab[gallery_images][]"></div>
+          </div>
+          <%= hidden_field_tag('sub_tab[cache][]', '', {:id => "galleryCache"}) %>
           <br>
         </div>
         <!-- Modal footer -->
@@ -35,9 +41,7 @@
           <%= f.submit "Podgląd", :class => "btn btn-success", :id => 'preview-button' %>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
         </div>
-
       <% end %>
-
     </div>
   </div>
 </div>

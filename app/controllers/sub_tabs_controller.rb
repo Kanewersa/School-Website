@@ -19,7 +19,6 @@ class SubTabsController < RequestablesController
       main_tab = MainTab.find(sub_tab_params[:main_tab_id])
       sub_tab_params[:main_tab] = main_tab
       @sub_tab = SubTab.new(sub_tab_params)
-
       if current_user.has_role?(:admin)
         @sub_tab.status = 1
         @sub_tab.save
