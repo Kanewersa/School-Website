@@ -57,6 +57,7 @@ a {
     }
     .navbar {
         max-height: 57px;
+        margin-top: -53px;
     }
 }
 @media (max-width: 767px)
@@ -72,6 +73,9 @@ a {
     }
     .banner h1{
         font-size: 1.7rem;
+    }
+    .navbar {
+        margin-top: -40px;
     }
 }
 .custom-toggler.navbar-toggler {
