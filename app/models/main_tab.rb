@@ -1,5 +1,6 @@
 class MainTab < ApplicationRecord
   extend FriendlyId
+  include Requestable
   friendly_id :name, use: :slugged
   has_many :sub_tabs, dependent: :destroy
 

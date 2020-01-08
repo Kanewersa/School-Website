@@ -1,5 +1,8 @@
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
+    <%= content_tag :div, '', id: 'image_url', data: { source: main_image_url(@main_tab) } %>
+    <%= content_tag :div, '', id: 'gallery_urls', data: { source: gallery_images_urls(@main_tab) } %>
+    <%= content_tag :div, '', id: 'signed_ids', data: { source: gallery_images_signed_ids(@main_tab) } %>
     <div class="container"><h2><%= @main_tab.title %></h2>
       <hr>
     </div>
@@ -17,12 +20,8 @@
         <p>
           <%= f.label "Obraz:", :class => "h5" %>
         </p>
-        <div class="input-group">
-            <span class="input-group-btn">
-              <span id="browse" class="btn btn-small btn-warning">Przeglądaj</span>
-              <%= f.file_field :image, id: "image-name-preview", style: "display: none;" %>
-            </span>
-          <span class="form-control"></span>
+        <div class="input-field">
+          <div id="imageInput" datasrc="main_tab[image]"></div>
         </div>
         <br>
         <p>

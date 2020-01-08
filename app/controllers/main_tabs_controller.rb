@@ -77,6 +77,6 @@ class MainTabsController < RequestablesController
   end
 
   private def main_tab_params
-    params.require(:main_tab).permit(:title, :slug, :body, :image, :gallery_images)
+    params.require(:main_tab).permit(:title, :slug, :body, :image, :gallery_images => [])
   end
 end
