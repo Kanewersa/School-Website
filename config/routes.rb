@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   post '/admin/users/suspend' => 'users#suspend'
   post '/admin/users/activate' => 'users#activate'
   post '/admin/users/delete' => 'users#delete', as: :delete_user
+  post '/admin/edit-account' => 'users#update', as: :update_user
   ##########################################
   get 'test/' => 'pages#test'
 

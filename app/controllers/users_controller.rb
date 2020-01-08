@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def update
+    abort current_user.inspect
+  end
+
   private
   def check_privileges
    unless user_signed_in? && current_user.has_role?(:admin) && current_user.status == "active"

@@ -668,8 +668,14 @@ body {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px; }
 
-/*region Help section*/
-
+/*region Account section*/
+.user-image {
+  max-height: 128px;
+  padding: 0 10px;
+}
+.avatar-field {
+  width: 20rem;
+}
 /*endregion*/
 /*region Laptop settings*/
 @media (max-width: 1500px) {
