@@ -1,6 +1,6 @@
 <article class="index-intro">
-  <% if @sub_tab.main_tab.image.attached? %>
-    <div class="jumbotron text-outline" style="background: url(<%= url_for(@sub_tab.main_tab.image) %>) no-repeat;
+  <% if @sub_tab.image.attached? %>
+    <div class="jumbotron text-outline" style="background: url(<%= url_for(@sub_tab.image) %>) no-repeat;
         padding-top: 200px; background-size: cover; background-position-x: center; background-position-y: 45%">
   <% end %>
   </div>
