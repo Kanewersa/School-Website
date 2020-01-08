@@ -86,45 +86,11 @@
               <span class="menu-text">Wydarzenia</span>
             <% end %>
           </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span class="menu-text">Statystyki</span>
-              <span class="badge badge-pill badge-danger">Niedostępne</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Wykresy</a>
-                </li>
-                <li>
-                  <a href="#">Inne</a>
-                </li>
-              </ul>
-            </div>
-          </li>
           <li>
             <%= link_to requests_path(:command => "all") do %>
               <i class="fa fa-tasks"></i>
               <span class="menu-text">Zgłoszenia</span>
             <% end %>
-          </li>
-          <li class="header-menu">
-            <span>Dodatkowe</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-book"></i>
-              <span class="menu-text">Plan lekcji</span>
-              <span class="badge badge-pill badge-danger">Niedostępne</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-calendar"></i>
-              <span class="menu-text">Kalendarz</span>
-              <span class="badge badge-pill badge-danger">Niedostępne</span>
-            </a>
           </li>
           <% if current_user.has_role?('admin') %>
             <li class="header-menu">
