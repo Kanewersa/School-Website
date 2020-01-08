@@ -12,5 +12,18 @@
   <div class="container">
     <p><%= @main_tab.body %></p>
     <hr>
+    <section class="gallery-block grid-gallery">
+      <div class="container">
+        <div class="row">
+          <% @main_tab.gallery_images.each do |image| %>
+            <div class="col-md-6 col-lg-4 item">
+              <%= link_to image, :class => "lightbox" do %>
+                <%= image_tag image, :class => "img-fluid image scale-on-hover" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
   </div>
 </section>
