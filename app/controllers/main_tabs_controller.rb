@@ -32,7 +32,7 @@ class MainTabsController < RequestablesController
         @main_tab.gallery_images.purge_later
         @main_tab.gallery_images.attach(blobs)
         # Get new images from params
-        new_images = params[:sub_tab][:gallery_images]
+        new_images = params[:main_tab][:gallery_images]
         # If new images were added add them to the tab
         unless new_images.nil?
           @main_tab.gallery_images.attach(new_images)
