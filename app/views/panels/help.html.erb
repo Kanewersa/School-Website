@@ -2,5 +2,137 @@
   <div class="container-fluid p-5">
     <h2>Pomoc</h2>
     <hr>
+    <h3>Tokeny: </h3>
+    <div class="row">
+      <div class="col-10">
+        <div class="accordion" id="faqExample">
+          <div class="card">
+            <div class="card-header p-2" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  P: Co to są i jak działają tokeny?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Token to kilkuliterowy ciąg znaków służący do rejestracji nowego konta do panelu
+                administratora.
+                Jeżeli chcesz dać innej osobie możliwość zarządzania stroną, wystarczy wygenerować nowy token i
+                przekazać go zainteresowanemu.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header p-2" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  P: Jak wygenerować nowy token?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Istnieją dwa miejsca, w których można wygenerować token:
+                <br>Przycisk "Dodaj użytkownika" w zakładce 'Użytkownicy'
+                <br>Przycisk "Stwórz token" w zakładce 'Tokeny'
+                <br>W obu przypadkach tworzenie tokenu przebiega tak samo.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header p-2" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  P: Jak przebiega tworzenie nowego tokenu?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Tworzenie tokenu jest bardzo proste! Wystarczy wybrać rolę przyszłego użytkownika oraz
+                podać jego imię i nazwisko, a następnie kliknąć przycisk "Generuj token".
+                Po chwili naszym oczom powinion ukazać się nowo utworzony token.
+                Podanie imienia i nazwiska jest potrzebne w celu identyfikacji użytkownika przez administratora. Dzięki
+                temu będziesz wiedzieć, który użytkownik wysyła poszczególne zgłoszenia.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header p-2" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  P: Zgubiłem mój token, gdzie mogę go znaleźć?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Po stworzeniu tokenu jest on widoczny w zakładce "Tokeny" przez następne dwa dni. Po
+                tym czasie token traci ważność i zostaje usunięty.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header p-2" id="headingFive">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  P: Mój token nie działa/stracił ważność, co robić?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Ze względów bezpieczeństwa token jest ważny przez kolejne dwa dni po jego utworzeniu.
+                Po tym czasie token wygasa i konieczne jest zgłoszenie się po nowy token do administratora.
+                Jeżeli jesteś pewien, że twój token nadal jest aktywny sprawdź, czy podczas rejestracji na pewno
+                poprawnie go wpisujesz. Możliwe też, że administrator podał ci niepoprawny token.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h3>Użytkownicy: </h3>
+    <div class="row">
+      <div class="col-10">
+        <div class="accordion" id="faqExample">
+          <div class="card">
+            <div class="card-header p-2" id="headingSix">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                  P: Jak dodać nowego użytkownika?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Aby dodać nowego użytkownika należy wygenerować nowy token i przekazać go osobie, która ma posiadać konto do zarządzania stroną.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header p-2" id="headingSeven">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                  P: Czym różni się rola "Użytkownika" od "Administratora"?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#faqExample">
+              <div class="card-body">
+                <b>Odpowiedź:</b> Wszystkie zmiany dokonane na stronie muszą zostać uprzednio zaakceptowane przez administratora.
+                Jeżeli zwykły użytkownik dokona zmiany na stronie, nie będzie ona widoczna od razu. Administrator otrzyma zgłoszenie o dokonanych edycjach, które
+                może swobodnie przejrzeć, zaaprobować bądź odrzucić.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </main>
