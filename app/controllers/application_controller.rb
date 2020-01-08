@@ -27,7 +27,4 @@ end
 # TODO Complete help section
 # TODO Repair user settings
 # TODO Add requests display in users tab
-# TODO Main tabs should have banner image
-# TODO Sorting events (panel admin and site)
-# TODO Admin rights & owner role
 # TODO Add tooltips
