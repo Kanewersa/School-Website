@@ -29,6 +29,14 @@
           <%= f.label :body, "Zawartość zakładki" %><br>
           <%= f.rich_text_area :body, :spellcheck => false %>
         </p>
+        <p class="mb-0">
+          <%= f.label "Galeria:", :class => "h5" %><br>
+        </p>
+        <div class="input-field">
+          <div id="galleryInput" datasrc="main_tab[gallery_images][]"></div>
+        </div>
+        <%= hidden_field_tag('main_tab[cache][]', '', {:id => "galleryCache"}) %>
+        <br>
         <p>
           <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>
           <%= f.submit "Podgląd", :class => "btn btn-success", :id => 'preview-button' %>
