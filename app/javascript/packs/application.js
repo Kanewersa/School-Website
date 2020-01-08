@@ -1,9 +1,8 @@
 require("@rails/activestorage").start();
 require("channels");
 require('bootstrap/dist/js/bootstrap');
-import {} from 'jquery'
+import 'jquery'
 import 'jquery-ujs'
-require("jquery-ujs");
 import {} from 'jquery-ui'
 require("trix");
 require("@rails/actiontext");
