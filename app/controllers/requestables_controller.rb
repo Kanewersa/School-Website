@@ -9,6 +9,18 @@ class RequestablesController < ApplicationController
       format.js { render :action => action }
     end
   end
+
+  # Validates requestable and returns ajax response if not valid
+  protected def validates?(params, class_type)
+    @requestable = class_type.new(params)
+    unless @requestable.valid?
+      # Respond with 422 (unprocessable entity) and render errors
+      render :json => { :errors => @requestable.errors.full_messages }, :status => 422
+      false
+    end
+    true
+  end
+
   private def get_blobs_from_ids(source)
     #Split source and get array of ids
     new_ids = source.split(',')
