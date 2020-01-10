@@ -35,6 +35,14 @@ en:
       sub_tab:
         title: "Nazwa zakładki"
         body: "Zawartość zakładki"
+      main_tab:
+        title: "Nazwa zakładki"
+        body: "Zawartość zakładki"
+        image: "Obraz zakładki"
+      event:
+        title: "Nazwa wydarzenia"
+        body: "Zawartość"
+        image: "Obraz wydarzenia"
     errors:
       models:
         sub_tab:
@@ -43,6 +51,22 @@ en:
               blank: "nie może być pusta"
             title:
               blank: "nie może być pusta"
+        main_tab:
+          attributes:
+            body:
+              blank: "nie może być pusta"
+            title:
+              blank: "nie może być pusty"
+            image:
+              blank: "nie może być pusty"
+        event:
+          attributes:
+            body:
+              blank: "nie może być pusta"
+            title:
+              blank: "nie może być pusta"
+            image:
+              blank: "nie może być pusty"
   hello: "Hello world"
   datetime:
     distance_in_words:

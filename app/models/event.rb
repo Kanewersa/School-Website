@@ -9,6 +9,5 @@ class Event < ApplicationRecord
   has_many :requests, :as => :requestable
 
   validates :title, :presence => true
-  validates :image, :presence => true
   validates :body, :presence => true
 end

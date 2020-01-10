@@ -7,6 +7,9 @@ class MainTab < ApplicationRecord
   has_rich_text :body
   has_one_attached :image
 
+  validates :title, :presence => true
+  validates :body, :presence => true
+
   def index
     @main_tabs = MainTab.all
   end
