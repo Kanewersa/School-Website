@@ -15,7 +15,7 @@ import {} from 'adminpanel/get-token-ajax';
 import {} from 'adminpanel/tooltip';
 import {} from 'adminpanel/events-datepicker';
 import {} from 'adminpanel/address-translate';
-import {} from 'adminpanel/event-preview';
+import {} from 'adminpanel/requestable-ajax';
 import {} from 'adminpanel/embedded-modals';
 import {} from 'adminpanel/sortable-tabs';
 import {} from 'adminpanel/preview-navbar-animation'
