@@ -54,18 +54,6 @@
   padding-bottom: 10px;
 }
 
-.modal-backdrop.in {
-  zoom: 1;
-  filter: alpha(opacity=75);
-  -webkit-opacity: .75;
-  -moz-opacity: .75;
-  opacity: .75;
-}
-
-.modal-backdrop {
-  background-color: #fff;
-}
-
 .modal-message.modal-success .modal-header {
   color: #53a93f;
   border-bottom: 3px solid #a0d468;
