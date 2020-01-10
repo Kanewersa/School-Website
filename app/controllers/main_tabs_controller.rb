@@ -11,6 +11,10 @@ class MainTabsController < RequestablesController
   end
 
   def update
+    # Validate requestables params
+    unless validates?(main_tab_params, MainTab)
+      return
+    end
     if params[:commit] == 'Podgląd'
       @main_tab = MainTab.new(main_tab_params)
       if main_tab_params[:image] == nil

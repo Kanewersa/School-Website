@@ -4,6 +4,10 @@ class EventsController < RequestablesController
   respond_to :js, :html
 
   def create
+    # Validate requestables params
+    unless validates?(event_params, Event)
+      return
+    end
     if params[:commit] == 'Podgląd'
       @event = Event.new(event_params)
       preview('preview', @event)
@@ -50,6 +54,10 @@ class EventsController < RequestablesController
   end
 
   def update
+    # Validate requestables params
+    unless validates?(event_params, Event)
+      return
+    end
     if params[:commit] == 'Podgląd'
       @event = Event.new(event_params)
       if event_params[:image] == nil
