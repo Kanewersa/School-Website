@@ -19,7 +19,7 @@
             <% @events.each do |event| %>
               <div class="col-md-6 col-lg-4">
                 <div class="card border-0 transform-on-hover">
-                  <%= link_to events_path, :class => "lightbox" do %>
+                  <%= link_to edit_event_path(:id => event.slug), :class => "lightbox" do %>
                     <% if event.image.attached? %>
                       <%= image_tag(url_for(event.image), :alt => "Event image", :class => "card-img-top") %>
                     <% else %>
