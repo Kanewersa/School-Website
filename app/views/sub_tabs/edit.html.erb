@@ -34,21 +34,6 @@
         </p>
       </div>
     <% end %>
-    <div id="modal-response" class="modal modal-message modal-danger fade" style="display: none;" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header" style="justify-content: center">
-            <i class="fas fa-fire"></i>
-          </div>
-          <div id="modal-title" class="modal-title">Wystąpił błąd</div>
-          <br>
-          <div id="modal-response-body" class="modal-body">TRESCBLEDU</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
-          </div>
-        </div> <!-- / .modal-content -->
-      </div> <!-- / .modal-dialog -->
-    </div>
   </div>
 </main>
 <div class="modal fade" id="preview-modal">
@@ -57,3 +42,4 @@
     </div>
   </div>
 </div>
+<%= render template: 'requestables/response-modal' %>
