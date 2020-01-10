@@ -30,6 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    attributes:
+      sub_tab:
+        title: "Nazwa zakładki"
+        body: "Zawartość zakładki"
+    errors:
+      models:
+        sub_tab:
+          attributes:
+            body:
+              blank: "nie może być pusta"
+            title:
+              blank: "nie może być pusta"
   hello: "Hello world"
   datetime:
     distance_in_words:
