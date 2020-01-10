@@ -28,3 +28,4 @@ end
 # TODO Repair user settings
 # TODO Add requests display in users tab
 # TODO Add tooltips
+# TODO Add image validation on some requestables
