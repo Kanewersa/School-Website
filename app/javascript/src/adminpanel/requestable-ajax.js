@@ -4,14 +4,9 @@ $('[id="preview-button"]').click(function () {
 });
 $('#preview-modal').on('hidden.bs.modal', function () {
     clicked = false;
+    $('#preview-body').empty();
 });
 $('form').on('ajax:success', function (event, data, status, xhr) {
-    var modal = $('#modal-response');
-    //Change response modal css for success
-    if(modal.hasClass('modal-danger')){
-        modal.removeClass('modal-danger');
-        modal.addClass('modal-success');
-    }
     if (clicked) {
         $('#preview-modal').modal('show');
     }
