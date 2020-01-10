@@ -11,6 +11,13 @@ class SubTabsController < RequestablesController
   end
 
   def create
+    @sub_tab = SubTab.new(sub_tab_params)
+    # If sub tab is not valid
+    unless @sub_tab.valid?
+      # Respond with 422 (unprocessable entity) and render errors
+      render :json => { :errors => @sub_tab.errors.full_messages }, :status => 422
+      return
+    end
     if params[:commit] == 'Podgląd'
       @sub_tab = SubTab.new(sub_tab_params)
       preview('preview', @sub_tab)
