@@ -66,7 +66,8 @@ class MainTabsController < RequestablesController
                                requestable_type: "MainTab", requestable_id: @new_main_tab.id)
         @request.save
       end
-      ajax_redirect_to(tabs_path)
+      render :json => { :info => current_user.roles[0] }
+      #ajax_redirect_to(tabs_path)
     end
   end
 

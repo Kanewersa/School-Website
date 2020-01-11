@@ -49,6 +49,7 @@ class SubTabsController < RequestablesController
       return
     end
     if params[:commit] == 'Podgląd'
+      @sub_tab = SubTab.new(sub_tab_params)
       @sub_tab.main_tab_id = SubTab.friendly.find(params[:id]).main_tab_id
       preview('preview', @sub_tab)
       nil
@@ -97,7 +98,8 @@ class SubTabsController < RequestablesController
                                requestable_type: "SubTab", requestable_id: @new_sub_tab.id)
         @request.save
       end
-      ajax_redirect_to(tabs_path)
+      render :json => { :info => current_user.roles[0] }
+      #ajax_redirect_to(tabs_path)
     end
   end
 
