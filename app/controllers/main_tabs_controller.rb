@@ -30,6 +30,10 @@ class MainTabsController < RequestablesController
                          :slug => params[:main_tab][:slug],
                          :body => params[:main_tab][:body],
                          :updated_at => Time.now)
+        # If new image was uploaded update it
+        if params[:main_tab][:image]
+          @main_tab.update(:image => params[:main_tab][:image])
+        end
         # Get new blob id's from params
         blobs = get_blobs_from_ids(params[:main_tab][:cache][0])
         # Purge old images and replace them with new ones
@@ -47,6 +51,7 @@ class MainTabsController < RequestablesController
         @new_main_tab =  MainTab.new(:title => params[:main_tab][:title],
                                      :slug => params[:main_tab][:slug],
                                      :body => params[:main_tab][:body],
+                                     :image => params[:main_tab][:image],
                                      :updated_at => Time.now)
         # Get new blob id's from params
         blobs = get_blobs_from_ids(params[:sub_tab][:cache][0])
