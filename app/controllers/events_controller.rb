@@ -26,7 +26,9 @@ class EventsController < RequestablesController
                                requestable_type: "Event", requestable_id: @event.id)
         @request.save
       end
-      ajax_redirect_to(events_path)
+      respond_to do |format|
+        format.js { render 'validation-success'}
+      end
     end
   end
 
@@ -126,8 +128,9 @@ class EventsController < RequestablesController
                                requestable_type: "Event", requestable_id: @new_event.id)
         @request.save
       end
-      render :json => { :info => current_user.roles[0] }
-      #ajax_redirect_to(events_path)
+      respond_to do |format|
+        format.js { render 'validation-success'}
+      end
     end
   end
 
