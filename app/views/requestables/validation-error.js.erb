@@ -1,0 +1,17 @@
+var errorModal = $('#modal-error');
+var body = $('#modal-error-body');
+
+if (response.status === 422) {
+    //Render bad inputs
+    var errors = response.errors;
+    //Append errors to modal
+    body.empty();
+    for (var error of errors) {
+        body.append(error +'<br>');
+    }
+    //Show modal
+    errorModal.modal('show');
+} else {
+    body.empty();
+    body.append('Wystąpił nieoczekiwany błąd ' + data.status);
+}
