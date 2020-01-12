@@ -9,6 +9,7 @@ class MainTab < ApplicationRecord
 
   validates :title, :presence => true
   validates :body, :presence => true
+  validates :image, :presence => true
 
   def index
     @main_tabs = MainTab.all

@@ -11,8 +11,16 @@ class MainTabsController < RequestablesController
   end
 
   def update
+    @main_tab = MainTab.friendly.find(params[:id])
+    parameters = main_tab_params
+    puts "PUT!"
+    if parameters[:image].nil?
+      if @main_tab.image.attached?
+        parameters[:image] = @main_tab.image.blob
+      end
+    end
     # Validate requestables params
-    unless validates?(main_tab_params, MainTab)
+    unless validates?(parameters, MainTab)
       return
     end
     if params[:commit] == 'Podgląd'
@@ -71,8 +79,9 @@ class MainTabsController < RequestablesController
                                requestable_type: "MainTab", requestable_id: @new_main_tab.id)
         @request.save
       end
-      render :json => { :info => current_user.roles[0] }
-      #ajax_redirect_to(tabs_path)
+      respond_to do |format|
+        format.js { render 'validation-success'}
+      end
     end
   end
 
