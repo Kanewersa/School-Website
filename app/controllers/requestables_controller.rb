@@ -15,7 +15,9 @@ class RequestablesController < ApplicationController
     @requestable = class_type.new(params)
     unless @requestable.valid?
       # Respond with 422 (unprocessable entity) and render errors
-      render :json => { :errors => @requestable.errors.full_messages }, :status => 422
+      respond_to do |format|
+        format.js { render 'validation-error', locals: { errors: @requestable.errors.full_messages, :status => 422 } }
+      end
       return false
     end
     true

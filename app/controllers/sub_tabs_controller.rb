@@ -34,7 +34,9 @@ class SubTabsController < RequestablesController
       end
       @sub_tab.sort = SubTab.count + 1
       @sub_tab.save
-      ajax_redirect_to(tabs_path)
+      respond_to do |format|
+        format.js { render 'validation-success'}
+      end
     end
   end
 
@@ -98,8 +100,9 @@ class SubTabsController < RequestablesController
                                requestable_type: "SubTab", requestable_id: @new_sub_tab.id)
         @request.save
       end
-      render :json => { :info => current_user.roles[0] }
-      #ajax_redirect_to(tabs_path)
+      respond_to do |format|
+        format.js { render 'validation-success'}
+      end
     end
   end
 
