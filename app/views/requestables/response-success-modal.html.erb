@@ -1,15 +1,15 @@
-<div id="modal-response" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
+<div id="modal-success-response" class="modal modal-message modal-success fade" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header" style="justify-content: center">
-        <i id="modal-icon" class="far fa-thumbs-up"></i>
+        <i class="far fa-thumbs-up"></i>
       </div>
-      <div id="modal-title" class="modal-title">Sukces!</div>
+      <div class="modal-title">Sukces!</div>
       <br>
       <% if current_user.has_role?(:admin) %>
-        <div id="modal-response-body" class="modal-body">Twoje zmiany zostały zapisane.</div>
+        <div class="modal-body">Twoje zmiany zostały zapisane.</div>
       <% else %>
-        <div id="modal-response-body" class="modal-body">Twoje zmiany zostały wysłane do administratora w celu ich zatwierdzenia.</div>
+        <div class="modal-body">Twoje zmiany zostały wysłane do administratora w celu ich zatwierdzenia.</div>
       <% end %>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
