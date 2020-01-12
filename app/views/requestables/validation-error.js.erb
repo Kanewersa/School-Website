@@ -1,13 +1,13 @@
 var errorModal = $('#modal-error');
 var body = $('#modal-error-body');
-
-if (response.status === 422) {
-    //Render bad inputs
-    var errors = response.errors;
+var errors = "<%= errors.join(',') %>"
+errors = errors.split(',');
+status = '<%= status %>'
+if (status === '422') {
     //Append errors to modal
     body.empty();
     for (var error of errors) {
-        body.append(error +'<br>');
+        body.append(error + '<br>');
     }
     //Show modal
     errorModal.modal('show');
