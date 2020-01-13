@@ -6,6 +6,8 @@ class PagesController < ApplicationController
     @categories = Category.all
     @events_count = properEventsAmount
     @events = Event.where("status = 1").order("important DESC, created_at DESC").take(@events_count)
+    @plan_tab = SubTab.where("title = ?", "Plan lekcji").take!
+    @classes_tab = SubTab.where("title = ?", "Zajęcia pozalekcyjne").take!
   end
 
   def properEventsAmount
