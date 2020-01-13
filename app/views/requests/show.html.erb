@@ -84,7 +84,9 @@
             <%= link_to accept_request_path(:id => request.id), :method => :post do %>
               <button type="button" class="btn btn-request btn-success">Zaakceptuj</button>
             <% end %>
-            <button type="button" class="btn btn-request btn-warning">Edytuj</button>
+            <%= link_to edit_polymorphic_path(request.requestable) do %>
+              <button type="button" class="btn btn-request btn-warning">Edytuj</button>
+            <% end %>
             <%= link_to reject_request_path(:id => request.id), :method => :post do %>
               <button type="button" class="btn btn-danger">Odrzuć</button>
             <% end %>
