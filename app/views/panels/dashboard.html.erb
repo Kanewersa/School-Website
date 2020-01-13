@@ -1,5 +1,13 @@
 <main class="page-content pt-2">
   <div class="container-fluid p-5">
-    <h2>Tutaj będzie Dashboard! qwq</h2>
+    <h1>Witaj <%= current_user.fullname.split.first %>!</h1>
+    <hr>
+    <br>
+    <h3>W tej chwili masz <%= @requests.count %> nierozpatrzonych zgłoszeń.</h3>
+    <br>
+    <% if @requests.count > 0 %>
+      <%= button_to "Zobacz nowe zgłoszenia", requests_path, params: {:command => "new"}, :class => "btn btn-warning btn-lg" %>
+    <% end %>
+    <hr class="mt-4">
   </div>
 </main>
