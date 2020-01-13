@@ -31,8 +31,6 @@ class PanelsController < ApplicationController
   end
 
   def requests
-    puts "PUTS!!!"
-    puts current_user.id
     case params[:command]
     when "all"
       adm = "status > 0"
