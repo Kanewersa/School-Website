@@ -7,7 +7,7 @@ $(document).ready(function () {
     });
 
     $(document).on({
-        'show.bs.modal': function () {
+        'shown.bs.modal': function () {
             var zIndex = 1040 + (10 * $('.modal:visible').length);
             $(this).css('z-index', zIndex);
             setTimeout(function() {
