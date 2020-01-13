@@ -56,6 +56,10 @@
       box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
     }
   }
+
+  .btn-request {
+    margin-top: 5px;
+  }
 </style>
 <div class="col-md-6 col-lg-4">
   <div class="card border-0">
@@ -75,30 +79,30 @@
       <hr>
 
       <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group mx-auto">
+        <div class="btn-group btn-request-group mx-auto">
           <% if current_user.has_role?(:admin) && request.status == "pending" %>
             <%= link_to accept_request_path(:id => request.id), :method => :post do %>
-              <button type="button" class="btn btn-success">Zaakceptuj</button>
+              <button type="button" class="btn btn-request btn-success">Zaakceptuj</button>
             <% end %>
-            <button type="button" class="btn btn-warning">Edytuj</button>
+            <button type="button" class="btn btn-request btn-warning">Edytuj</button>
             <%= link_to reject_request_path(:id => request.id), :method => :post do %>
               <button type="button" class="btn btn-danger">Odrzuć</button>
             <% end %>
           <% end %>
           <% if !current_user.has_role?(:admin) && request.status != "approved" %>
-            <button type="button" class="btn btn-warning">Edytuj</button>
+            <button type="button" class="btn btn-request btn-warning">Edytuj</button>
           <% end %>
           <% if !current_user.has_role?(:admin) && request.status == "pending" %>
-            <button type="button" class="btn btn-danger">Anuluj</button>
+            <button type="button" class="btn btn-request btn-danger">Anuluj</button>
           <% end %>
           <% if !current_user.has_role?(:admin) && (request.status == "canceled" || request.status == "rejected") %>
             <%= link_to resend_request_path(:id => request.id), :method => :post do %>
-              <button type="button" class="btn btn-warning">Wyślij ponownie</button>
+              <button type="button" class="btn btn-request btn-warning">Wyślij ponownie</button>
             <% end %>
           <% end %>
           <%= button_to "Podgląd",
                         preview_request_path(:request => request),
-                        :class => "btn btn-info",:id => "preview-button", :remote => true %>
+                        :class => "btn btn-request btn-info", :id => "preview-button", :remote => true %>
         </div>
       </div>
     </div>
