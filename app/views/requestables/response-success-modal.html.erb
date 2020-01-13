@@ -12,7 +12,7 @@
         <div class="modal-body">Twoje zmiany zostały wysłane do administratora w celu ich zatwierdzenia.</div>
       <% end %>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+        <%= button_to "OK", target_location, :method => "get", :class => "btn btn-danger" %>
       </div>
     </div>
   </div>

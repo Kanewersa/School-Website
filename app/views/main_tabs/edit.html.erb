@@ -50,5 +50,5 @@
     </div>
   </div>
 </div>
-<%= render template: 'requestables/response-success-modal' %>
+<%= render template: 'requestables/response-success-modal', :locals => {:target_location => tabs_path} %>
 <%= render template: 'requestables/response-error-modal' %>

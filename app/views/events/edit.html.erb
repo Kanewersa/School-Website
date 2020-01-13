@@ -71,6 +71,6 @@
     </div>
   </div>
 </div>
-<%= render template: 'requestables/response-success-modal' %>
+<%= render template: 'requestables/response-success-modal', :locals => {:target_location => events_path} %>
 <%= render template: 'requestables/response-error-modal' %>
 <%= javascript_pack_tag "datepicker.js" %>
