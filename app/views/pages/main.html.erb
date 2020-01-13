@@ -105,35 +105,96 @@
   </div>
 </div>
 <!--#endregion-->
-<!--<h1 align="center" style="padding-top: 70px; padding-bottom: 50px">| Partnerzy |</h1>-->
+<h1 style="padding-top: 70px; padding-bottom: 10px; text-align: center">| Partnerzy |</h1>
 <!--#region Partners carousel  -->
-<!--<div class="container">-->
-<!--  <div class="carousel slide multi-item-carousel" id="theCarousel" style="margin-bottom: 50px">-->
-<!--    <div class="carousel-inner row w-100 mx-auto">-->
-<!--      <div class="carousel-item active col-md-4">-->
-<!--        <img src="assets/centrumdoradztwa.png" class="img-fluid mx-auto d-block">-->
-<!--      </div>-->
-<!--      <div class="carousel-item col-md-4">-->
-<!--        <img src="assets/liniadzieciom.png" class="img-fluid mx-auto d-block">-->
-<!--      </div>-->
-<!--      <div class="carousel-item col-md-4">-->
-<!--        <img src="assets/pcss.png" class="img-fluid mx-auto d-block">-->
-<!--      </div>-->
-<!--      <div class="carousel-item col-md-4">-->
-<!--        <img src="assets/szacundlazawodowcow.png" class="img-fluid mx-auto d-block">-->
-<!--      </div>-->
-<!--      <div class="carousel-item col-md-4">-->
-<!--        <img src="assets/szkolazmisja.png" class="img-fluid mx-auto d-block">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <a class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">-->
-<!--      <span class="fas fa-arrow-left" aria-hidden="true" style="color: black"></span>-->
-<!--      <span class="sr-only">Previous</span>-->
-<!--    </a>-->
-<!--    <a class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">-->
-<!--      <span class="fas fa-arrow-right" aria-hidden="true" style="color: black"></span>-->
-<!--      <span class="sr-only">Next</span>-->
-<!--    </a>-->
-<!--  </div>-->
-<!--</div>-->
+
+<style>
+  @media (max-width: 768px) {
+    #recipeInner .carousel-item > div {
+      display: none;
+    }
+    #recipeInner .carousel-item > div:first-child {
+      display: block;
+    }
+  }
+
+  #recipeInner .carousel-item.active,
+  #recipeInner .carousel-item-next,
+  #recipeInner .carousel-item-prev {
+    display: flex;
+  }
+
+  /* display 3 */
+  @media (min-width: 768px) {
+
+    #recipeInner .carousel-item-right.active,
+    #recipeInner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+
+    #recipeInner .carousel-item-left.active,
+    #recipeInner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  #recipeInner .carousel-item-right,
+  #recipeInner .carousel-item-left{
+    transform: translateX(0);
+  }
+
+
+</style>
+<div class="container text-center my-3">
+  <div class="row mx-auto my-auto">
+    <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+      <div id="recipeInner" class="carousel-inner w-100" role="listbox">
+        <div class="carousel-item active">
+          <div class="col-md-4">
+            <div class="card card-body">
+              <%= image_tag 'centrumdoradztwa.png', :class => "img-fluid" %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-4">
+            <div class="card card-body">
+              <%= image_tag 'liniadzieciom.png', :class => "img-fluid" %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-4">
+            <div class="card card-body">
+              <%= image_tag 'pcss.png', :class => "img-fluid" %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-4">
+            <div class="card card-body">
+              <%= image_tag 'szacundlazawodowcow.png', :class => "img-fluid" %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-4">
+            <div class="card card-body">
+              <%= image_tag 'szkolazmisja.png', :class => "img-fluid" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!--#endregion-->

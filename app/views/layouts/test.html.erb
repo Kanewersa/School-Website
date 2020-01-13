@@ -1,59 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
   <title>Szkoła Podstawowa nr 60</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'test.css', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag 'test.css' %>
+  <%= javascript_pack_tag 'application' %>
 </head>
 <body>
-
-
-<div class="container">
-  <div class="carousel slide multi-item-carousel" id="theCarousel">
-    <div class="carousel-inner row w-100 mx-auto">
-      <div class="carousel-item active col-md-4">
-        <img src="https://via.placeholder.com/300/f44336/000000?text=1" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/e91e63/000000?text=2" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/9c27b0/000000?text=3" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/673ab7/000000?text=4" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/4caf50/000000?text=5" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/8bc34a/000000?text=6" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/ffffff/000000?text=7" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/000000/ffffff?text=8" class="img-fluid mx-auto d-block">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-
-
 <%= yield %>
 <%= javascript_pack_tag "test", 'data-turbolinks-track': 'reload' %>
 </body>
