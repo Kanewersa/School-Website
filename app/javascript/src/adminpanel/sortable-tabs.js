@@ -17,6 +17,10 @@
                 data: JSON.stringify({
                     rails_sortable: $(this).sortable('toArray'),
                 }),
+            }).fail(function(event, data, status){
+                if(status === "Unauthorized") {
+                    $('#modal-sortable-error').modal('show');
+                }
             });
         };
 
@@ -27,4 +31,8 @@ $(function() {
     $('.sortable').railsSortable({
         revert : true
     });
+});
+
+$('#modal-sortable-error').on('hidden.bs.modal', function () {
+    location.reload();
 });
