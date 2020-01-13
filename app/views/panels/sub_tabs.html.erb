@@ -10,13 +10,11 @@
         <div class="card bg-light">
           <div class="card-body text-center">
             <h3 class="card-text"><b><%= tab.title %></b>
-              <% if tab.sub_tabs.count == 0 %>
               <%= link_to edit_main_tab_path(id: tab.slug), :class => 'table-link', :style => "font-size: 18px" do %>
               <span class="fa-stack" data-toggle="tooltip" title="Edytuj">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
               </span>
-                  <% end %>
               <% end %>
             </h3>
             <hr>
