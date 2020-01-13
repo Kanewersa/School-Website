@@ -31,22 +31,24 @@ class PanelsController < ApplicationController
   end
 
   def requests
+    puts "PUTS!!!"
+    puts current_user.id
     case params[:command]
     when "all"
       adm = "status > 0"
-      usr = ":user_id => current_user"
+      usr = "user_id = ? AND status > ?", current_user.id, 0
     when "new"
       adm = "status = 1"
-      usr = ":user_id => current_user, status = 1"
+      usr = "user_id = ? AND status = ?", current_user.id, 1
     when "approved"
       adm = "status = 2"
-      usr = ":user_id => current_user, status = 2"
+      usr = "user_id = ? AND status = ?", current_user.id, 2
     when"rejected"
       adm = "status = 3"
-      usr = ":user_id => current_user, status = 3"
+      usr = "user_id = ? AND status = ?", current_user.id, 3
     else
       adm = "status = 4"
-      usr = ":user_id => current_user, status = 4"
+      usr = "user_id = ? AND status = ?", current_user.id, 4
     end
 
     if current_user.has_role?(:admin)
@@ -57,7 +59,7 @@ class PanelsController < ApplicationController
   end
 
   def generate_token
-    check_if_admin
+    check_if_user_is_admin
 
     @token = Token.new
     code = SecureRandom.hex(4)
