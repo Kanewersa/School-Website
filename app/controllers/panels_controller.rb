@@ -3,18 +3,6 @@ class PanelsController < ApplicationController
   respond_to :html, :js
   layout 'dashboard'
 
-  def check_if_user_logged
-    unless user_signed_in?
-      redirect_to login_path
-    end
-  end
-
-  def check_if_admin
-    unless current_user.has_role?(:admin)
-      redirect_to login_path
-    end
-  end
-
   def change_background_color
     current_user.background_color = params[:color]
     current_user.save
@@ -26,11 +14,11 @@ class PanelsController < ApplicationController
   end
 
   def users
-    check_if_admin
+    check_if_user_is_admin
   end
 
   def tokens
-    check_if_admin
+    check_if_user_is_admin
   end
 
   def events

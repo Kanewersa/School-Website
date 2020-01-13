@@ -20,6 +20,18 @@ class ApplicationController < ActionController::Base
       format.js { render js: "window.location='#{path}'" }
     end
   end
+
+  def check_if_user_logged
+    unless user_signed_in?
+      redirect_to login_path
+    end
+  end
+
+  def check_if_user_is_admin
+    unless current_user.has_role?(:admin)
+      redirect_to login_path
+    end
+  end
 end
 
 # TODO Add extra features to trix editor (font size, custom fonts)
