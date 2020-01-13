@@ -18,10 +18,11 @@ import './trix-overrides'
 window.jQuery = $;
 window.$ = $;
 
-$(document).ready(function () {
-    //TODO Can't add target="_blank" to link_to inside trix body
-    $(".pdf").click(function(event) {
-        event.preventDefault();
-        window.open($(this).attr('href'));
-    });
-});
+// Open all external links with new-tab class in a new window
+addEventListener("click", function(event) {
+    var el = event.target;
+
+    if(el.classList.contains("new-tab")) {
+        el.setAttribute("target", "_blank")
+    }
+}, true);
