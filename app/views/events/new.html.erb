@@ -38,10 +38,10 @@
             <%= f.label "Obraz:", :class => "h5" %>
           </p>
           <div class="input-field">
-            <div class="event-image-input"></div>
+            <div id="imageInput" datasrc="event[image]"></div>
           </div>
+          <br>
           <p>
-            <br>
             <%= f.label "Zawartość:", :class => "h5" %><br>
             <%= f.rich_text_area :body, :spellcheck => false %>
           </p>
@@ -49,9 +49,9 @@
             <%= f.label "Galeria:", :class => "h5" %><br>
           </p>
           <div class="input-field">
-            <div class="event-gallery-input"></div>
+            <div id="galleryInput" datasrc="event[gallery_images][]"></div>
           </div>
-          <%= hidden_field_tag 'event[cache][]', '' %>
+          <%= hidden_field_tag('event[cache][]', '', {:id => "galleryCache"}) %>
           <br>
         </div>
         <!-- Modal footer -->
