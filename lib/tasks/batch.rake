@@ -14,4 +14,8 @@ namespace :batch do
       a.save
     }
   end
+  task remove_old_users: :environment do
+    users = User.where("status = ? AND updated_at < ?", 'inactive', Time.now - 2.day)
+    users.each { |t| t.destroy}
+  end
 end

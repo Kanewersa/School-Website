@@ -13,6 +13,9 @@ end
 every 1.day, at: '2:00 am' do
   rake 'batch:take_off_old_events'
 end
+every 1.day, at: '2:30 am' do
+  rake 'batch:remove_old_users'
+end
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
 #   runner "MyModel.some_method"
