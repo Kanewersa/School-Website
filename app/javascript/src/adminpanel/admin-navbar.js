@@ -72,7 +72,7 @@ $('[data-theme]').click(function () {
     localStorage['dataTheme'] = $(this).attr('data-theme');
 });
 $('.page-wrapper').removeClass(themes);
-$('.page-wrapper').addClass(localStorage['dataTheme']);
+$('.page-wrapper').addClass(localStorage['dataTheme'] || "default-theme");
 // switch between background images
 var bgs = "bg1 bg2 bg3 bg4";
 $('[data-bg]').click(function () {
@@ -83,7 +83,7 @@ $('[data-bg]').click(function () {
     localStorage['dataBg'] = $(this).attr('data-bg');
 });
 $('.page-wrapper').removeClass(bgs);
-$('.page-wrapper').addClass(localStorage['dataBg']);
+$('.page-wrapper').addClass(localStorage['dataBg'] || "bg1");
 
 // toggle background image
 $("#toggle-bg").change(function (e) {
