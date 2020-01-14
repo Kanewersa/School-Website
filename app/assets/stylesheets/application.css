@@ -738,3 +738,7 @@ section .section-title {
     }
 }
 /*#endregion*/
+ .trix-content div .attachment > img {
+     max-width: 100%;
+     height: auto;
+ }
