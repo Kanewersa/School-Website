@@ -6,8 +6,7 @@ require("jquery-ujs");
 require("jquery-ui");
 require("trix");
 require("@rails/actiontext");
-var TurboLinks = require("turbolinks");
-TurboLinks.start();
+require("turbolinks").start();
 //Import custom scripts
 require("application/carousel-animation");
 require("application/navbar-animation");
@@ -19,6 +18,7 @@ import 'application/multi-carousel.js'
 window.jQuery = $;
 window.$ = $;
 
+$(document).on('turbolinks:load', function (){ alert("turbolinks on load event works") });
 // Open all external links with new-tab class in a new window
 addEventListener("click", function(event) {
     var el = event.target;
