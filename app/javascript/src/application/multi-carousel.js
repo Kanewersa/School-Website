@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
     jQuery('#recipeCarousel').carousel({
         interval: 10000
     });

@@ -1,20 +1,20 @@
 require("@rails/activestorage").start();
 require("channels");
 require('bootstrap/dist/js/bootstrap');
-import 'jquery'
-import 'jquery-ujs'
-import {} from 'jquery-ui'
+require("jquery");
+require("jquery-ujs");
+require("jquery-ui");
 require("trix");
 require("@rails/actiontext");
+var TurboLinks = require("turbolinks");
+TurboLinks.start();
 //Import custom scripts
-require("carouselanimation");
-require("navbaranimation");
+require("application/carousel-animation");
+require("application/navbar-animation");
 window.baguetteBox = require('baguettebox.js');
 import 'application/gallery-init'
 import './trix-overrides'
 import 'application/multi-carousel.js'
-//var TurboLinks = require("turbolinks");
-//TurboLinks.start();
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
