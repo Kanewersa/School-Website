@@ -1,0 +1,67 @@
+.card-color {
+    background-color: rgb(250,250,250);
+}
+.blackboard {
+    margin-top: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 20%;
+    border: none;
+}
+.blackboard-icon {
+    color: white;
+    padding-top: 50px;
+}
+.blackboard-title {
+    color: white;
+    font-size: 32px;
+    padding-top: 50px;
+}
+.blackboard-text {
+    color: white;
+    font-size: 22px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+@media(max-width: 1500px) {
+    .blackboard-title {
+        color: white;
+        font-size: 22px;
+        padding-top: 50px;
+    }
+    .blackboard-text {
+        color: white;
+        font-size: 14px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .blackboard-icon {
+        font-size: 80px;
+        padding-top: 50px;
+    }
+}
+@media (max-width: 767px) {
+    .blackboard {
+        padding: 0 20%;
+    }
+    .blackboard-bg {
+        display: none;
+    }
+    .blackboard-overlay {
+        position: relative;
+        padding-top: 0;
+    }
+    .blackboard-icon {
+        padding-top: 25px;
+    }
+    .blackboard-button {
+        margin-bottom: 25px;
+    }
+    .blackboard-title {
+        padding-top: 25px;
+    }
+    .blackboard-text {
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+}

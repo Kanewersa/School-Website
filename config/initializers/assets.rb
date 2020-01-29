@@ -12,9 +12,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 Rails.application.config.assets.precompile += %w( application.js )
-Rails.application.config.assets.precompile += %w( login.css )
-Rails.application.config.assets.precompile += %w( adminpanel/css/main.scss )
-Rails.application.config.assets.precompile += %w( adminpanel/css/sidebar-themes.css )
+Rails.application.config.assets.precompile += %w( devise.css )
+Rails.application.config.assets.precompile += %w( dashboard.scss )
 Rails.application.config.assets.precompile += %w( test.css )
 Rails.application.config.assets.precompile += %w( custom/bootstrap-datepicker3.standalone.min.css )
 # Precompile all fonts

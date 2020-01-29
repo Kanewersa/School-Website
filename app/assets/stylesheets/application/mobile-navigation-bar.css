@@ -1,0 +1,110 @@
+.coverall{
+    /*height: calc(100vh - 70px);*/
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1030;
+    position: fixed;
+}
+
+@media(max-width: 767px) {
+    .phonebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1050;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.98);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .phonebar hr {
+        border-top: 1px solid rgba(255,255,255,0.3);
+        margin: 1px 10%;
+    }
+
+    .phonebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        inline-size: max-content;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .phonebar a:hover {
+        color: #f1f1f1;
+    }
+
+    .phonebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+
+    .openbtn:hover {
+        background-color: #444;
+    }
+
+    .phonebar .sidebar-dropdown .sidebar-submenu {
+        display: none;
+        font-size: 20px;
+        color: #818181;
+        inline-size: max-content;
+        padding: 4px 16px 4px 32px;
+    }
+    .sidebar-submenu a {
+        font-size: 22px;
+        padding: 2px 10px;
+    }
+    .sidebar-submenu ul {
+        padding: 0;
+    }
+    .sidebar-dropdown i {
+        font-size: 22px;
+    }
+    .sidebar-dropdown.active a > i {
+        color: white;
+        transition: .3s;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+        right: 15px;
+    }
+
+    .sidebar-dropdown a > i {
+        color: #818181;
+        transition: .3s;
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+        right: 0;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .phonebar {padding-top: 15px;}
+    .phonebar a {font-size: 18px;}
+}
+
+.modal-full {
+    min-width: 100%;
+    margin: 0;
+}
+
+.modal-full .modal-content {
+    min-height: 100vh;
+}

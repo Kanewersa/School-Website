@@ -1,0 +1,32 @@
+.dropdown-item {
+    transition: all .5s;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(230,230,230,1);
+    border-color: rgba(240,240,240,1);
+}
+
+.dropdown-item span {
+    position: relative;
+    transition: 0.5s;
+}
+
+.dropdown-item span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    /*Arrow's start position*/
+    right: -10px;
+    transition: 0.5s;
+}
+
+.dropdown-item:hover span {
+    padding-right: 25px;
+}
+
+.dropdown-item:hover span:after {
+    opacity: 1;
+    /*Arrow's target position*/
+    right: 5px;
+}

@@ -1,0 +1,25 @@
+.btn-see {
+    height: auto;
+    background-color: white;
+    border-color: white;
+    color: rgba(0,0,0,0.7) !important;
+}
+
+.btn-see:hover {
+    background-color: rgba(230,230,230,1) !important;
+    border-color: rgba(240,240,240,1) !important;
+}
+
+.btn-invisible, .btn-invisible.scrolled, .btn-invisible:active, .btn-invisible:focus, .btn-invisible.active {
+    height: auto;
+    background-color: transparent;
+    border-color: transparent;
+    color: rgba(255,255,255,0.6)!important;
+    box-shadow: none;
+}
+
+.btn-invisible:hover, .btn-invisible.scrolled:hover, .btn-invisible.scrolled:active, .btn-invisible.scrolled:focus, .btn-invisible.scrolled.active {
+    color: rgba(255,255,255,0.9) !important;
+    background-color: transparent;
+    border-color: transparent;
+}

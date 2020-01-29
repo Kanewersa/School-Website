@@ -1,0 +1,47 @@
+//= require trix/dist/trix
+/*
+*= require bootstrap
+*= require_directory ./dashboard
+*/
+
+/*region Preview modal */
+@media(min-width: 1370px) {
+  .modal-xl {
+    max-width: 1366px;
+  }
+}
+@media(max-width: 1369px) {
+  .modal-xl {
+    max-width: 1280px;
+  }
+}
+
+/*endregion*/
+
+/*region Account section*/
+.user-image {
+  max-height: 128px;
+  padding: 0 10px;
+}
+.avatar-field {
+  width: 20rem;
+}
+/*endregion*/
+
+.btn-request-group {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.trix-content {
+  background-color: white;
+}
+.dz-message {
+  font-size: 22px;
+}
+.upload-text {
+  background-color: white;
+}
