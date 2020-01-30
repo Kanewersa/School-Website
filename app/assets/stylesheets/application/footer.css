@@ -1,5 +1,6 @@
 #footer {
     padding-top: 20px;
+    position: sticky;
 }
 
 section .section-title {

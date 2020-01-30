@@ -15,13 +15,13 @@
 <body>
 <!-- using online links -->
 <div id="mySidebar" class="phonebar d-md-none">
-  <a href="javascript:void(0)" id="sidebar-close" class="closebtn" onclick="closeNav()">×</a>
+  <a href="javascript:void(0)" id="sidebar-close" class="closebtn" data-turbolinks="false">×</a>
   <% @main_tabs.each do |main_tab| %>
     <% if main_tab.sub_tabs.count == 0 %>
       <%= link_to main_tab.title, main_tab_path(id: main_tab.slug) %>
     <% else %>
       <div class="sidebar-dropdown">
-        <a href="#" style=""><%= main_tab.title %>
+        <a href="#" style="" data-turbolinks="false"><%= main_tab.title %>
           <i class="fas fa-angle-right"></i>
         </a>
         <div class="sidebar-submenu">
@@ -62,7 +62,7 @@
   </div>
   <nav class="navbar navbar-expand-md bg-semitransparent sticky-top draw-shadow">
     <div class="navbar-header">
-      <button type="button" id="toggler" class="navbar-toggler custom-toggler" onclick="openNav()">
+      <button type="button" id="toggler" class="navbar-toggler custom-toggler">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
@@ -90,7 +90,7 @@
     </div>
   </nav>
   <%= yield %>
-  <section id="footer">
+  <footer id="footer">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
@@ -116,47 +116,10 @@
         </ul>
       </div>
     </div>
-  </section>
+  </footer>
 </section>
 </body>
 <script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "64%";
-    }
 
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-    }
-
-    $(document).ready(function () {
-        var dim = $("#dim-cover");
-
-        function toggleCover() {
-            dim.toggleClass("coverall");
-        }
-
-        $("#toggler").click(toggleCover);
-        $("#sidebar-close").click(toggleCover);
-
-        dim.click(function () {
-            toggleCover();
-            closeNav();
-        });
-    });
-
-    $(document).on("click", ".sidebar-dropdown > a", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(".sidebar-submenu").slideUp(200);
-        if ($(this).parent().hasClass("active")) {
-            $(".sidebar-dropdown").removeClass("active");
-            $(this).parent().removeClass("active");
-        } else {
-            $(".sidebar-dropdown").removeClass("active");
-            $(this).next(".sidebar-submenu").slideDown(200);
-            $(this).parent().addClass("active");
-        }
-        return false;
-    });
 </script>
 </html>
