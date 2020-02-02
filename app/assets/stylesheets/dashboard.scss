@@ -45,3 +45,9 @@
 .upload-text {
   background-color: white;
 }
+
+@media(min-height: 760px) {
+  .sidebar-wrapper .sidebar-content {
+    overflow-y: hidden;
+  }
+}

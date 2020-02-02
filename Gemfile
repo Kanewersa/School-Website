@@ -10,6 +10,7 @@ gem 'rolify'
 gem 'whenever'
 gem 'ffi'
 gem 'ruby-vips'
+gem 'ahoy_matey'
 
 gem 'remotipart', github: 'jbox-web/remotipart'
 
