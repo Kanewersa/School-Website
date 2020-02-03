@@ -65,7 +65,6 @@ Rails.application.routes.draw do
   get 'wydarzenia/:category_id/:id/' => 'events#show', as: :show_event
   get ':main_tab_id/:id/' => 'sub_tabs#show', as: :show_sub_tab
 
-
   resources :galleries, :only => [:show]
   resources :main_tabs, :path => ''
   resources :main_tabs, :path => '', :only => [] do
