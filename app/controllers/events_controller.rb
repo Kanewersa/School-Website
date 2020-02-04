@@ -56,8 +56,15 @@ class EventsController < RequestablesController
   end
 
   def update
+    @event = Event.friendly.find(params[:id])
+    parameters = event_params
+    if parameters[:image].nil?
+      if @event.image.attached?
+        parameters[:image] = @event.image.blob
+      end
+    end
     # Validate requestables params
-    unless validates?(event_params, Event)
+    unless validates?(parameters, Event)
       return
     end
     if params[:commit] == 'Podgląd'

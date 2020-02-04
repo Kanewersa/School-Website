@@ -13,7 +13,6 @@ class MainTabsController < RequestablesController
   def update
     @main_tab = MainTab.friendly.find(params[:id])
     parameters = main_tab_params
-    puts "PUT!"
     if parameters[:image].nil?
       if @main_tab.image.attached?
         parameters[:image] = @main_tab.image.blob
