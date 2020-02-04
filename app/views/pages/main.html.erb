@@ -74,10 +74,11 @@
   </div>
 </div>
 <div class="blackboard card card-color img-fluid">
-  <img class="card-img-top blackboard-bg" src="https://i.imgur.com/cs0VMaF.jpg" alt="back" style="width: 100%">
+  <%= image_tag("blackboard-vertical.png", alt: "mobile-back", class: "blackboard-bg-mobile") %>
+  <%= image_tag("blackboard.png", alt: "back", class: "card-img-top blackboard-bg") %>
   <div class="card-img-overlay blackboard-overlay h-100">
-    <div class="row justify-content-center align-items-center" style="display: flex; flex-direction: row; height: 90%">
-      <div class="col-md-2 text-center" style="width: 100%;">
+    <div class="blackboard-group row justify-content-center align-items-center" style="display: flex; flex-direction: row; height: 90%">
+      <div class="blackboard-item col-md-2 text-center" style="width: 100%;">
         <i class="blackboard-icon far fa-calendar-alt fa-6x text-outline"></i>
         <h4 class="card-title blackboard-title text-outline">PLAN LEKCJI</h4>
         <h4 class="card-text-2 blackboard-text text-outline">Sprawdź by się nie spóźnić!</h4>
@@ -85,7 +86,7 @@
           <i class="btn btn-danger blackboard-button">Kliknij tutaj!</i>
         <% end %>
       </div>
-      <div class="col-md-2 text-center">
+      <div class="blackboard-item col-md-2 text-center">
         <i class="blackboard-icon fas fa-info fa-6x text-outline"></i>
         <h4 class="card-title blackboard-title text-outline">I-DZIENNIK</h4>
         <h4 class="card-text-2 blackboard-text text-outline">Zobacz czy zdałeś!</h4>
@@ -93,7 +94,7 @@
           <i class="btn btn-danger blackboard-button">Kliknij
           tutaj!</i></a>
       </div>
-      <div class="col-md-2 text-center">
+      <div class="blackboard-item col-md-2 text-center">
         <i class="blackboard-icon fas fa-theater-masks fa-6x text-outline"></i>
         <h4 class="card-title blackboard-title text-outline">ZAJĘCIA DODATKOWE</h4>
         <h4 class="card-text-2 blackboard-text text-outline">Nie tylko obowiązki!</h4>

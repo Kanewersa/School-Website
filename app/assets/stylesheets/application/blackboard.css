@@ -2,10 +2,10 @@
     background-color: rgb(250,250,250);
 }
 .blackboard {
-    margin-top: 15px;
-    width: 100%;
+    width: 70%;
     height: 100%;
-    padding: 20px 20%;
+    padding: 20px 0;
+    margin: 0 auto;
     border: none;
 }
 .blackboard-icon {
@@ -23,7 +23,22 @@
     padding-top: 30px;
     padding-bottom: 30px;
 }
+.blackboard-item {
+    margin-left: 40px;
+    margin-right: 40px;
+    max-width: 400px;
+}
+.blackboard-bg {
+    height: 560px;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,.4);
+}
+.blackboard-bg-mobile {
+    display: none;
+}
 @media(max-width: 1500px) {
+    .blackboard {
+        width: 90%;
+    }
     .blackboard-title {
         color: white;
         font-size: 22px;
@@ -42,10 +57,16 @@
 }
 @media (max-width: 767px) {
     .blackboard {
-        padding: 0 20%;
+        width: 100%;
     }
     .blackboard-bg {
         display: none;
+    }
+    .blackboard-bg-mobile {
+        display: block;
+        position: absolute;
+        max-width: 100%;
+        height: 920px;
     }
     .blackboard-overlay {
         position: relative;
@@ -63,5 +84,8 @@
     .blackboard-text {
         padding-top: 5px;
         padding-bottom: 10px;
+    }
+    .blackboard-group {
+        padding-top: 20px;
     }
 }
