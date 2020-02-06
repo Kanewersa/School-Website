@@ -16,6 +16,7 @@ import 'application/gallery-init'
 import 'application/multi-carousel.js'
 import 'application/navbar-mobile.js'
 
+//= require jquery.infinite-pages
 //Allow jQuery
 window.jQuery = $;
 window.$ = $;
@@ -29,5 +30,44 @@ $(document).on("turbolinks:load", function() {
             el.setAttribute("target", "_blank")
         }
     }, true);
+
+    // $('#paginate').infinitePages({
+    //     debug: true,
+    //     buffer: 100,
+    //     context: '.pane',
+    //     loading: function() {
+    //         console.log("Loading...");
+    //     },
+    //     success: function() {
+    //         console.log("loaded more!");
+    //     },
+    //     error: function() {
+    //         console.log("Failed to load :(");
+    //     }
+    // });
+    window.loadingMore = false;
+    var target = document.getElementById("load-more");
+    function loadMoreOnScroll() {
+        var link = document.getElementById("load-more-link");
+        if(link)
+        {
+            //If user scrolled to the target element
+            if(window.scrollY > (target.offsetTop + target.offsetHeight - window.innerHeight))
+            {
+                if(!window.loadingMore)
+                {
+                    link.click();
+                    window.loadingMore = true;
+                }
+            }
+        }
+    }
+    if(target)
+    {
+        addEventListener("scroll", loadMoreOnScroll);
+    } else
+    {
+        removeEventListener("scroll", loadMoreOnScroll);
+    }
 });
 

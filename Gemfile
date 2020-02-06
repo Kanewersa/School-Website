@@ -12,11 +12,14 @@ gem 'ffi'
 gem 'ruby-vips'
 gem 'ahoy_matey'
 
+gem 'kaminari'
+gem 'jquery-infinite-pages'
+
+
 gem 'remotipart', github: 'jbox-web/remotipart'
 
 gem 'jquery-ui-rails'
 gem 'rails_sortable'
-
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
