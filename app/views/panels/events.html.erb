@@ -31,8 +31,7 @@
                     <p class="text-muted card-text"><%= truncate(strip_tags(event.body.to_s), length: 100, separator: ' ') %></p>
                     <p class="text-muted card-text font-italic">Kategoria: <%= event.category.title %></p>
                     <hr>
-
-                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <% if event.important %>
                       <span class="fa-stack" data-toggle="tooltip" title="To wydarzenie ma priorytet" style="font-size: 18px">

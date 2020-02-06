@@ -1,0 +1,37 @@
+<main class="page-content pt-2">
+  <div class="container-fluid p-5">
+    <h2>Partnerzy</h2>
+    <hr>
+    <div class="text-center d-flex flex-column justify-content-center" style="margin:0 35%">
+      <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#createPartnerModal">Dodaj
+        partnera
+      </button>
+    </div>
+    <%= render :template => 'partners/new' %>
+    <br>
+    <% if @partners.count == 0 %>
+      <div class="alert alert-warning">
+        <strong>Brak partnerów.</strong>
+      </div>
+    <% else %>
+      <section class="gallery-block cards-gallery">
+        <div class="container">
+          <div class="row">
+            <% @partners.each do |partner| %>
+              <div class="col-md-6 col-lg-4">
+                <div class="card border-0 transform-on-hover">
+                  <%= image_tag(url_for(partner.image), :alt => "partner-img",
+                                :class => "card-img-top", :size => '300x150') %>
+                  <div class="card-body">
+                    <h6><%= partner.name %></h6>
+                    <p class="text-muted card-text font-italic">Adres: <%= partner.link %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+  </div>
+</main>

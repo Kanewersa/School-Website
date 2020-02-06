@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/admin/help/' => 'panels#help', as: :help
   get '/admin/requests/' => 'panels#requests', as: :requests
   post '/admin/requests' => 'panels#requests'
+  get '/admin/partners/' => 'panels#partners', as: :partners
+
+  post '/admin/partners' => 'partners#create'
 
   get '/admin/events/' => 'panels#events', as: :events
   post '/admin/events' => 'events#create'

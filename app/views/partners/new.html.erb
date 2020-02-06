@@ -1,0 +1,44 @@
+<div class="modal fade" id="createPartnerModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= form_for :partner, :remote => true, authenticity_token: true, url: partners_path do |f| %>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Dodawanie partnera</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>
+            <%= f.label "Nazwa partnera" %><br>
+            <%= f.text_field :name, :class => "form-control" %>
+          </p>
+          <p>
+            <%= f.label "Adres" %><br>
+            <%= f.text_field :link, :class => "form-control" %>
+          </p>
+          <p class="mb-0">
+            <%= f.label "Obrazek:", :class => "h5" %><br>
+          </p>
+          <div class="input-field">
+            <div id="imageInput" datasrc="partner[image]"></div>
+          </div>
+          <br>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <%= f.submit "Dodaj", :class => "btn btn-warning" %>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="preview-modal">
+  <div class="modal-dialog modal-xl">
+    <div id="preview-body" class="modal-content">
+    </div>
+  </div>
+</div>
+<%= render template: 'requestables/response-success-modal', :locals => {:target_location => partners_path} %>
+<%= render template: 'requestables/response-error-modal' %>

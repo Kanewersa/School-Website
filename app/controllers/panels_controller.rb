@@ -30,6 +30,10 @@ class PanelsController < ApplicationController
     # TODO Delete warning get's called twice (duplicated JQUERY)
   end
 
+  def partners
+    @partners = Partner.all
+  end
+
   def dashboard
     @requests = Request.where("status = ?", 1)
   end

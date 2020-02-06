@@ -92,6 +92,12 @@
               <span class="menu-text">Zgłoszenia</span>
             <% end %>
           </li>
+          <li>
+            <%= link_to partners_path do %>
+              <i class="fas fa-handshake"></i>
+              <span class="menu-text">Partnerzy</span>
+            <% end %>
+          </li>
           <% if current_user.has_role?('admin') %>
             <li class="header-menu">
               <span>Administrator</span>

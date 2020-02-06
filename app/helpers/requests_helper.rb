@@ -15,6 +15,8 @@ module RequestsHelper
     case type
     when "Event"
       "wydarzenie"
+    when "Partner"
+      "partnera"
     else
       "zakładkę"
     end
