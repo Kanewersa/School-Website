@@ -24,10 +24,10 @@
       <%= image_tag(url_for(item.image), :alt => 'carousel-item-image', :class => "img-cover", :width => 1920, :height => 975) %>
       <div class="carousel-caption">
         <div class="card bg-transparent-dark mb-4 shadow-sm">
-          <h3><%= item.title %></h3>
-          <p><%= truncate(strip_tags(item.body.to_s), length: 400, separator: ' ') %></p>
+          <h3 class="text-outline"><%= item.title %></h3>
+          <p class="text-outline"><%= truncate(strip_tags(item.body.to_s), length: 400, separator: ' ') %></p>
           <div class="card-img-overlay">
-            <%= link_to "Zobacz więcej...", show_event_path(:category_id => item.category.slug, :id => item.slug), :class => "btn btn-invisible" %>
+            <%= link_to "Zobacz więcej...", show_event_path(:category_id => item.category.slug, :id => item.slug), :class => "btn btn-invisible", :style => 'font-size: 20px' %>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
           <div class="card mb-4 shadow-sm">
             <div class="card-hovereffect">
               <%= image_tag(url_for(event.image), :alt => "Card-image", :class => "card-img-top", :style => "width:100%") %>
-              <div class="card-overlay">
+              <div class="card-overlay text-outline">
                 <h2><%= event.title %></h2>
                 <p><%= link_to "Zobacz więcej...", show_event_path(:category_id => event.category.slug, :id => event.slug) %></p>
               </div>
