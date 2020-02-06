@@ -6,6 +6,7 @@ class MainTab < ApplicationRecord
 
   has_rich_text :body
   has_one_attached :image
+  has_many_attached :gallery_images
 
   validates :title, :presence => true
   validates :body, :presence => true

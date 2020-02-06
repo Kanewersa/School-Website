@@ -8,6 +8,7 @@ class SubTab < ApplicationRecord
   has_many :requests, :as => :requestable
   has_rich_text :body
   set_sortable :sort
+  has_many_attached :gallery_images
 
   validates :title, :presence => true
   validates :body, :presence => true
