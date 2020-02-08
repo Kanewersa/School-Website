@@ -25,6 +25,12 @@
                   <div class="card-body">
                     <h6><%= partner.name %></h6>
                     <p class="text-muted card-text font-italic">Adres: <%= partner.link %></p>
+                    <hr>
+                    <div class="btn-group">
+                      <%= link_to destroy_partner_path(partner), method: :delete, data: {:confirm => "Are you sure?"} do %>
+                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Usuń</button>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
