@@ -1,6 +1,7 @@
 .card-color {
-    background-color: rgb(250,250,250);
+    background-color: rgb(250, 250, 250);
 }
+
 .blackboard {
     width: 70%;
     height: 100%;
@@ -8,83 +9,102 @@
     margin: 0 auto;
     border: none;
 }
+
 .blackboard-icon {
     color: white;
     padding-top: 50px;
 }
+
 .blackboard-title {
     color: white;
     font-size: 32px;
     padding-top: 50px;
 }
+
 .blackboard-text {
     color: white;
     font-size: 22px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
 .blackboard-item {
     margin-left: 40px;
     margin-right: 40px;
     max-width: 400px;
 }
+
 .blackboard-bg {
     height: 560px;
-    box-shadow: 0 0 20px 2px rgba(0,0,0,.4);
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, .4);
 }
+
 .blackboard-bg-mobile {
     display: none;
 }
-@media(max-width: 1500px) {
+
+@media (max-width: 1500px) {
     .blackboard {
         width: 90%;
     }
+
     .blackboard-title {
         color: white;
         font-size: 22px;
         padding-top: 50px;
     }
+
     .blackboard-text {
         color: white;
         font-size: 14px;
         padding-top: 30px;
         padding-bottom: 30px;
     }
+
     .blackboard-icon {
         font-size: 80px;
         padding-top: 50px;
     }
 }
+
 @media (max-width: 767px) {
     .blackboard {
         width: 100%;
     }
+
     .blackboard-bg {
         display: none;
     }
+
     .blackboard-bg-mobile {
         display: block;
         position: absolute;
         max-width: 100%;
         height: 920px;
     }
+
     .blackboard-overlay {
         position: relative;
         padding-top: 0;
     }
+
     .blackboard-icon {
         padding-top: 25px;
     }
+
     .blackboard-button {
         margin-bottom: 25px;
     }
+
     .blackboard-title {
         padding-top: 25px;
     }
+
     .blackboard-text {
         padding-top: 5px;
         padding-bottom: 10px;
     }
+
     .blackboard-group {
         padding-top: 20px;
     }

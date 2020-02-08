@@ -1,35 +1,35 @@
-.gallery-block.grid-gallery{
+.gallery-block.grid-gallery {
     padding-bottom: 60px;
     padding-top: 60px;
 }
 
-.gallery-block.grid-gallery .heading{
+.gallery-block.grid-gallery .heading {
     margin-bottom: 50px;
     text-align: center;
 }
 
-.gallery-block.grid-gallery .heading h2{
+.gallery-block.grid-gallery .heading h2 {
     font-weight: bold;
     font-size: 1.4rem;
     text-transform: uppercase;
 }
 
-.gallery-block.grid-gallery a:hover{
+.gallery-block.grid-gallery a:hover {
     opacity: 0.8;
 }
 
-.gallery-block.grid-gallery .item img{
+.gallery-block.grid-gallery .item img {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
     transition: 0.4s;
 }
 
-.gallery-block.grid-gallery .item{
+.gallery-block.grid-gallery .item {
     margin-bottom: 20px;
 }
 
 @media (min-width: 576px) {
 
-    .gallery-block.grid-gallery .scale-on-hover:hover{
+    .gallery-block.grid-gallery .scale-on-hover:hover {
         transform: scale(1.05);
         box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
     }
@@ -54,19 +54,27 @@
     background-color: #222;
     background-color: rgba(0, 0, 0, 0.8);
     -webkit-transition: opacity .5s ease;
-    transition: opacity .5s ease; }
+    transition: opacity .5s ease;
+}
+
 #baguetteBox-overlay.visible {
-    opacity: 1; }
+    opacity: 1;
+}
+
 #baguetteBox-overlay .full-image {
     display: inline-block;
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center; }
+    text-align: center;
+}
+
 #baguetteBox-overlay .full-image figure {
     display: inline;
     margin: 0;
-    height: 100%; }
+    height: 100%;
+}
+
 #baguetteBox-overlay .full-image img {
     display: inline-block;
     width: auto;
@@ -76,7 +84,9 @@
     vertical-align: middle;
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6); }
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
 #baguetteBox-overlay .full-image figcaption {
     display: block;
     position: absolute;
@@ -88,13 +98,16 @@
     color: #ccc;
     background-color: #000;
     background-color: rgba(0, 0, 0, 0.6);
-    font-family: sans-serif; }
+    font-family: sans-serif;
+}
+
 #baguetteBox-overlay .full-image:before {
     content: "";
     display: inline-block;
     height: 50%;
     width: 1px;
-    margin-right: -1px; }
+    margin-right: -1px;
+}
 
 #baguetteBox-slider {
     position: absolute;
@@ -106,51 +119,73 @@
     -webkit-transition: left .4s ease, -webkit-transform .4s ease;
     transition: left .4s ease, -webkit-transform .4s ease;
     transition: left .4s ease, transform .4s ease;
-    transition: left .4s ease, transform .4s ease, -webkit-transform .4s ease, -moz-transform .4s ease; }
+    transition: left .4s ease, transform .4s ease, -webkit-transform .4s ease, -moz-transform .4s ease;
+}
+
 #baguetteBox-slider.bounce-from-right {
     -webkit-animation: bounceFromRight .4s ease-out;
-    animation: bounceFromRight .4s ease-out; }
+    animation: bounceFromRight .4s ease-out;
+}
+
 #baguetteBox-slider.bounce-from-left {
     -webkit-animation: bounceFromLeft .4s ease-out;
-    animation: bounceFromLeft .4s ease-out; }
+    animation: bounceFromLeft .4s ease-out;
+}
 
 @-webkit-keyframes bounceFromRight {
     0% {
-        margin-left: 0; }
+        margin-left: 0;
+    }
     50% {
-        margin-left: -30px; }
+        margin-left: -30px;
+    }
     100% {
-        margin-left: 0; } }
+        margin-left: 0;
+    }
+}
 
 @keyframes bounceFromRight {
     0% {
-        margin-left: 0; }
+        margin-left: 0;
+    }
     50% {
-        margin-left: -30px; }
+        margin-left: -30px;
+    }
     100% {
-        margin-left: 0; } }
+        margin-left: 0;
+    }
+}
 
 @-webkit-keyframes bounceFromLeft {
     0% {
-        margin-left: 0; }
+        margin-left: 0;
+    }
     50% {
-        margin-left: 30px; }
+        margin-left: 30px;
+    }
     100% {
-        margin-left: 0; } }
+        margin-left: 0;
+    }
+}
 
 @keyframes bounceFromLeft {
     0% {
-        margin-left: 0; }
+        margin-left: 0;
+    }
     50% {
-        margin-left: 30px; }
+        margin-left: 30px;
+    }
     100% {
-        margin-left: 0; } }
+        margin-left: 0;
+    }
+}
 
 .baguetteBox-button#next-button, .baguetteBox-button#previous-button {
     top: 50%;
     top: calc(50% - 30px);
     width: 44px;
-    height: 60px; }
+    height: 60px;
+}
 
 .baguetteBox-button {
     position: absolute;
@@ -166,23 +201,34 @@
     color: #ddd;
     font: 1.6em sans-serif;
     -webkit-transition: background-color .4s ease;
-    transition: background-color .4s ease; }
+    transition: background-color .4s ease;
+}
+
 .baguetteBox-button:focus, .baguetteBox-button:hover {
-    background-color: rgba(50, 50, 50, 0.9); }
+    background-color: rgba(50, 50, 50, 0.9);
+}
+
 .baguetteBox-button#next-button {
-    right: 2%; }
+    right: 2%;
+}
+
 .baguetteBox-button#previous-button {
-    left: 2%; }
+    left: 2%;
+}
+
 .baguetteBox-button#close-button {
     top: 20px;
     right: 2%;
     right: calc(2% + 6px);
     width: 30px;
-    height: 30px; }
+    height: 30px;
+}
+
 .baguetteBox-button svg {
     position: absolute;
     left: 0;
-    top: 0; }
+    top: 0;
+}
 
 /*
     Preloader
@@ -196,7 +242,8 @@
     top: 50%;
     left: 50%;
     margin-top: -20px;
-    margin-left: -20px; }
+    margin-left: -20px;
+}
 
 .baguetteBox-double-bounce1,
 .baguetteBox-double-bounce2 {
@@ -210,26 +257,34 @@
     top: 0;
     left: 0;
     -webkit-animation: bounce 2s infinite ease-in-out;
-    animation: bounce 2s infinite ease-in-out; }
+    animation: bounce 2s infinite ease-in-out;
+}
 
 .baguetteBox-double-bounce2 {
     -webkit-animation-delay: -1s;
-    animation-delay: -1s; }
+    animation-delay: -1s;
+}
 
 @-webkit-keyframes bounce {
     0%, 100% {
         -webkit-transform: scale(0);
-        transform: scale(0); }
+        transform: scale(0);
+    }
     50% {
         -webkit-transform: scale(1);
-        transform: scale(1); } }
+        transform: scale(1);
+    }
+}
 
 @keyframes bounce {
     0%, 100% {
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
-        transform: scale(0); }
+        transform: scale(0);
+    }
     50% {
         -webkit-transform: scale(1);
         -moz-transform: scale(1);
-        transform: scale(1); } }
+        transform: scale(1);
+    }
+}

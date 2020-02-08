@@ -17,23 +17,31 @@
 @import url('https://use.fontawesome.com/releases/v5.11.2/css/all.css');
 
 body {
-    background-color: rgb(250,250,250);
+    background-color: rgb(250, 250, 250);
     font-family: 'Roboto', sans-serif !important;
-    -webkit-animation: fadein 0.5s;
-    -moz-animation: fadein 0.5s;
-    -ms-animation: fadein 0.5s;
-    -o-animation: fadein 0.5s;
-    animation: fadein 0.5s;
+    /*-webkit-animation: fadein 0.5s;*/
+    /*-moz-animation: fadein 0.5s;*/
+    /*-o-animation: fadein 0.5s;*/
+    /*animation: fadein 0.5s;*/
 }
+
 a {
     text-decoration: none !important;
 }
+
+.container h1 {
+    font-weight: bold;
+    padding: 30px 0 25px 0;
+    font-size: 3rem;
+}
+
 .banner {
-    background-color: rgb(250,250,250);
+    background-color: rgb(250, 250, 250);
     padding-bottom: 40px;
     padding-top: 20px;
     font-family: 'Open Sans Semibold'
 }
+
 .banner-bg {
     background-size: cover;
     background: url("https://i.imgur.com/fkPYUXq.jpg") no-repeat;
@@ -44,9 +52,10 @@ a {
 .banner .disable-underline {
     text-decoration: none;
 }
+
 .text-outline {
-    text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
-    #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px,
+    text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px,
+    #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px,
     #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 7px;
     -webkit-font-smoothing: antialiased
 }
@@ -54,13 +63,33 @@ a {
 hr {
     margin-top: 0;
     border: 0;
-    border-top: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 
 html, body {
     width: 100% !important;
     overflow-x: unset;
+}
+
+.wid {
+    width: 100%;
+}
+
+.index-intro {
+    width: 100%;
+}
+
+.index-intro .jumbotron {
+    margin: 0px;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 36%;
+}
+
+.trix-content div .attachment > img {
+    max-width: 100%;
+    height: auto;
 }
 
 @media (max-width: 767px) {
@@ -79,21 +108,3 @@ html, body {
         font-size: 32px;
     }
 }
-.wid {
-    width: 100%;
-}
-.index-intro {
-    width: 100%;
-}
-
-.index-intro .jumbotron {
-    margin: 0px;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: 36%;
-}
-
- .trix-content div .attachment > img {
-     max-width: 100%;
-     height: auto;
- }

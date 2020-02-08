@@ -1,21 +1,26 @@
 #page-section {
     text-align: center;
 }
+
 #page-section h1 {
     color: black;
     font-size: 60px;
     font-weight: bold;
     padding: 15px;
 }
+
 #page-section .container {
     padding-top: 10px;
 }
+
 #page-section .trix-content {
     text-align: left;
 }
+
 #page-section p {
     font-size: 28px;
 }
+
 #page-section .gallery-block.grid-gallery {
     padding-top: 10px;
     padding-bottom: 40px;
