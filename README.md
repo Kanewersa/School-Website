@@ -1,24 +1,11 @@
-# README
+# School website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my CRUD app designed to serve as a website for local primary school.
 
-Things you may want to cover:
+Instead of an excessively long description I provide you the link to test it yourself.
 
-* Ruby version
+> :wolf: http://wolfy.website :wolf:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Go to http://wolfy.website/admin to get into the login panel and enter the following to access dashboard:
+> Login: admin
+> Password: admin
