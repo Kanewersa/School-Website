@@ -16,7 +16,10 @@ class RequestsController < RequestablesController
           @target.image.attach(@obj.image.blob)                 #set the blob for target image
         end
       end
-      @target.update_attributes(@obj.attributes.except("id", "slug", "status", "created_at", "updated_at")) # Copies attributes from source to target
+      if @obj.respond_to?(:body) and @target.respond_to?(:body)
+        @target.body = @obj.body
+      end
+      @target.update(@obj.attributes.except("id", "slug", "status", "created_at", "updated_at")) # Copies attributes from source to target
       @obj.status = 2
       @target.save
     end
