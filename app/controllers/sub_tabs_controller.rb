@@ -82,6 +82,8 @@ class SubTabsController < RequestablesController
                                   :slug => params[:sub_tab][:slug],
                                   :body => params[:sub_tab][:body],
                                   :updated_at => Time.now)
+        #Use the same main tab as old tab
+        @new_sub_tab.main_tab = @sub_tab.main_tab
         # Get new blob id's from params
         blobs = get_blobs_from_ids(params[:sub_tab][:cache][0])
         # Attach blobs to the new tab
