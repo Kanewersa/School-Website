@@ -116,6 +116,9 @@ class EventsController < RequestablesController
         #If banner image was included add it
         unless params[:event][:image].nil?
           @new_event.update(:image => params[:event][:image])
+        # Else use the one from original event
+        else
+          @new_event.image.attach(@event.image.blob)
         end
         # Get new blob id's from params
         blobs = get_blobs_from_ids(params[:event][:cache][0])
