@@ -22,7 +22,8 @@ class PanelsController < ApplicationController
   end
 
   def events
-    @events = Event.all.where(:status => 1).order("important DESC, created_at DESC")
+    @events = Event.all.where(:status => 1)
+                  .order("important DESC, created_at DESC").page(params[:page]).per(9)
   end
 
   def sub_tabs

@@ -1,0 +1,43 @@
+<% @events.each do |event| %>
+  <div class="col-md-6 col-lg-4">
+    <div class="card border-0 transform-on-hover">
+      <%= link_to edit_event_path(:id => event.slug), :class => "lightbox" do %>
+        <% if event.image.attached? %>
+          <%= image_tag(url_for(event.image), :alt => "Event image", :class => "card-img-top") %>
+        <% else %>
+          <%= image_tag('events/image_not_available.png', :alt => "Event image", :class => "card-img-top") %>
+        <% end %>
+      <% end %>
+      <div class="card-body">
+        <h6><%= link_to truncate(event.title, length: 35, separator: ' '), events_path %></h6>
+        <p class="text-muted card-text"><%= truncate(strip_tags(event.body.to_s), length: 100, separator: ' ') %></p>
+        <p class="text-muted card-text font-italic">Kategoria: <%= event.category.title %></p>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <% if event.important %>
+                      <span class="fa-stack" data-toggle="tooltip" title="To wydarzenie ma priorytet" style="font-size: 18px">
+                          <i class="fa fa-square fa-stack-2x" style="color: #dc3545"></i>
+                          <i class="fa fa-exclamation fa-stack-1x fa-inverse"></i>
+                        </span>
+            <% end %>
+            <% if event.announcement %>
+                      <span class="fa-stack" data-toggle="tooltip" title="To wydarzenie jest ogłoszeniem" style="font-size: 18px">
+                          <i class="fa fa-square fa-stack-2x" style="color: dodgerblue"></i>
+                          <i class="fa fa-info fa-stack-1x fa-inverse"></i>
+                        </span>
+            <% end %>
+          </div>
+          <div class="btn-group">
+            <%= link_to edit_event_path(event) do %>
+              <button class="btn btn-warning btn-sm" style="margin: 0 10px"><i class="fa fa-edit"></i> Edytuj</button>
+            <% end %>
+            <%= link_to destroy_event_path(event), method: :delete, data: {:confirm => "Are you sure?"} do %>
+              <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Usuń</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
