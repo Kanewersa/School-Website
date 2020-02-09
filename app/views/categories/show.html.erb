@@ -17,8 +17,7 @@
       <div id="paginate" class="row">
         <%= render :partial => 'events', :object => @events %>
       </div>
-      <p id="load-more" class="pagination"
-         style="justify-content: center; font-size: 22px; padding-top: 10px; padding-bottom: 20px">
+      <p id="load-more" class="pagination">
         <%= link_to_next_page(@events, 'Ładowanie...', :remote => true, :id => "load-more-link") %>
       </p>
     <% end %>
