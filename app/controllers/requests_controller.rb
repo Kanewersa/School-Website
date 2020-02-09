@@ -11,11 +11,20 @@ class RequestsController < RequestablesController
       @obj.status = 2
     else
       @target = @obj.class.find(@request.action.split("/")[1])  #Find requestable you want to edit
-      if @obj.class.name == "Event"                             #If edit source is an Event
+      #If requestable has an image
+      if @obj.respond_to?(:image) and @target.respond_to?(:image)
         if @obj.image.attached?                                 #and has an image attached
           @target.image.attach(@obj.image.blob)                 #set the blob for target image
         end
       end
+      #If requestable has a gallery
+      if @obj.respond_to?(:gallery_images) and @target.respond_to?(:gallery_images)
+        if @obj.gallery_images.attached?
+          @target.gallery_images.purge_later
+          @target.gallery_images.attach(@obj.gallery_images.blobs)
+        end
+      end
+      #If requestable has rich text field (body)
       if @obj.respond_to?(:body) and @target.respond_to?(:body)
         @target.body = @obj.body
       end
