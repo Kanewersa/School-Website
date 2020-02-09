@@ -6,6 +6,10 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     token = Token.where(value: params[:user][:token])
     if token.present?
+      usr = User.new(sign_up_params)
+      unless usr.valid?
+        return
+      end
       super do |user|
         info = token.select(:role, :name).take!
         user.fullname = info[:name]
