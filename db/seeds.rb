@@ -13,10 +13,10 @@ MainTab.create(id: 5, title: "Dla rodziców ", slug: "dla-rodziców")
 MainTab.create(id: 6, title: "Kontakt", slug: "kontakt")
 
 Category.create(id: 1, title: "Ogólnoszkolne", slug: "ogolnoszkolne")
-Category.create(id: 1, title: "Oddział przedszkolny", slug: "oddzial-przedszkolny")
-Category.create(id: 1, title: "Klasy I-III", slug: "klasy-i-iii")
-Category.create(id: 1, title: "Klasy IV-VIII", slug: "klasy-iv-viii")
-Category.create(id: 1, title: "Świetlica", slug: "swietlica")
+Category.create(id: 2, title: "Oddział przedszkolny", slug: "oddzial-przedszkolny")
+Category.create(id: 3, title: "Klasy I-III", slug: "klasy-i-iii")
+Category.create(id: 4, title: "Klasy IV-VIII", slug: "klasy-iv-viii")
+Category.create(id: 5, title: "Świetlica", slug: "swietlica")
 
 SubTab.create(title: "Plan lekcji", main_tab_id: 2, slug: "plan-lekcji", sort: 1, status: 1)
 
