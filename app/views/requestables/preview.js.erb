@@ -1,3 +1,4 @@
+$('#loader').modal('hide');
 $('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: @preview, preview: true} ) %>');
 var source = $("#image-name-preview");
 $('#jumbo').css({
@@ -7,4 +8,3 @@ $('#jumbo').css({
     "background-size": "cover"
 });
 $('#preview-modal').modal('show');
-$('#loader').modal('hide');

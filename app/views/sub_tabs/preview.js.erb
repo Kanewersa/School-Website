@@ -1,3 +1,4 @@
+$('#loader').modal('hide');
 $('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: @sub_tab, preview: true} ) %>');
 $('#jumbo').css({
     "background": 'url(' + '<%= url_for(@sub_tab.main_tab.image) if @sub_tab.main_tab.image.attached? %>' + ') no-repeat',
@@ -6,4 +7,3 @@ $('#jumbo').css({
     "background-size": "cover"
 });
 $('#preview-modal').modal('show');
-$('#loader').modal('hide');

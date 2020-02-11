@@ -29,8 +29,8 @@
         <%= hidden_field_tag('sub_tab[cache][]', '', {:id => "galleryCache"}) %>
         <br>
         <p>
-          <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning" %>
-          <%= f.submit "Podgląd", :class => "btn btn-success", :id => 'preview-button' %>
+          <%= f.submit "Zatwierdź zmiany", :class => "btn btn-warning loading" %>
+          <%= f.submit "Podgląd", :class => "btn btn-success loading", :id => 'preview-button' %>
         </p>
       </div>
     <% end %>
