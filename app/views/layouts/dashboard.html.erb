@@ -206,6 +206,7 @@
     </div>
   </nav>
   <%= yield %>
+  <%= render :template => 'requestables/loader-modal' %>
   <%= javascript_pack_tag 'adminpanel', media: 'all', 'data-turbolinks-track': 'reload' %>
 </div>
 </body>

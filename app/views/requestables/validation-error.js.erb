@@ -3,15 +3,27 @@ var body = $('#modal-error-body');
 var errors = "<%= errors.join(',') %>"
 errors = errors.split(',');
 status = '<%= status %>'
+//Hide loader
+$('#loader').modal('hide');
 if (status === '422') {
     //Append errors to modal
     body.empty();
     for (var error of errors) {
         body.append(error + '<br>');
     }
-    //Show modal
-    errorModal.modal('show');
+    //Show error modal
+    errorModal.modal({
+        show: true,
+        keyboard: false,
+        backdrop: 'static'
+    });
 } else {
     body.empty();
     body.append('Wystąpił nieoczekiwany błąd ' + data.status);
+    //Show error modal
+    errorModal.modal({
+        show: true,
+        keyboard: false,
+        backdrop: 'static'
+    });
 }

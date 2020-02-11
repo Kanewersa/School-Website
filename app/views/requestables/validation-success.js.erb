@@ -1,3 +1,9 @@
 var modal = $('#modal-success-response');
-//Show modal
-modal.modal('show');
+//Hide loader
+$('#loader').modal('hide');
+//Show success modal
+modal.modal({
+    show: true,
+    keyboard: false,
+    backdrop: 'static'
+});
