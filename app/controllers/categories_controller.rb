@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
     @main_tabs = MainTab.all
     @categories = Category.all
     @category = Category.friendly.find(params[:id])
-    @events = Event.where(:category => @category, :status => 1).order("important DESC, created_at DESC").page(params[:page]).per(3)
+    @events = Event.where(:category => @category, :status => 1)
+                  .order("important DESC, created_at DESC").page(params[:page]).per(6)
   end
 end
