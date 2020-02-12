@@ -6,7 +6,7 @@ class RequestablesController < ApplicationController
     @categories = Category.all
     @preview = resource
     respond_to do |format|
-      format.js { render :action => action }
+      format.js { render 'requestables/preview', locals: { requestable: @preview } }
     end
   end
 

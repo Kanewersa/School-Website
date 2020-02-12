@@ -1,10 +1,24 @@
 $('#loader').modal("hide");
-$('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: @preview, preview: true} ) %>');
-var source = $("#image-name-preview");
-$('#jumbo').css({
-    "background": 'url(' + '<%= url_for(@preview.image) if @preview.image.attached? %>' + ') no-repeat',
-    "background-position-y": '45%',
-    "background-position-x": "center",
-    "background-size": "cover"
-});
+$('#preview-body').html('<%= escape_javascript( render :partial => 'shared/preview', :layout => 'shared/application', locals: { resource: requestable, preview: true} ) %>');
+var source;
+try {
+    source = $('#imageInput').find('input')[0].files;
+}
+catch (err) {
+    source = null
+}
+if(source != null && source.length > 0)
+{
+    var getImagePath = URL.createObjectURL(source[0]);
+    $('#jumbo').css({"background": 'url(' + getImagePath + ') no-repeat', "background-position-y": '45%',
+        "background-position-x": "center", "background-size": "cover"});
+} else
+{
+    $('#jumbo').css({
+        "background": 'url(' + '<%= url_for(requestable.image) if requestable.image.attached? %>' + ') no-repeat',
+        "background-position-y": '45%',
+        "background-position-x": "center",
+        "background-size": "cover"
+    });
+}
 $('#preview-modal').modal('show');
