@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  after_commit :compress_images
+  # after_save_commit :compress_images
   extend FriendlyId
   include Requestable
   friendly_id :title, use: :slugged

@@ -1,5 +1,5 @@
 class SubTab < ApplicationRecord
-  after_commit :compress_images
+  # after_commit :compress_images
   extend FriendlyId
   include RailsSortable::Model
   include Requestable

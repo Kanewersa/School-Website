@@ -1,5 +1,5 @@
 class MainTab < ApplicationRecord
-  after_commit :compress_images
+  # after_commit :compress_images
   extend FriendlyId
   include Requestable
   friendly_id :name, use: :slugged
