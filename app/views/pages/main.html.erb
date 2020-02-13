@@ -14,26 +14,20 @@
   </ul>
   <!-- The slideshow -->
   <div class="carousel-inner" role="listbox">
-    <%= %>
     <% @events.first(@events_count - 6).each do |item| %>
-      <% if @events.second == item %>
-        <div class="carousel-item active">
-      <% else %>
-        <div class="carousel-item">
-      <% end %>
-      <%= image_tag(url_for(item.image), :alt => 'carousel-item-image', :class => "img-cover", :width => 1920, :height => 975) %>
-      <div class="carousel-caption">
-        <div class="card bg-transparent-dark mb-4 shadow-sm">
-          <h3 class="text-outline"><%= item.title %></h3>
-          <p class="text-outline"><%= truncate(strip_tags(item.body.to_s), length: 400, separator: ' ') %></p>
-          <div class="card-img-overlay">
-            <%= link_to "Zobacz więcej...", show_event_path(:category_id => item.category.slug, :id => item.slug), :class => "btn btn-invisible", :style => 'font-size: 20px' %>
+      <div class="carousel-item <%= "active" if @events.first == item %>">
+        <%= image_tag(url_for(item.image), :alt => 'carousel-item-image', :class => "img-cover", :width => 1920, :height => 975) %>
+        <div class="carousel-caption">
+          <div class="card bg-transparent-dark mb-4 shadow-sm">
+            <h3 class="text-outline"><%= item.title %></h3>
+            <p class="text-outline"><%= truncate(strip_tags(item.body.to_s), length: 400, separator: ' ') %></p>
+            <div class="card-img-overlay">
+              <%= link_to "Zobacz więcej...", show_event_path(:category_id => item.category.slug, :id => item.slug), :class => "btn btn-invisible", :style => 'font-size: 20px' %>
+            </div>
           </div>
         </div>
       </div>
-      </div>
     <% end %>
-    </div>
   </div>
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#slides" data-slide="prev">
@@ -172,9 +166,7 @@
                 </div>
               </div>
               </div>
-
             <% end %>
-
             </div>
             <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
