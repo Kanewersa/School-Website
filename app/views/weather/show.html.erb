@@ -1,0 +1,96 @@
+<div class="container">
+  <h1 class="text-center">Stacja pogodowa</h1>
+  <h5 class="text-center">W dniu 14 sierpnia 2014 roku na budynku szkoły uruchomiona została stacja pogodowa.
+    Została podłączona do światowego systemu prognoz pogody wunderground.com, gdzie widoczna jest pod nazwą
+    "Poznań-Naramowice".</h5>
+  <hr style="margin: 20px 0 20px 0">
+
+
+
+  <div class="card">
+    <div class="card-header" style="width: 100%; padding: 0; border-bottom: none">
+      <%= image_tag "weather-background.jpg", :style => "width: 100%; height: 450px; filter: brightness(.65)" %>
+      <div class="overlay-panel">
+        <span class="text-outline" style="font-size: 30px">Poznań Naramowice</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+
+
+
+        <div class="col-lg-8 col-md-7">
+          <div class="row text-center">
+            <% 6.times do %>
+            <div class="col-2" style="padding: 0; color: dimgray">
+              <div style="height: 150px; border-right: 1px solid rgba(0,0,0,.5)">
+                <div style="vertical-align: middle; font-size: 16px">
+                  <div style="margin-bottom: 10px">TUE</div>
+                  <i class="fas fa-sun" style="font-size: 24px; margin-bottom: 10px"></i>
+                  <div>
+                    24&#176;
+                    <span style="font-size: 12px">C</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <% end %>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="col-lg-4 col-md-5" style="padding: 30px 0 30px 30px">
+          <div class="row">
+            <!--Current weather image-->
+            <div class="col-4">
+              <div style="font-size: 0">
+                <div class="svg-contain" style="margin: 5px">
+                  <svg version="1.1" class="clear-sky-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72.3 52.6" style="enable-background:new 0 0 72.3 52.6;" xml:space="preserve">
+                    <g>
+                      <path class="sun" d="M50.8,25.7c0,7.9-6.4,14.4-14.4,14.4s-14.4-6.4-14.4-14.4s6.4-14.4,14.4-14.4S50.8,17.8,50.8,25.7z"/>
+                      <path  class="line big-path line-1" d="M54.5,25.8h6"/>
+                      <path class="line big-path line-2" d="M12.4,25.8h6"/>
+                      <path class="line big-path line-3" d="M36.5,44.3v6"/>
+                      <path class="line big-path line-4" d="M36.5,8.2v-6"/>
+                      <path class="line big-path line-5" d="M23,38.8l-4.8,4.8"/>
+                      <path class="line big-path line-6" d="M54.9,8.9L50,13.8"/>
+                      <path class="line big-path line-7" d="M50,38.8l4.4,4.4"/>
+                      <path class="line big-path line-8" d="M18.8,9.6l4.2,4.2"/>
+                    </g>
+                  </svg>
+                </div>
+<!--                <i class="fas fa-sun" style="font-size: 50px"></i>-->
+              </div>
+            </div>
+            <!--Current weather data-->
+            <div class="col-8">
+              <span style="color:deepskyblue; font-size: 40px">20&#176;
+              <span style="font-size: 18px">C</span>
+              </span>
+              <span style="color: lightslategray; font-size: 18px">/</span>
+              <span style="color: lightslategray; font-size: 18px">7&#176;
+              <span style="font-size: 18px">C</span>
+              </span>
+              <p class="font-italic" style="font-size: 14px">Czwartek 13.02.2020</p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <br><br><br><br><br><br><br>
+  Tu bedzie stacja pogodowa
+  <br><br><br><br><br><br><br><br>
+
+  <hr>
+</div>
