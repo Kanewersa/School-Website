@@ -9,8 +9,7 @@ class EventsController < RequestablesController
       return
     end
     if params[:commit] == 'Podgląd'
-      @event = Event.new(event_params)
-      preview('preview', @event)
+      preview
       nil
     else
       @event = Event.new(event_params)
@@ -68,11 +67,7 @@ class EventsController < RequestablesController
       return
     end
     if params[:commit] == 'Podgląd'
-      @event = Event.new(event_params)
-      if event_params[:image] == nil
-        @event.image.attach(Event.friendly.find(params[:id]).image.blob)
-      end
-      preview('preview', @event)
+      preview
       nil
     else
       @event = Event.friendly.find(params[:id])
@@ -144,6 +139,13 @@ class EventsController < RequestablesController
     end
   end
 
+  def preview
+    @event = Event.new(event_params)
+    if event_params[:image] == nil
+      @event.image.attach(Event.friendly.find(params[:id]).image.blob)
+    end
+    super
+  end
 
   private def event_params
     params.require(:event).permit(:title, :slug, :category_id, :body, :important, :announcement, :image, :valid_date, :gallery_images => [])

@@ -16,8 +16,7 @@ class SubTabsController < RequestablesController
       return
     end
     if params[:commit] == 'Podgląd'
-      @sub_tab = SubTab.new(sub_tab_params)
-      preview('preview', @sub_tab)
+      preview
       nil
     else
       main_tab = MainTab.find(sub_tab_params[:main_tab_id])
@@ -51,9 +50,7 @@ class SubTabsController < RequestablesController
       return
     end
     if params[:commit] == 'Podgląd'
-      @sub_tab = SubTab.new(sub_tab_params)
-      @sub_tab.main_tab_id = SubTab.friendly.find(params[:id]).main_tab_id
-      preview('preview', @sub_tab)
+      preview
       nil
     else
       @sub_tab = SubTab.friendly.find(params[:id])
@@ -124,6 +121,14 @@ class SubTabsController < RequestablesController
       @request.save
     end
     redirect_back(fallback_location: tabs_path)
+  end
+
+  def preview
+    @requestable = SubTab.new(sub_tab_params)
+    if @requestable.main_tab_id.nil?
+      @requestable.main_tab_id = SubTab.friendly.find(params[:id]).main_tab_id
+    end
+    super
   end
 
   def to_param

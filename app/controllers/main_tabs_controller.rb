@@ -23,11 +23,7 @@ class MainTabsController < RequestablesController
       return
     end
     if params[:commit] == 'Podgląd'
-      @main_tab = MainTab.new(main_tab_params)
-      if main_tab_params[:image] == nil
-        @main_tab.image.attach(MainTab.friendly.find(params[:id]).image.blob)
-      end
-      preview('preview', @main_tab)
+      preview
       nil
     else
       @main_tab = MainTab.friendly.find(params[:id])
@@ -88,6 +84,14 @@ class MainTabsController < RequestablesController
     @main_tabs = MainTab.all
     @categories = Category.all
     @main_tab = MainTab.friendly.find(params[:id])
+  end
+
+  def preview
+    @main_tab = MainTab.new(main_tab_params)
+    if main_tab_params[:image] == nil
+      @main_tab.image.attach(MainTab.friendly.find(params[:id]).image.blob)
+    end
+    super
   end
 
   def sub_tabs

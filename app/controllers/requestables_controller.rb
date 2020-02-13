@@ -1,12 +1,11 @@
 class RequestablesController < ApplicationController
   respond_to :js
 
-  protected def preview(action, resource)
+  protected def preview
     @main_tabs = MainTab.all
     @categories = Category.all
-    @preview = resource
     respond_to do |format|
-      format.js { render 'requestables/preview', locals: { requestable: @preview } }
+      format.js { render 'requestables/preview', locals: { requestable: @requestable } }
     end
   end
 
