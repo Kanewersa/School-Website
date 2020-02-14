@@ -4,9 +4,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable, :authentication_keys => [:username]
-  validates :username, uniqueness: true, presence: true
-  validates :password, length: {minimum: 4}
-  validates :password, presence: true
+
+  scope :active_users, -> { where(status: "active") }
+  scope :suspended_users, -> { where(status: "suspended") }
+  scope :inactive_users, -> { where(status: "inactive") }
+
+  validates :username, uniqueness: { case_sensitive: true }, presence: true
+  validates :password, length: {minimum: 4}, presence: true
   has_one_attached :avatar
 
   def assign_default_role
@@ -26,7 +30,6 @@ class User < ApplicationRecord
   #####
 
   def activate
-    puts "activating user...... qwq"
     self.status = "active"
     self.save
   end
