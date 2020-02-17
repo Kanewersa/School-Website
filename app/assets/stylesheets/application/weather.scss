@@ -1,301 +1,281 @@
-$bodyBg: #333;
-$yellow: #E5D8BA;
-$blue: #BAE2E0;
-$cloudWhite: #DAD9D9;
-
-body {
-  background: $bodyBg;
+.icon-fit {
+  right: 60px;
+  bottom: 30px;
+  color: transparent;
 }
-
-.overlay-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 20px;
-  color: #fff;
-}
-
-.svg-contain {
-  max-width: 150px;
-  margin: 20px;
-  width: 100%;
-}
-
-.weather-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.big-path,
-.lightening,
-.line,
-.little-path {
-  stroke-miterlimit: 10;
-  stroke-width: 2;
-  stroke-linecap: round;
-  fill: none;
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 12em;
+  height: 10em;
+  font-size: 1em; /* control icon size here */
 }
 
 .cloud {
-  fill: $cloudWhite;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 3.6875em;
+  height: 3.6875em;
+  margin: -1.84375em;
+  background: white;
+  border-radius: 50%;
+  box-shadow:
+          -2.1875em 0.6875em 0 -0.6875em,
+          2.0625em 0.9375em 0 -0.9375em,
+          0 0 0 0.375em #fff,
+          -2.1875em 0.6875em 0 -0.3125em #fff,
+          2.0625em 0.9375em 0 -0.5625em #fff;
+}
+.cloud:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -0.5em;
+  display: block;
+  width: 4.5625em;
+  height: 1em;
+  background: inherit;
+  box-shadow: 0 0.4375em 0 -0.0625em #fff;
+}
+.cloud:nth-child(2) {
+  z-index: 0;
+  background: darkgray;
+  box-shadow:
+          -2.1875em 0.6875em 0 -0.6875em darkgray,
+          2.0625em 0.9375em 0 -0.9375em darkgray,
+          0 0 0 0.375em darkgray,
+          -2.1875em 0.6875em 0 -0.3125em darkgray,
+          2.0625em 0.9375em 0 -0.5625em darkgray;
+  opacity: 0.3;
+  transform: scale(0.5) translate(6em, -3em);
+  animation: cloud 4s linear infinite;
+}
+.cloud:nth-child(2):after { background: darkgray }
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  margin: -1.25em;
+  background: #FFF39D;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.175em #FFF39D;
+  animation: spin 12s infinite linear;
+}
+.rays {
+  position: absolute;
+  top: -2em;
+  left: 50%;
+  display: block;
+  width: 0.375em;
+  height: 1.125em;
+  margin-left: -0.1875em;
+  background: #FFF39D;
+  border-radius: 0.25em;
+  box-shadow: 0 5.375em #FFF39D;
+}
+.rays:before,
+.rays:after {
+  content: '';
+  position: absolute;
+  top: 0em;
+  left: 0em;
+  display: block;
+  width: 0.375em;
+  height: 1.125em;
+  transform: rotate(60deg);
+  transform-origin: 50% 3.25em;
+  background: #FFF39D;
+  border-radius: 0.25em;
+  box-shadow: 0 5.375em #FFF39D;
+}
+.rays:before {
+  transform: rotate(120deg);
+}
+.cloud + .sun {
+  margin: -2em 1em;
 }
 
-.little-path {
-  stroke-width: 1;
+.rain,
+.lightning,
+.snow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 3.75em;
+  height: 3.75em;
+  margin: 0.375em 0 0 -2em;
+  background: currentColor;
 }
 
-.hurricane-svg {
-  $lines: 12;
-  .line {
-    stroke: $blue;
-    opacity: 1;
-    animation: fadeIn 0.8s ease-in alternate-reverse infinite;
-    @for $i from 1 through $lines {
-      &:nth-child(#{$i}) {
-        animation-delay: $i * 0.1s;
-      }
-    }
-  }
-  .lightening {
-    animation: flash 1s infinite;
-    stroke: $yellow;
-  }
-  .big-path,
-  .little-path {
-    stroke: $blue;
-  }
-  .big-path {
-    stroke-width: 1;
-  }
-  .little-path {
-    stroke-width: 0.5;
-  }
-  .cloud {
-    animation: colorChange 1s infinite;
-  }
+.rain:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 1.125em;
+  height: 1.125em;
+  margin: -1em 0 0 -0.25em;
+  background: #0cf;
+  border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
+  box-shadow:
+          0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+          -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+          -1.375em -0.125em 0 rgba(255,255,255,0.2);
+  transform: rotate(-28deg);
+  animation: rain 3s linear infinite;
 }
 
-.windy-svg {
-  .little-path,
-  .big-path {
-    animation: dash 1s ease-in alternate-reverse infinite, fadeIn 1s alternate-reverse infinite;
-  }
-  path {
-    stroke: $blue;
-  }
-  .path-1 {
-    stroke-dasharray: 7;
-    stroke-dashoffset: 7;
-  }
-  .path-2 {
-    stroke-dasharray: 25;
-    stroke-dashoffset: -25;
-  }
-  .path-3 {
-    stroke-dasharray: 30;
-    stroke-dashoffset: 30;
-  }
-  .path-4 {
-    stroke-dasharray: 8;
-    stroke-dashoffset: 8;
-  }
-  .path-5 {
-    stroke-dasharray: 22;
-    stroke-dashoffset: -22;
-  }
-  .big-path-1 {
-    stroke-dasharray: 57;
-    stroke-dashoffset: 57;
-  }
-  .big-path-2 {
-    stroke-dasharray: 76;
-    stroke-dashoffset: 76;
-  }
+.bolt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -0.25em 0 0 -0.125em;
+  color: #fff;
+  opacity: 0.3;
+  animation: lightning 2s linear infinite;
+}
+.bolt:nth-child(2) {
+  width: 0.5em;
+  height: 0.25em;
+  margin: -1.75em 0 0 -1.875em;
+  transform: translate(2.5em, 2.25em);
+  opacity: 0.2;
+  animation: lightning 1.5s linear infinite;
+}
+.bolt:before,
+.bolt:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  margin: -1.625em 0 0 -1.0125em;
+  border-top: 1.25em solid transparent;
+  border-right: 0.75em solid;
+  border-bottom: 0.75em solid;
+  border-left: 0.5em solid transparent;
+  transform: skewX(-10deg);
+}
+.bolt:after {
+  margin: -0.25em 0 0 -0.25em;
+  border-top: 0.75em solid;
+  border-right: 0.5em solid transparent;
+  border-bottom: 1.25em solid transparent;
+  border-left: 0.75em solid;
+  transform: skewX(-10deg);
+}
+.bolt:nth-child(2):before {
+  margin: -0.75em 0 0 -0.5em;
+  border-top: 0.625em solid transparent;
+  border-right: 0.375em solid;
+  border-bottom: 0.375em solid;
+  border-left: 0.25em solid transparent;
+}
+.bolt:nth-child(2):after {
+  margin: -0.125em 0 0 -0.125em;
+  border-top: 0.375em solid;
+  border-right: 0.25em solid transparent;
+  border-bottom: 0.625em solid transparent;
+  border-left: 0.375em solid;
 }
 
-.clear-sky-svg {
-  animation: expand 0.8s alternate-reverse infinite;
-  .sun {
-    fill: $yellow;
-  }
-  .line {
-    stroke: $yellow;
-    stroke-dasharray: 7;
-    animation: dash 0.8s alternate-reverse infinite, fadeIn 1s forwards;
-  }
-  .line-1,
-  .line-3,
-  .line-5,
-  .line-7,
-  .line-4 {
-    stroke-dashoffset: 5;
-    animation-delay: 0.3s;
-  }
-  .line-2,
-  .line-6,
-  .line-8 {
-    stroke-dashoffset: -5;
-  }
+.flake:before,
+.flake:after {
+  content: '\2744';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -1.025em 0 0 -1.0125em;
+  color: #fff;
+  list-height: 1em;
+  opacity: 0.2;
+  animation: spin 8s linear infinite reverse;
+}
+.flake:after {
+  margin: 0.125em 0 0 -1em;
+  font-size: 1.5em;
+  opacity: 0.4;
+  animation: spin 14s linear infinite;
+}
+.flake:nth-child(2):before {
+  margin: -0.5em 0 0 0.25em;
+  font-size: 1.25em;
+  opacity: 0.2;
+  animation: spin 10s linear infinite;
+}
+.flake:nth-child(2):after {
+  margin: 0.375em 0 0 0.125em;
+  font-size: 2em;
+  opacity: 0.4;
+  animation: spin 16s linear infinite reverse;
 }
 
-.overcast-clouds {
-  .cloud-still {
-    fill: $cloudWhite;
-    animation: bounce 4s ease-in-out alternate-reverse infinite;
-    &:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-  }
+
+/* Animations */
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
 
-.snow-svg {
-  .snowflake {
-    transform-origin: 50% 50%;
-    transform: translateY(-10px);
-    opacity: 0;
-    @for $i from 1 through 10 {
-      &:nth-child(#{$i}) {
-        @if $i % 2==0 {
-          animation: fall-clockwise random(2000) + 2000ms ease-in forwards infinite;
-          animation-delay: $i * 0.1s * random(3);
-        }
-        @else {
-          animation: fall-counterclockwise random(2000) + 2000ms ease-in forwards infinite;
-          animation-delay: $i * 0.1s * random(3);
-        }
-      }
-    }
-  }
-  .snowflake-path {
-    stroke: $blue;
-    stroke-width: 1;
-  }
-}
-
-.fog-svg {
-  .fog-line {
-    @for $i from 1 through 18 {
-      &:nth-child(#{$i}) {
-        stroke: $blue;
-        animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
-        animation-delay: $i * 0.2s;
-      }
-    }
-  }
-}
-
-@keyframes colorChange {
-  0%,
-  90% {
-    fill: rgba(100, 100, 120, 1);
-  }
-  60%,
+@keyframes cloud {
+  0% { opacity: 0; }
+  50% { opacity: 0.3; }
   100% {
-    fill: rgba(200, 200, 200, 0.8);
+    opacity: 0;
+    transform: scale(0.5) translate(-200%, -3em);
   }
 }
 
-@keyframes fadeIn {
+@keyframes rain {
   0% {
-    opacity: 0;
+    background: #0cf;
+    box-shadow:
+            0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+            -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+            -1.375em -0.125em 0 #0cf;
+  }
+  25% {
+    box-shadow:
+            0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+            -0.875em 1.125em 0 -0.125em #0cf,
+            -1.375em -0.125em 0 rgba(255,255,255,0.2);
+  }
+  50% {
+    background: rgba(255,255,255,0.3);
+    box-shadow:
+            0.625em 0.875em 0 -0.125em #0cf,
+            -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+            -1.375em -0.125em 0 rgba(255,255,255,0.2);
   }
   100% {
-    opacity: 1;
+    box-shadow:
+            0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
+            -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
+            -1.375em -0.125em 0 #0cf;
   }
 }
 
-@keyframes flash {
-  0%,
-  90% {
-    opacity: 0;
-    transform: translateX(-1px) translateY(-2px) rotate(0.01deg);
-  }
-  90% {
-    transform: translateX(1px) translateY(-1px);
-  }
-  60%,
-  100% {
-    opacity: 1;
-    transform: translateX(0px) translateY(0px);
-  }
-}
-
-@keyframes expand {
-  to {
-    transform: scale(1.1);
-  }
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  50%,
-  100% {
-    transform: translateY(0px) translateX(0px) rotate(0.1deg);
-  }
-  30%,
-  80% {
-    transform: translateY(3px) translateX(3px) rotate(0.1deg);
-  }
-}
-
-@keyframes fall-clockwise {
-  0% {
-    transform: translateY(-7px) rotate(0) scale(0.5);
-    opacity: 0;
-  }
-  10% {
-    transform: translateY(-4px) translateX(4px) rotate(-30deg) scale(0.7);
-    opacity: 1;
-  }
+@keyframes lightning {
   45% {
-    transform: translateY(5px) translateX(0px) rotate(30deg) scale(0.6);
+    color: #fff;
+    background: #fff;
+    opacity: 0.2;
   }
   50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(10px) translateX(3px) scale(0.5);
-  }
-}
-
-@keyframes fall-counterclockwise {
-  0% {
-    transform: translateY(-9px) rotate(0) scale(0.6);
-    opacity: 0;
-  }
-  10% {
-    transform: translateY(-4px) translateX(-4px) rotate(30deg) scale(0.7);
+    color: #0cf;
+    background: #0cf;
     opacity: 1;
   }
-  40% {
-    transform: translateY(8px) translateX(4px) rotate(-30deg) scale(0.8);
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(14px) translateX(-3px) scale(0.7);
-  }
-}
-
-@keyframes pan {
-  0%,
-  100% {
-    transform: translateX(-2px) rotate(0.01deg);
-  }
-  50% {
-    transform: translateX(2px) rotate(0.01deg);
+  55% {
+    color: #fff;
+    background: #fff;
+    opacity: 0.2;
   }
 }
