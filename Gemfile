@@ -21,7 +21,7 @@ gem 'remotipart', github: 'jbox-web/remotipart'
 gem 'jquery-ui-rails'
 gem 'rails_sortable'
 # Use Active Storage variant
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
